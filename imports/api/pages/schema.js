@@ -17,6 +17,12 @@ export const PageSchema = new SimpleSchema({
 		defaultValue : 'My New Page'
 	},
 
+	description : {
+		type : String,
+		optional : false,
+		defaultValue : 'My New Page Description'
+	},
+
 	dateCreated :  {
 		type : Date,
 		defaultValue : new Date(),
@@ -30,20 +36,30 @@ export const PageSchema = new SimpleSchema({
 	},
 
 	//TODO Unique Splash Name
+	path : {
+		type : String,
+		optional : true,
+		unique : true
+	},
 
-	//TODO settings object
+	published : {
+		type : Boolean,
+		defaultValue : false,
+		optional : false
+	},
+
 	settings : {
 		type : Object,
 		blackbox: true,
 		optional : true
 	},
-	//TODO styles object
+
 	styles : {
 		type : Object,
 		blackbox: true,
 		optional : true
 	},
-	//TODO sections
+
 	sections : {
 		type : [String],
 		optional : true

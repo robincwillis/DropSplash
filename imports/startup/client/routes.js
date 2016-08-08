@@ -62,13 +62,10 @@ let publicRoutes = FlowRouter.group({
 
 let privateRoutes = FlowRouter.group({
 	triggersEnter: [function(context, redirect) {
-		console.log('running group triggers');
 		if ( Meteor.loggingIn() || Meteor.userId() ) {
-			console.log('do nothing yo');
 		} else {
 			let route = FlowRouter.current();
 			if (route.route.name !== 'login') {
-				console.log(route.path);
 				Session.set('redirectAfterLogin', route.path);
 			}
 			FlowRouter.go('login');
@@ -87,9 +84,7 @@ publicRoutes.route( '/', {
 	name: 'home',
 	action() {
 		mounter(MainLayout, {
-			//header: false,
 			content: <Landing />
-			//footer: false
 		});
 	}
 });
@@ -143,11 +138,13 @@ Accounts.onLogin(function() {
 	initialize.call({}, (err, res) => {
 		if (err) {
 			FlowRouter.go('/');
-			console.log('ERROR: Could not create splash page.');
+			console.log('ERROR: Could not init splash page.');
 			console.log(err);
 		} else {
+			//TODO should check params not path
 			if(path !== '/'+res){
-				FlowRouter.go('/'+res);
+				FlowRouter.setParams({pageId: res});
+				//FlowRouter.go('/'+res);
 			}
 		}
 	});
@@ -164,23 +161,20 @@ publicRoutes.route( '/:pageId', {
 	action(params, queryParams) {
 		mounter(AppLayout, {
 			content: <App />,
-			footer: <FooterNav />
+			footer: <FooterNav {...params} />
 		});
 	}
 });
 
 // Settings
-publicRoutes.route( '/settings', {
-//privateRoutes.route( '/:pageId/settings', {
+//publicRoutes.route( '/settings', {
+privateRoutes.route( '/:pageId/settings', {
 	name: 'splash settings',
 	action(params, queryParams) {
-
-		console.log('something is going to settings');
-
 		mounter(AppLayout, {
-			//content: <App />,
-			settings: <Settings />,
-			//footer: <FooterNav />
+			content: <App />,
+			settings: <Settings {...params} />,
+			footer: <FooterNav settingsOpen={true} {...params} />
 		});
 	}
 });

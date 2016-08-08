@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 //Collections
 import { Pages } from '../../api/pages/pages.js';
@@ -8,14 +9,14 @@ import { Sections } from '../../api/sections/sections.js';
 //API
 import { insertSection } from '../../api/sections/methods.js';
 
-//Components
-import Button from './Common/Button';
-
 //Icons
 import PlusIcon from '../assets/icons/plus-icon.js';
 import ForwardsArrow from '../assets/icons/arrow-2-forwards.js';
 import SettingsIcon from '../assets/icons/settings-icon.js';
 import InlineSVG from 'svg-inline-react';
+
+//Components
+import Button from './Common/Button';
 
 //Styles
 import '../sass/components/footer-nav';
@@ -34,6 +35,15 @@ class FooterNav extends Component {
 
 	togglePageSettings (event) {
 		event.preventDefault();
+		if(this.props.settingsOpen) {
+			FlowRouter.go('/'+this.props.pageId);
+		} else {
+			FlowRouter.go('/'+this.props.pageId+'/settings');
+		}
+		//var pageId  = FlowRouter.
+		//var path = FlowRouter.current().path;
+		//if settings is open kill it
+		//FlowRouter.getQueryParam(queryStringKey);
 
 	}
 
@@ -52,7 +62,7 @@ class FooterNav extends Component {
 		return (
 			<div className="footer-nav">
 				<div className="left-items">
-					<div className="link"><InlineSVG src={SettingsIcon} element="span" className="icon" />Settings</div>
+					<div onClick={this.togglePageSettings.bind(this)} className="link"><InlineSVG src={SettingsIcon} element="span" className="icon" />Settings</div>
 				</div>
 				<div className="center-items">
 					<Button

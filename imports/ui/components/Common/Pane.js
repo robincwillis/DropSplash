@@ -26,12 +26,12 @@ export default class App extends Component {
 	componentWillReceiveProps(nextProps) {
 		this.setState({visible: nextProps.visible});
 		//TODO close pane if we click outside of it
-		// if(this.props.closeable && nextProps.visible !== this.props.visible && nextProps.visible) {
-		// 	document.body.addEventListener('click', this.handleClickOutsideOfPane.bind(this));
-		// }
-		// if(this.props.closeable && nextProps.visible !== this.props.visible && !nextProps.visible) {
-		// 	document.body.removeEventListener('click', this.handleClickOutsideOfPane);
-		// }
+		if(this.props.closeable && nextProps.visible !== this.props.visible && nextProps.visible) {
+			document.body.addEventListener('click', this.handleClickOutsideOfPane.bind(this));
+		}
+		if(this.props.closeable && nextProps.visible !== this.props.visible && !nextProps.visible) {
+			document.body.removeEventListener('click', this.handleClickOutsideOfPane);
+		}
 	}
 
 	goToViewByIndex (index) {
@@ -169,8 +169,6 @@ export default class App extends Component {
 	}
 
 	render () {
-		console.log(this.props.views[this.state.currentView].Component);
-
 		return (
 			<ReactCSSTransitionGroup
 				transitionName='pane-transition'
