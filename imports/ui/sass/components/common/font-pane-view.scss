@@ -1,0 +1,63 @@
+@import '../../setup/variables';
+@import '../../setup/mixins';
+
+.font-list {
+	li {
+		label {
+			transition: background $med-speed $ease;
+			cursor: pointer;
+			font-size: 14px;
+			text-transform: none;
+			color: $text-color;
+			letter-spacing: 0;
+			padding: 10px $pane-padding;
+			margin: 0;
+			border-bottom: 1px solid $pane-line-color;
+			.font-name {
+				display: inline-block;
+				@include ellipsis();
+				max-width: 150px;
+			}
+			.style-count {
+				display: inline-block;
+				width: 60px;
+				text-align: right;
+				color: $light-text-color;
+				float: right;
+				font-size: 12px;
+				line-height: 16px;
+				transition: color $med-speed $ease;
+			}
+			&:hover {
+				background: $light-grey;
+			}
+		}
+		input[type=radio] {
+			display: none;
+			+ label {
+				.selected-check {
+					display: inline-block;
+					vertical-align: middle;
+					margin-top: -8px;
+					width: 7px;
+					height: 12px;
+					margin-left: 10px;
+					border-right: 2px solid $primary-color;
+					border-bottom: 2px solid $primary-color;
+					transform: rotate(45deg);
+					opacity: 0;
+					transition: opacity $med-speed $ease;
+				}
+			}
+			&:checked + label {
+				background-color: $light-grey;
+				.selected-check {
+					opacity: 1;
+				}
+				.style-count {
+	        color: $text-color;
+	      }
+			}
+		}
+	}
+}

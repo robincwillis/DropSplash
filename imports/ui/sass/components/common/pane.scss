@@ -1,0 +1,402 @@
+@import '../../setup/variables';
+@import '../../setup/mixins';
+
+.ds-pane {
+	font-family: $main-font;
+	display: inline-block;
+	vertical-align: top;
+	min-width: 40px;
+	max-width: 350px;
+	min-height: 40px;
+	background: $pane-bg;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, .2);
+	border-radius: $base-border-radius;
+	position: relative;
+	overflow: hidden;
+	min-width: 225px;
+	min-height: 250px;
+	text-align: left;
+	z-index: 6;
+	color: $text-color;
+	&.wide {
+		width: 300px;
+	}
+
+	.ds-empty-content {
+		display: block;
+		max-width: none;
+		width: auto;
+	}
+
+	p {
+		font-size: 14px;
+		margin: 0;
+		line-height: 1.5em;
+		&.sm {
+			letter-spacing: .02em;
+			font-size: 12px;
+		}
+		&.xsm {
+			letter-spacing: .05em;
+			font-size: 10px;
+		}
+	}
+
+	.ds-pane-header {
+		position: relative;
+		border-bottom: 1px solid $pane-line-color;
+		height: $ds-pane-header-height;
+		.pane-title {
+			display: block;
+			position: absolute;
+			left: 45px;
+			right: 45px;
+			text-align: center;
+			font-size: 14px;
+			font-weight: 500;
+			line-height: $ds-pane-header-height + 1px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			letter-spacing: .02em;
+		}
+		.icon {
+			stroke-color: red;
+			position: absolute;
+			padding: 19px 15px 19px;
+			left: 0;
+			height: $ds-pane-header-height + 1px;
+			cursor: pointer;
+			opacity: .3;
+			transition: opacity $med-speed $ease;
+			&.right {
+				left: auto;
+				right: 0;
+			}
+			&:hover {
+				opacity: 1;
+			}
+			svg {
+				height: 12px;
+				max-width: 30px;
+				vertical-align: top;
+			}
+		}
+	} // end .ds-pane-header
+
+	.ds-pane-tabs {
+		height: 35px;
+		background: $light-grey;
+		background: $pane-bg;
+		text-align: left;
+		position: relative;
+		z-index: 1;
+		@include clearfix();
+		&.four-tabs {
+			hr,
+			.tab {
+				width: 25%;
+			}
+			.tab.active {
+				&:nth-child(2) ~ hr {
+					left: 25%;
+				}
+				&:nth-child(3) ~ hr {
+					left: 50%;
+				}
+				&:nth-child(4) ~ hr {
+					left: 75%;
+				}
+			}
+		}
+		hr {
+			display: block;
+			height: 2px;
+			width: 100%;
+			position: absolute;
+			border: none;
+			left: 0;
+			bottom: 0px;
+			transition: background $med-speed $ease;
+			background-color: $primary-color;
+			width: 33.333%;
+			margin: 0;
+			transition: left $med-speed $ease;
+		}
+		.tab {
+			display: block;
+			float: left;
+			line-height: 34px;
+			width: 33.333%;
+			text-align: center;
+			border-bottom: 1px solid $pane-line-color;
+			color: $light-text-color;
+			cursor: pointer;
+			transition: color $med-speed $ease, background $med-speed $ease, border $med-speed $ease;
+			&:hover {
+				color: $text-color;
+			}
+			&.active {
+				background: $pane-bg;
+				color: $text-color;
+				&:nth-child(2) ~ hr {
+					left: 33.333%;
+				}
+				&:nth-child(3) ~ hr {
+					left: 66.666%;
+				}
+			}
+		}
+	} // end .ds-pane-tabs
+
+	.ds-pane-content {
+		display: block;
+		overflow-x: hidden;
+		overflow-y: auto;
+    height: calc(100% - 50px);
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    > * {
+    	position: absolute;
+    	top: 0;
+    	right: 0;
+    	bottom: 0;
+    	left: 0;
+    }
+    .row {
+    	margin-bottom: 15px;
+    	&.range {
+    		padding-top: 5px;
+    	}
+    	&:last-of-type {
+    		margin-bottom: 0;
+    	}
+    }
+    .pane-grid-row {
+    	@include clearfix();
+    	margin-left: -5px;
+    	margin-right: -5px;
+    	.col {
+    		float: left;
+    		padding: 0 5px;
+    		input[type=range] {
+    			margin-left: -2px;
+				}
+    		&.one-third {
+    			width: 33.333%;
+    		}
+    		&.two-thirds {
+    			width: 66.666%;
+    		}
+    		&.half {
+    			width: 50%;
+    		}
+    		&.one-quarter {
+    			width: 25%;
+    		}
+    		&.three-quarter {
+    			width: 75%;
+    		}
+    	}
+    }
+    .pane-padded {
+    	padding: 15px;
+    }
+		.has-button {
+			padding-bottom: $btn-medium-height;
+			.content {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: $btn-medium-height;
+				left: 0;
+				overflow-x: hidden;
+				overflow-y: auto;
+			}
+			.pane-view-actions {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				.button {
+					border-radius: 0;
+					&.hollow {
+						border-top: 1px solid $light-grey;
+						background-color: transparent;
+						color: $light-text-color;
+						&:hover {
+							color: $text-color;
+							background-color: $light-grey;
+						}
+					}
+				}
+				&.two-actions {
+					@include clearfix();
+					.button {
+						float: left;
+						width: 50%;
+					}
+				}
+			}
+		}
+
+	} // end .ds-pane-content
+
+	&.has-tabs {
+		.ds-pane-content {
+			.content {
+				position: absolute;
+				top: 35px;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				overflow-x: hidden;
+				overflow-y: auto;
+			}
+			.has-button {
+				.content {
+					bottom: $btn-medium-height;
+				}
+			}
+		}
+	}
+
+} // end .ds-pane
+
+// Pane Enter/Exit Transitions
+.pane-transition-appear {
+	transform: scale(.95);
+	opacity: 0;
+	transition: transform $med-speed $ease, opacity $med-speed $ease;
+}
+
+.pane-transition-appear.pane-transition-appear-active {
+	transform: scale(1);
+	opacity: 1;
+}
+
+.pane-transition-leave {
+	transform: scale(1);
+	opacity: .01;
+	transition: transform $med-speed $ease, opacity $med-speed $ease;
+}
+
+.pane-transition-leave.pane-transition-leave-active {
+	transform: scale(.95);
+	opacity: .01;
+}
+
+// Next Transition
+.pane-next-transition-enter {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: transform $slow-speed $ease, opacity $slow-speed $ease;
+  transform: translateX(100%);
+  background-color: $pane-bg;
+  z-index: 1;
+}
+
+.pane-next-transition-enter.pane-next-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.pane-next-transition-leave {
+	opacity: 1;
+	position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+	transition: transform $slow-speed $ease, opacity $slow-speed $ease;
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+	  top: 0;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  background: #000;
+	  opacity: 0;
+	  transition: opacity $slow-speed $ease;
+	}
+}
+
+.pane-next-transition-leave.pane-next-transition-leave-active {
+	opacity: 1;
+	transform: translateX(-50%);
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+	  top: 0;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  background: #000;
+	  opacity: .1;
+	}
+}
+
+// Prev Transition
+.pane-prev-transition-enter {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: transform $slow-speed $ease, opacity $slow-speed $ease;
+  transform: translateX(-100%);
+  background-color: $pane-bg;
+  z-index: 1;
+}
+
+.pane-prev-transition-enter.pane-prev-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.pane-prev-transition-leave {
+	opacity: 1;
+	position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+	transition: transform $slow-speed $ease, opacity $slow-speed $ease;
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+	  top: 0;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  background: #000;
+	  opacity: 0;
+	  transition: opacity $slow-speed $ease;
+	}
+}
+
+.pane-prev-transition-leave.pane-prev-transition-leave-active {
+	opacity: 1;
+	transform: translateX(50%);
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+	  top: 0;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  background: #000;
+	  opacity: .1;
+	}
+}

@@ -1,0 +1,31 @@
+.ds-section-controls {
+	position: absolute;
+	width: 100%;
+	background: transparent;
+	top: 0;
+	z-index: 3;
+	padding: 20px;
+	pointer-events: none;
+	.left-controls {
+		pointer-events: all;
+		float: left;
+		.add-content-button {
+			margin-right: 10px;
+		}
+	}
+	.right-controls {
+		pointer-events: all;
+		float: right;
+		position: relative;
+		.button-group {
+			.button {
+				min-width: 150px;
+			}
+		}
+		.ds-pane {
+			position: absolute;
+			top:50px;
+			left:0;
+		}
+	}
+}

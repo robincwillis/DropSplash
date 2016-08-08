@@ -1,0 +1,284 @@
+@import '../../setup/variables';
+@import '../../setup/mixins';
+
+// Forms
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+input[type="phone"],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none;
+  background: $input-bg;
+  border: $input-border;
+  box-shadow: none;
+  outline: none;
+  font-size: 12px;
+  padding: $input-padding;
+  width: 100%;
+  margin: 0;
+  line-height: $input-line-height;
+  border-radius: $input-border-radius;
+  transition: background $med-speed ease-in-out, border $med-speed;
+  resize: none;
+  vertical-align: top;
+  text-indent: 0px;
+  height: $btn-tiny-height;
+  &.lg {
+    font-size: 14px;
+    line-height: $btn-medium-height;
+    height: $btn-medium-height;
+  }
+  &:disabled {
+    background: $light-grey;
+    border-color: $light-grey;
+    color: $light-text-color
+  }
+}
+
+textarea {
+  line-height: $base-line-height;
+  padding-top: 7px;
+  padding-bottom: 10px;
+  height: 120px;
+}
+
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+  background: $input-focus-bg;
+  border: $input-focus-border;
+  color: $input-focus-color;
+}
+
+// Radios and Checkboxes
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+label {
+
+}
+
+.ds-pane-content label {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: $light-text-color;
+  line-height: 1em;
+  display: block;
+  margin-bottom: 3px;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  font-size: 1em;
+}
+
+input[type="radio"] + label span.radio,
+input[type="checkbox"] + label span.checkbox {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  border-radius: $input-border-radius;
+  margin-right: 7px;
+  margin-bottom: 5px;
+  vertical-align: middle;
+  transition: border $med-speed ease-in-out, background $med-speed ease-in-out, color $med-speed ease-in-out;
+}
+
+input[type="radio"] {
+  + label span.radio {
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid lighten($text-color, 50%);
+    &:after {
+      transition: background $med-speed ease-in-out;
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      background-color: transparent;
+      border-radius: 50%;
+      margin: 2px;
+    }
+  }
+  &:checked {
+    + label span.radio {
+      background-color: transparent;
+      border-color: $primary-color;
+      &:after {
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+input[type="checkbox"] {
+  + label span.checkbox {
+    background-color: transparent;
+    background-color: lighten($text-color, 50%);
+    border: 1px solid lighten($text-color, 50%);
+    &:after {
+      transition: background $med-speed ease-in-out;
+      content: '';
+      display: block;
+      width: 3px;
+      height: 8px;
+      border-bottom: 2px solid transparent;
+      border-right: 2px solid transparent;
+      background-color: transparent;
+      transform: rotate(45deg) scale(.75);
+      margin-top: 1px;
+      margin-left: 5px;
+      transition: all $med-speed ease-in-out;
+    }
+  }
+  &:checked {
+    + label span.checkbox {
+      background-color: $primary-color;
+      border-color: $primary-color;
+      &:after {
+        transform: rotate(45deg) scale(1);
+        border-color: $bg-color;
+      }
+    }
+  }
+}
+
+// Selects
+select {
+  -webkit-appearance: none;
+  background: $select-bg;
+  border: $select-border;
+  color: $select-color;
+  box-shadow: none;
+  outline: none;
+  font-size: 1em;
+  height: 40px;
+  width: 100%;
+  margin: 0px 0 1em 0;
+  line-height: 1.2em;
+  padding: $input-padding;
+  border-radius: $input-border-radius;
+  transition: background $med-speed ease-in-out, border $med-speed;
+  vertical-align: top;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: right center;
+  // background-image: url(../images/arrow-thick-blk.png);
+  // background-image: url(../images/arrow-thick-blk.svg);
+}
+
+select:hover,
+select:focus {
+  border: $input-focus-border;
+}
+
+.input-group {
+  @include clearfix();
+  input {
+    float: left;
+    border-radius: $input-border-radius 0 0 $input-border-radius;
+    border-right: none;
+    &:focus {
+      border-right: none;
+      + input {
+        border-left-color: $primary-color;
+      }
+    }
+    &.one-third {
+      width: 33.333%;
+    }
+    &.two-thirds {
+      width: 66.666%;
+    }
+    &.half {
+      width: 50%;
+    }
+    &.one-quarter {
+      width: 25%;
+    }
+    &.three-quarter {
+      width: 75%;
+    }
+    &:last-of-type {
+      border-radius: 0 $input-border-radius $input-border-radius 0;
+      border-right: $input-border;
+      &:focus {
+        border-right-color: $primary-color;
+      }
+    }
+  }
+}
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+  display: block;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+  margin-top: -4px;
+  transition: transform $med-speed $ease;
+  &:hover,
+  &:active {
+    transform: scale(1.2);
+  }
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: #3071a9;
+  border-radius: 0;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,16e1b9+100 */
+  background: #16e1b9; /* Old browsers */
+  background: -moz-linear-gradient(left, #ffffff 0%, #16e1b9 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #ffffff 0%,#16e1b9 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #ffffff 0%,#16e1b9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#16e1b9',GradientType=1 ); /* IE6-9 */
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #16e1b9; /* Old browsers */
+  background: -moz-linear-gradient(left, #ffffff 0%, #16e1b9 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #ffffff 0%,#16e1b9 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #ffffff 0%,#16e1b9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#16e1b9',GradientType=1 ); /* IE6-9 */
+}

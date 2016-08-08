@@ -1,0 +1,151 @@
+@import '../../setup/variables';
+
+.ds-editable {
+	[contenteditable="true"]:active,
+	[contenteditable="true"]:focus{
+		border: none;
+		outline: none;
+	}
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	margin: 10px 0;
+	// For testing
+	h1 {
+		font-size: 50px;
+		display: inline-block;
+		margin: 0 auto;
+		line-height: 1.333em;
+		font-family: 'Work Sans', sans-serif;
+		font-weight: 600;
+	}
+
+	p {
+		font-family: 'Cotham Sans', sans-serif;
+		letter-spacing: .02em;
+	}
+	&:after {
+		content: '';
+		display: block;
+		border: 2px solid transparent;
+		position: absolute;
+		top: -10px;
+		right: -10px;
+		bottom: -10px;
+		left: -10px;
+		border-radius: 6px;
+		transition: border $med-speed ease-in-out;
+		pointer-events: none;
+		z-index: 0;
+	}
+	.content {
+		display: inline-block;
+	}
+	.ds-edit-actions {
+		position: absolute;
+		left: 100%;
+		top: 0;
+		bottom: 0;
+		padding-left: 46px;
+	}
+	.ds-edit-button {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		margin-top: -15px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(-6px);
+		transition: visibility $med-speed $ease, opacity $med-speed $ease, transform $med-speed $ease;
+	}
+	&:hover {
+		z-index: 9;
+		&:after {
+			border-color: $primary-color;
+		}
+		.ds-edit-button {
+			opacity: 1;
+			visibility: visible;
+			transform: translateX(0);
+		}
+	}
+	&.editing {
+		z-index: 9;
+		&:after {
+			border-color: $primary-color;
+		}
+		// .ds-edit-options {
+		// 	opacity: 1;
+		// 	visibility: visible;
+		// 	max-height: 200px;
+		// 	.option {
+		// 		transform: translateY(0);
+		// 		&:first-child {
+		// 			padding-top: 3px;
+		// 			svg {
+		// 				height: 31px;
+		// 			}
+		// 		}
+		// 	}
+		// }
+	}
+}
+
+.ds-edit-options {
+	position: absolute;
+	top: 50%;
+	margin-top: -49px;
+	right: 0;
+	z-index: 1;
+	line-height: 26px;
+	letter-spacing: -.03em;
+	font-size: 16px;
+	transition: visibility $med-speed ease-in-out, opacity $med-speed ease-in-out, max-height $slow-speed ease-in-out, transform $slow-speed ease-in-out;
+	background: $primary-color;
+	border-radius: 50px;
+	.option {
+		vertical-aligin: top;
+		line-height: 30px;
+		display: block;
+		margin: 0;
+		width: 30px;
+		height: 30px;
+		background: transparent;
+		border-radius: 0;
+		transition: background $med-speed ease-in-out, transform $med-speed ease-in-out;
+		border-bottom: light($primary-color, 50%);
+		position: relative;
+		.icon {
+			width: 100%;
+		}
+		&:last-child {
+			height: 34px;
+			padding-bottom: 3px;
+			border-radius: 0 0 50px 50px;
+			svg {
+				height: 31px;
+			}
+		}
+		&:first-child {
+			height: 34px;
+			padding-top: 3px;
+			border-radius: 50px 50px 0 0;
+			transition: background $med-speed $ease, padding $med-speed $ease;
+			svg {
+				height: 30px;
+			}
+		}
+		svg {
+			height: 30px;
+			width: 14px;
+			margin: 0 auto;
+			display: block;
+			* {
+				fill: #fff;
+			}
+		}
+		&:hover {
+			background: $btn-hover-bg;
+		}
+	}
+}

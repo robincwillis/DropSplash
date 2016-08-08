@@ -1,0 +1,106 @@
+// Colors
+$bg-color : #fff;
+$primary-color: #16E1B9;
+$light-grey: #f2f2f2;
+$text-color : #333;
+$black : #000;
+$white : #fff;
+$light-text-color : #aaa;
+$hr-color : $text-color;
+$hr-styles : 2px solid $hr-color;
+$accordion-styles : 1px solid $light-text-color;
+
+// Links
+$link-color : $light-text-color;
+$link-hover-color : $primary-color;
+$dropdown-color : $light-text-color;
+$nav-color : $text-color; 
+$nav-hover-color : $primary-color;
+
+// Typography
+$ds-ui-font: 'Roboto', 'Helvetica Neue', sans-serif;
+$main-font: $ds-ui-font;
+$secondary-font: $main-font;
+$base-font-size : 16px;
+$base-line-height : 1.5em;
+
+// Text Highlights
+$highlight-bg : $light-text-color;
+$highlight-color : $bg-color;
+
+// Text Inputs
+$input-bg : transparent;
+$input-border : 1px solid lighten($text-color, 65%);
+$input-border-radius : 2px;
+$input-focus-bg : transparent;
+$input-focus-color : $text-color;
+$input-focus-border : 1px solid $primary-color;
+$placeholder-color : $light-text-color;
+$placeholder-focus-color : transparent;
+$input-padding: 0px 10px 0px 10px;
+$input-line-height: 30px; // $btn-medium-height
+
+// Select Fields
+$select-border : $input-border;
+$select-bg : transparent;
+$select-color : $light-text-color;
+
+// Buttons
+$btn-height: 50px;
+  $btn-large-height: 60px;
+	  $btn-medium-height: 40px;
+	    $btn-tiny-height: 30px;
+$btn-padding: 0px 15px 0px 15px;
+  $btn-large-padding: 0px 15px 0px 15px;
+	  $btn-medium-padding: 0px 15px 0px 15px;
+	    $btn-tiny-padding: 0px 10px 0px 10px;
+
+// Default Button
+$btn-border: none;
+$btn-bg : $primary-color;
+$btn-color : $bg-color;
+$btn-hover-bg : darken($primary-color, 7%);
+$btn-border-radius : 60px;
+$btn-hover-color : $bg-color;
+$btn-hover-border: none;
+
+// Secondary Button
+$secondary-btn-border: none;
+$secondary-btn-bg : $text-color;
+$secondary-btn-color : $bg-color;
+$secondary-btn-hover-bg : #000;
+$secondary-btn-border-radius : 60px;
+$secondary-btn-hover-color : $primary-color;
+$secondary-btn-hover-border: none;
+
+// Tertiary Button
+$tertiary-btn-border: none;
+$tertiary-btn-bg : $light-grey;
+$tertiary-btn-color : lighten($text-color, 30%);
+$tertiary-btn-hover-bg : darken($light-grey, 5%);
+$tertiary-btn-border-radius : 60px;
+$tertiary-btn-hover-color : $text-color;
+$tertiary-btn-hover-border: none;
+
+// General UI Varibales
+$base-border-radius : 4px;
+$footer-height : 50px;
+
+// Pane Variables
+$pane-bg : #fff;
+$pane-line-color : $light-grey;
+$ds-pane-header-height : 50px;
+$pane-padding : 15px;
+
+// Breakpoints
+$sm : 450;
+$md : 600;
+$lg : 850;
+$xlg : 1050;
+$huge : 1500;
+
+// Transitions
+$fast-speed : .1s;
+$slow-speed : .5s;
+$med-speed : .2s;
+$ease  : ease-in-out;

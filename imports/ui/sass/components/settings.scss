@@ -1,0 +1,148 @@
+@import '../setup/variables';
+@import '../setup/mixins';
+
+.settings-panel {
+	background: #000;
+	color: $light-text-color;
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 50px;
+	width: 400px;
+	.panel-title {
+		display: block;
+		color: $white;
+		font-size: 12px;
+		padding-top: 30px;
+		line-height: 1em;
+		font-weight: 400;
+	}
+	.settings-content {
+		overflow-y: auto;
+		overflow-x: hidden;
+		position: absolute;
+		top: 73px;
+		bottom: 50px;
+		left: 0;
+		right: 0;
+		transition: bottom $med-speed $ease;
+		@include custom-scrollbar();
+		// to make the save button come in
+		// bottom: 0px;
+	}
+	.save-settings {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		transition: transform $med-speed $ease;
+		// to make the button come in when its needed
+		// transform: translateY(50px);
+		// border-top: 1px solid $text-color;
+		.button {
+			border-radius: 0;
+		}
+	}
+	.settings-block {
+		padding: 0 40px 40px;
+		&.settings-header {
+			border-bottom: 1px solid $text-color;
+			padding: 0 40px 30px;
+			.close-x {
+				padding: 15px;
+				position: absolute;
+				top: 9px;
+				right: 15px;
+				cursor: pointer;
+				svg {
+					width: 12px;
+					height: 12px;
+					* {
+						fill: darken($white, 50%);
+					}
+				}
+				&:hover {
+					svg * {
+						fill: $white;
+					}
+				}
+			}
+		}
+		.fancy-input-wrap {
+			&:last-of-type {
+		    margin-bottom: 0;
+		  }
+		}
+		.settings-block-title {
+			display: block;
+			line-height: 1em;
+			margin-bottom: 12px;
+			color: $white;
+			font-weight: 400;
+			position: relative;
+			.text {
+				display: inline-block;
+				background: #000;
+				padding-right: 7px;
+				position: relative;
+				z-index: 1;
+			}
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 3px;
+				left: 0;
+				right: 0;
+				height: 1px;
+				width: 100%;
+				background: $text-color;
+			}
+		}
+		p {
+			font-size: 12px;
+			line-height: 1.5em;
+			letter-spacing: .03em;
+			margin-bottom: 15px;
+			a {
+				border-bottom: 1px solid lighten($text-color, 10%);
+				padding-bottom: .1em;
+				&:hover {
+					border-color: $primary-color;
+				}
+			}
+		}
+		.button.secondary:hover {
+			background-color: lighten($text-color, 3%);
+		}
+		&.publish-status {
+			position: relative;
+			.switch-wrap {
+				input[type=checkbox] + label {
+					background: $text-color;
+					padding: 20px 40px;
+					display: block;
+					margin-left: -40px;
+					margin-right: -40px;
+					transition: background-color $med-speed $ease;
+					.text.on {
+						color: $white;
+					}
+				}
+				input[type=checkbox]:checked + label {
+					background: $primary-color;
+					.switch {
+						background-color: $white;
+						border-color: $white;
+						&:after {
+							background: $primary-color;
+						}
+					}
+				}
+			}
+		}
+	}
+	.button {
+		max-width: none;
+	}
+}

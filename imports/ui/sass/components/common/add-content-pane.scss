@@ -1,0 +1,63 @@
+@import '../../setup/variables';
+
+.ds-pane.add-content-pane {
+
+	&.wide {
+		width:272px;
+	}
+
+	.ds-pane-content {
+		.new-content-grid {
+			overflow: hidden;
+			border-radius: 0 0 $base-border-radius $base-border-radius;
+			.content-item {
+				width: 90px;
+				height: 66px;
+				border-right: 1px solid $pane-line-color;
+				border-bottom: 1px solid $pane-line-color;
+				float: left;
+				transition: background $med-speed ease-in-out;
+				cursor: pointer;
+				box-sizing: content-box;
+				> * {
+					opacity: .45;
+				}
+				&:nth-last-child(-n+3) {
+					border-bottom: none;
+				}
+				&:nth-child(3n+3) {
+					border-right: none;
+					margin-right: 0;
+				}
+				&:hover {
+					background-color: $light-grey;
+					* {
+						opacity: 1;
+					}
+				}
+				&:active {
+					background-color: darken($light-grey, 5%);
+				}
+				.icon {
+					display: block;
+					text-align: center;
+					margin: 17px auto 7px;
+					transition: opacity $med-speed ease-in-out;
+					svg {
+						max-width: 28px;
+						height: 14px;
+						vertical-align: top;
+					}
+				}
+				.label {
+					display: block;
+					text-align: center;
+					font-size: 12px;
+					line-height: 1em;
+					letter-spacing: .02em;
+					transition: opacity $med-speed ease-in-out;
+				}
+			}
+		} // end .new-content-grid
+	}
+}

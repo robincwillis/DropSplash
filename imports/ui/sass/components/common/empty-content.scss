@@ -1,0 +1,41 @@
+@import '../../setup/variables';
+
+.ds-empty-content {
+	background: rgba($black, .2);
+	border: 2px dashed rgba($white, .5);
+	color: $white;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background $med-speed $ease, border $med-speed $ease;
+	display: inline-block;
+	padding: 20px 30px;
+	line-height: 1.333em;
+	text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: 12px;
+  width: 200px;
+  text-align: center;
+	&:hover {
+		background-color: rgba($black, .4);
+		border-color: $white;
+	}
+	.icon {
+		svg {
+			height: 14px;
+			* {
+				fill: $white;
+			}
+		}
+	}
+	&.logo {
+		padding: 40px;
+		margin-bottom: 10px;
+		.icon {
+			display: block;
+			margin: 0 auto 8px;
+		}
+	}
+	&.empty-button {
+		margin-top: 10px;
+	}
+}

@@ -1,0 +1,175 @@
+//TODO Setup group file for these imports
+@import './setup/variables';
+@import './setup/typography';
+@import './setup/icons';
+@import './setup/mixins';
+// @import './setup/fonts';
+
+//TODO Sort this out
+@import './components/common/buttons';
+@import './components/common/inputs';
+@import './components/common/backgrounds';
+@import './components/common/modal';
+@import './components/common/pane';
+
+@import './components/common/section-controls';
+
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+html, body {
+  min-height: 100%;
+  color: $text-color;
+}
+
+img {
+  vertical-align: top;
+  max-width: 100%;
+}
+
+svg, svg * {
+	overflow: visible;
+  transition: all $med-speed $ease;
+}
+
+.app-content {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: $footer-height - 1px;
+	left: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background: #e5e5e5;
+
+	.ds-page-section {
+		background: $white;
+		min-height: calc(100vh - 50px);
+		transition: transform $slow-speed $ease;
+		position: relative;
+		z-index: 0;
+		display: table;
+		width: 100%;
+		text-align: center;
+		z-index: 1;
+		&.left {
+			text-align: left;
+			.section-content {
+				.container {
+					margin: 0 7.5%;
+				}
+			}
+		}
+		&.right {
+			text-align: right;
+		}
+		&.in-motion {
+			box-shadow: 0 10px 40px rgba(0, 0, 0, .2);
+		}
+		.section-content {
+			display: table-cell;
+			vertical-align: middle;
+			position: relative;
+			z-index: 2;
+			padding: 50px 0 55px;
+			transform-style: preserve-3d;
+			.container {
+				width: 85%;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
+*[data-tooltip-text] {
+	overflow: visible;
+	&:hover {
+		&[data-tooltip-position="bottom"],
+		&[data-tooltip-position="top"] {
+			&:after {
+				transform: translate3D(-50%, 0, 0);
+			}
+		}
+		&:after {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+	&:active,
+	&:focus {
+		&:after {
+			visibility: hidden;
+			opacity: 0;
+		}
+	}
+	&:after {
+		font-family: $main-font;
+		font-size: 12px;
+	  letter-spacing: .02em;
+	  font-weight: 400;
+	  content: attr(data-tooltip-text);
+	  display: block;
+	  white-space: nowrap;
+	  background: $text-color;
+	  color: $white;
+	  position: absolute;
+	  line-height: 1.4em !important;
+	  text-transform: none;
+	  padding: 7px 9px;
+	  border-radius: 3px;
+	  opacity: 0;
+	  visibility: hidden;
+	  transform: translate(0, 0);
+	  transition: opacity $med-speed $ease, visibility $med-speed $ease, transform $med-speed $ease;
+	  width: auto;
+	  width: attr(data-tooltip-width)+'px';
+	  text-align: left;
+	  z-index: 999;
+	  min-height: 30px;
+	  box-sizing: border-box;
+	  // Default Tooltip Positioning is left on item
+	  left: 100%;
+	  top: 50%;
+	  margin-top: -15px;
+	  margin-left: 6px;
+	}
+	// Tooltip Position Settings
+	&[data-tooltip-position="left"] {
+		&:after {
+			margin-left: 0;
+			margin-right: 6px;
+			right: 100%;
+			left: auto;
+		}
+	}
+	&[data-tooltip-position="top"] { // TOP NOT QUITE WORKING
+		&:after {
+			margin-left: 0;
+	    margin-bottom: 6px;
+	    bottom: 100%;
+	    left: 50%;
+	    top: auto;
+			transform: translate(-50%, 0);
+		}
+	}
+	&[data-tooltip-position="bottom"] {
+		&:after {
+			margin-left: 0;
+			margin-top: 6px;
+			top: 100%;
+			left: 50%;
+			transform: translate(-50%, 0);
+		}
+	}
+	// For tooltips that hold sentences
+	&[data-tooltip-width="wide"] {
+		&:after {
+			padding: 11px 12px 12px;
+			width: 200px;
+			white-space: normal;
+		}
+	}
+}

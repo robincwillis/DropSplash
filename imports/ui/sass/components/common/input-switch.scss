@@ -1,0 +1,85 @@
+@import '../../setup/variables';
+
+$switch-height: 18px;
+$switch-width: 40px;
+$switch-padding: 2px;
+$ease: ease-in-out;
+$med-speed: .2s;
+
+.switch	{
+	display: inline;
+	input[type=checkbox] {
+		display: none;
+		+ label {
+			border: $switch-padding solid lighten($text-color, 50%);
+			position: relative;
+			background: lighten($text-color, 50%);
+			border-radius: $switch-height;
+			display: block;
+			height: $switch-height;
+			width: $switch-width;
+			cursor: pointer;
+			transition: background $med-speed $ease, border $med-speed $ease;
+			&:hover {
+				background: lighten($text-color, 40%);
+				border-color: lighten($text-color, 40%);
+				.text {
+					color: lighten($text-color, 40%);
+				}
+			}
+			.text {
+				position: absolute;
+				top: 0;
+				left: 100%;
+				padding-left: 10px;
+				font-family: $main-font;
+				font-size: 10px;
+				text-transform: uppercase;
+				letter-spacing: .15em;
+				line-height: $switch-height - ($switch-padding * 2);
+				color: lighten($text-color, 40%);
+				transition: opacity $med-speed $ease, visibility $med-speed $ease, transform $med-speed $ease;
+				&.on {
+					opacity: 0;
+					visibility: hidden;
+					transform: translateX(-10px);
+				}
+			}
+			&:after {
+				content: '';
+				display: block;
+				width: $switch-height - ($switch-padding * 2);
+				height: $switch-height - ($switch-padding * 2);
+				background: $white;
+				border-radius: 50%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transition: left $med-speed $ease, background $med-speed $ease;
+			}
+		}
+		&:checked {
+			+ label {
+				background: $primary-color;
+				border-color: $primary-color;
+				.text {
+					&.off {
+						opacity: 0;
+						visibility: hidden;
+						transform: translateX(10px);
+					}
+					&.on {
+						opacity: 1;
+						visibility: visible;
+						transform: translateX(0);
+						color: $primary-color;
+					}
+				}
+				&:after {
+					left: $switch-width - ($switch-height);
+					background: #fff;
+				}
+			}
+		}
+	}
+}
