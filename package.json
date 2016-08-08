@@ -12,7 +12,8 @@
     "react-addons-pure-render-mixin": "^15.3.0",
     "react-contenteditable": "git+https://github.com/lovasoa/react-contenteditable.git",
     "react-dom": "^15.3.0",
-    "react-mounter": "^1.2.0"
+    "react-mounter": "^1.2.0",
+    "svg-inline-react": "^1.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",

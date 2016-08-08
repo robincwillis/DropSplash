@@ -9,37 +9,28 @@ import TypographyView from '../CommonPane/Typography.js';
 //Font
 //Color
 
-export default class HeadlineSettingsPane extends Component {
+export default class ParagraphSettingsPane extends Component {
 
 	constructor (props) {
 		super(props);
 	}
 
-	hidePane () {
-
-	}
-
 	paneContent () {
-
 		return [
 			{	
 				id: 'headline-typography-pane',
 				title: 'Type',
-				Component: (<TypographyView hidePane={this.props.hideSettingsPane} / >)
+				Typography: (<TypographyView / >)
 			}
 		];
 	}
 
-	render () {
-		console.log('rendering headline settings');
-		console.log(this.props);
+
+	render() {
 		return (
 			<Pane
-				title="Settings"
-				closeable={true}
-				views={this.paneContent()}
+				views={this.paneContent}
 				ref="headlineSettingsPane"
-				visible={this.props.visible}
 			/>
 		);
 	}

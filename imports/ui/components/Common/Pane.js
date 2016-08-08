@@ -21,6 +21,9 @@ export default class App extends Component {
 			transitionDirection: 'pane-next-transition',
 			visible: this.props.visible || false
 		};
+
+		this.hidePane = this.hidePane.bind(this);
+		this.showPane = this.showPane.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -99,8 +102,12 @@ export default class App extends Component {
 		if (this.props.paneClass) {
 			paneClass += ' '+this.props.paneClass;
 		}
+
 		if (this.props.paneTabs) {
 			paneClass += ' '+'has-tabs';
+			if (this.props.views.length === 4) {
+				paneClass += ' '+'four-tabs';
+			}
 		}
 
 		if (this.props.paneClass) {
