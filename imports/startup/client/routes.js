@@ -133,6 +133,7 @@ publicRoutes.route('/logout', {
 
 //THIS IS A WEIRD PLACE FOR THIS
 Accounts.onLogin(function() {
+	console.log('logging in');
 	var path = FlowRouter.current().path;
 	//Meteor.logoutOtherClients()
 	initialize.call({}, (err, res) => {
@@ -142,9 +143,10 @@ Accounts.onLogin(function() {
 			console.log(err);
 		} else {
 			//TODO should check params not path
-			if(path !== '/'+res){
+			if (path === '/login' || path === '/signup') {
+				FlowRouter.go('/'+res);
+			} else if(path !== '/'+res){
 				FlowRouter.setParams({pageId: res});
-				//FlowRouter.go('/'+res);
 			}
 		}
 	});
