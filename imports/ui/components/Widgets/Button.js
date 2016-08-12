@@ -6,7 +6,6 @@ export default class ButtonWidget extends Component {
 
 	render () {
 		return(<EmptyContent
-			emptyContentClass="empty-button"
 			emptyContentText="Add Button"
 		/>);
 	}

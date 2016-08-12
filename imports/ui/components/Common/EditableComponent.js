@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 //Components
-import Headline from '../Widgets/Headline.js';
-import Paragraph from '../Widgets/Paragraph.js';
-import Image from '../Widgets/Image.js';
+import HeadlineWidget from '../Widgets/Headline.js';
+import ParagraphWidget from '../Widgets/Paragraph.js';
+import ImageWidget from '../Widgets/Image.js';
+import VideoWidget from '../Widgets/Video.js';
+import AudioWidget from '../Widgets/Audio.js';
+import MapWidget from '../Widgets/Map.js';
+import MediumWidget from '../Widgets/Medium.js';
 import ButtonWidget from '../Widgets/Button.js';
-import Divider from '../Widgets/Divider.js';
+import DividerWidget from '../Widgets/Divider.js';
+import TwitterWidget from '../Widgets/Twitter.js';
+import InstagramWidget from '../Widgets/Instagram.js';
+import MailchimpWidget from '../Widgets/Mailchimp.js';
 
 import EditOptions from './EditOptions.js';
 
@@ -34,31 +41,31 @@ export default class EditableComponent extends Component {
 	renderWidget () {
 		switch (WidgetTypes[this.props.widget.type]) {
 			case 'HEADLINE_WIDGET':
-				return(<Headline {...this.props} />);
+				return(<HeadlineWidget {...this.props} />);
 			case 'PARAGRAPH_WIDGET':
-				return(<Paragraph {...this.props} />);
+				return(<ParagraphWidget {...this.props} />);
 			case 'IMAGE_WIDGET':
-				return(<Image {...this.props} />);
+				return(<ImageWidget {...this.props} />);
 			case 'BUTTON_WIDGET':
 				return(<ButtonWidget {...this.props} />);
 			case 'DIVIDER_WIDGET':
-				return(<Divider {...this.props} />);
+				return(<DividerWidget {...this.props} />);
 			case 'VIDEO_WIDGET':
-				return false;
+				return(<VideoWidget {...this.props} />);
 			case 'AUDIO_WIDGET':
-				return false;
+				return(<AudioWidget {...this.props} />);
 			case 'MAP_WIDGET':
-				return false;
+				return(<MapWidget {...this.props} />);
 			case 'MEDIUM_WIDGET':
-				return false;
+				return(<MediumWidget {...this.props} />);
 			case 'TWITTER_WIDGET':
 				//EX go to a specific view
 				//this.refs.addContentPane.goToView();
-				return false;
+				return(<TwitterWidget {...this.props} />);
 			case 'INSTAGRAM_WIDGET':
-				return false;
+				return(<InstagramWidget {...this.props} />);
 			case 'MAILCHIMP_WIDGET':
-				return false;
+				return(<MailchimpWidget {...this.props} />);
 			default :
 				return false;
 		}

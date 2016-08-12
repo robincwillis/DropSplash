@@ -6,9 +6,8 @@ export default class MediumWidget extends Component {
 
 	render () {
 		return(
-			<div className="newsletter-widget">
-				<input type="text" placeholder="Enter Email" />
-				<Button label="map" />
+			<div className="medium-widget">
+				<h1>Medium</h1>
 			</div>
 		);
 	}

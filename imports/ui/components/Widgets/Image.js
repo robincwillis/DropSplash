@@ -8,7 +8,6 @@ export default class Image extends Component {
 
 	render () {
 		return(<EmptyContent
-			emptyContentClass="logo"
 			emptyContentText="Drag Image Here"
 			emptyContentIcon={PlusIcon}
 		/>);

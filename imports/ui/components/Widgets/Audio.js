@@ -5,9 +5,12 @@ import EmptyContent from '../Common/EmptyContent';
 export default class Audio extends Component {
 
 	render () {
-		return(<EmptyContent
-			emptyContentClass="empty-button"
-			emptyContentText="Add Button"
-		/>);
+		console.log('audio');
+		return(
+			<div className="audio-widget">
+				<h1>Audio</h1>
+				<button>Audio</button>
+			</div>
+		);
 	}
 }
