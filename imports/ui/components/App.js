@@ -18,7 +18,11 @@ class AppComponent extends Component {
 
 render () {
   if(!this.props.page) {
-    return (<div>loading ******</div>);
+    return (
+      <div className="loader-wrapper">
+        <div className="loader">loading ******</div>
+      </div>
+    );
   }
   return (
     <div>

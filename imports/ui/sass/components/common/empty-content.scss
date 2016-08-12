@@ -6,7 +6,7 @@
 	color: $white;
 	border-radius: 6px;
 	cursor: pointer;
-	transition: background $med-speed $ease, border $med-speed $ease;
+	transition: background $med-speed $ease, border $med-speed $ease, color $med-speed $ease;
 	display: inline-block;
 	padding: 20px 30px;
 	line-height: 1.333em;
@@ -15,6 +15,16 @@
   font-size: 12px;
   width: 200px;
   text-align: center;
+  &.light {
+  	background-color: $light-grey;
+  	border-color: darken($light-grey, 10%);
+  	color: $light-text-color;
+  	&:hover {
+			background-color: darken($light-grey, 4%);
+			border-color: darken($light-grey, 15%);
+			color: darken($light-text-color, 15%);
+		}
+  }
 	&:hover {
 		background-color: rgba($black, .4);
 		border-color: $white;

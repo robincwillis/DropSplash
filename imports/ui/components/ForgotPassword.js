@@ -27,7 +27,7 @@ export default class ForgotPassword extends Component {
 							<h6 className="small-caps">Password recovery</h6>
 							<p>Please enter the email address that you used when creating your account.</p>
 						</div>
-						<div className="login-input-wrap">
+						<div className="fancy-input-wrap">
 							<input className="login-input" required type="text" />
 							<label>Email</label>
 						</div>

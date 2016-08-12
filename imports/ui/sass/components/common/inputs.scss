@@ -282,3 +282,56 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   background: linear-gradient(to right, #ffffff 0%,#16e1b9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#16e1b9',GradientType=1 ); /* IE6-9 */
 }
+
+.fancy-input-wrap {
+  display: block;
+  width: 100%;
+  position: relative;
+  margin-bottom: 10px;
+  &.dark {
+    input {
+      background: $text-color;
+      border-color: $text-color;
+      color: $white;
+      @include font-smooth();
+      &:focus,
+      &:valid {
+        background: $text-color;
+        border-color: $text-color;
+        + label {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+  input {
+    height: $btn-large-height;
+    font-size: 14px;
+    padding-left: 12px;
+    vertical-align: top;
+    padding-top: 15px;
+    background-color: $light-grey;
+    border-color: $light-grey;
+    padding-right: 70px;
+    &:focus,
+    &:valid {
+      background-color: $light-grey;
+      border-color: $light-grey;
+      + label {
+        top: 7px;
+        left: 13px;
+        font-size: 12px;
+        color: $light-text-color;
+      }
+    }
+    + label {
+      top: 17px;
+      left: 15px;
+      font-size: 14px;
+      position: absolute;
+      letter-spacing: .03em;
+      pointer-events: none;
+      transition: color $med-speed $ease, font-size $med-speed $ease, top $med-speed $ease, left $med-speed $ease;
+    }
+  }
+} // end .fancy-input-wrap

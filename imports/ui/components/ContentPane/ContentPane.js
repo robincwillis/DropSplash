@@ -51,29 +51,38 @@ export default class ContentPane extends Component {
 				this.createContentWidget(type);
 			break;
 			case 'VIDEO':
+				this.createContentWidget(type);
 			break;
 			case 'AUDIO':
+				this.createContentWidget(type);
 			break;
 			case 'MAP':
+				this.createContentWidget(type);
 			break;
 			case 'MEDIUM':
+				this.createContentWidget(type);
 			break;
 			case 'BUTTON':
+				this.createContentWidget(type);
 			break;
 			case 'DIVIDER':
+				this.createContentWidget(type);
 			break;
 			case 'TWITTER':
+				this.createContentWidget(type);
 				//EX go to a specific view
 				//this.refs.addContentPane.goToView();
 			break;
 			case 'INSTAGRAM':
+				this.createContentWidget(type);
 			break;
 			case 'MAILCHIMP':
+				this.createContentWidget(type);
 			break;
 		}
 
 		//console.log('selected a content type');
-		//console.log(type);
+		// console.log(type);
 		// headline, paragraph, divider, image
 			//create the widget
 		//console.log(this);

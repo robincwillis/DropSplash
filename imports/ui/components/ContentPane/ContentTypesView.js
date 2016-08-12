@@ -28,7 +28,6 @@ export default class App extends Component {
 					icon={HeadlineIcon}
 					title="Headline"
 					type="HEADLINE"
-
 					{...this.props}
 				/>
 				<ContentType

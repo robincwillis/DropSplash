@@ -75,7 +75,7 @@ export default class Login extends Component {
 			<div className="ds-page-section ds-login">
 				<div className="v-center">
 					<div className="ds-login-form">
-						<div className="login-input-wrap">
+						<div className="fancy-input-wrap">
 							<input
 								className="login-input"
 								required
@@ -86,7 +86,7 @@ export default class Login extends Component {
 							/>
 							<label>Email</label>
 						</div>
-						<div className="login-input-wrap">
+						<div className="fancy-input-wrap">
 							<input
 								className="login-input"
 								required type="password"

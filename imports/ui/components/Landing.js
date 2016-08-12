@@ -27,6 +27,7 @@ export default class Landing extends Component {
 							<input type="text" id="newsletter" placeholder="drop@splash.com" />
 							<button onClick={this.handleNewsletterSubmit.bind(this)} className="medium" htmlFor="newsletter">Let me know</button>
 						</form>
+						<p><a href="/login">Login</a></p>
 					</div>
 				</div>
 			</div>

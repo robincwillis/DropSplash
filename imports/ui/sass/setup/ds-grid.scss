@@ -1,0 +1,16 @@
+.ds-grid {
+	margin: -($gutter/2);
+	.grid-item {
+		display: inline-block;
+		padding: 0 ($gutter/2) $gutter;
+		.half {
+			width: 50%;
+		}
+		.third {
+			width: 33.333%;
+		}
+		.quarter {
+			width: 25%;
+		}
+	}
+}
