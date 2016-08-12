@@ -22,6 +22,7 @@ export default class ContentPane extends Component {
 	}
 
 	createContentWidget (type, options) {
+
 		const widgetId = insertWidget.call({
 			sectionId : this.props.section._id,
 			type : type + '_WIDGET',

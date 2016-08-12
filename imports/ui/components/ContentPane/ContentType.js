@@ -14,13 +14,11 @@ export default class ContentTypes extends Component {
 	}
 
 	render () {
-
 		return (
 			<div onClick={this.handleClick.bind(this)} className="content-item">
 				<InlineSVG src={this.props.icon} element="span" className="icon" />
 				<div className="label">{this.props.title}</div>
 			</div>
 		);
-
 	}
 }
