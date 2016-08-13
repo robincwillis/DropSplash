@@ -54,7 +54,7 @@ export default class ContentPane extends Component {
 				Component: AccountLinkView
 			},
 
-			//Instagram Settings (if account linked)
+			//Instagram Settings (possible step if account linked)
 			{
 				id : 'instagram-settings',
 				title : 'Instagram Settings',
@@ -132,7 +132,7 @@ export default class ContentPane extends Component {
 				};
 
 				//is account linked?
-				if(Meteor.user().services.instagram.id) {
+				if(Meteor.user().services.instagram) {
 					this.createContentWidget(type);
 				} else {
 					this.refs.addContentPane.goToViewById('account-link', props);

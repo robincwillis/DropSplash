@@ -10,66 +10,39 @@ export default class InstagramWidget extends Component {
 
 	constructor (props) {
 		super(props);
+		this.state = {
+			media : [],
+			count : 9
+		};
 	}
 
+	componentWillMount () {
+		getMedia.callPromise({count : this.state.count}).then( (result) => {
+				this.setState({
+					media : result
+				});
+		}).catch( (err) => {
+				console.log(err);
+		});
+
+	}
 
 	render () {
-		//WIP DOn't touch
-		// GetMedia.callPromise({
-		//     val: 'hi'
-		// }).then(function(result){
-		//     console.log('message', result.message);
-		//     console.log('val', result.val);
-		// }).catch(function(err){
-		//     console.log(err);
-		// });
-
-		// getMedia.call({}, (err, res) => {
-		// 	if (err) {
-		// 		console.log(err);
-		// 	} else {
-		// 		console.log(res);
-		// 	}
-		// });
+		if(this.state.media.length === 0) {
+			return (<div>Loading</div>);
+		}
 
 		return(
 			<div className="instagram-widget ds-grid">
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
-				<div className="grid-item third">
-					<img src="http://placehold.it/200x200" />
-				</div>
+			{
+				this.state.media.map( (item) => {
+					return(
+						<div key={item.id} className="grid-item third">
+							<img src={item.images.standard_resolution.url} />
+						</div>
+					);
+				} )
+			}
 			</div>
 		);
 	}

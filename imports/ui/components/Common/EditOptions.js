@@ -40,8 +40,6 @@ export default class EditOptions extends Component {
 	}
 
 	removeWidget (event) {
-		console.log('trying to remove');
-		console.log(this.props);
 		//TODO confirm dialog before deleting
 		removeWidget.call({widgetId : this.props.widget._id}, (err)=> {
 			if (err) {
@@ -57,8 +55,6 @@ export default class EditOptions extends Component {
 	}
 
 	hideSettingsPane () {
-		console.log('hide settings pane called');
-		console.log(this.state);
 		this.setState({showSettingsPane:false});
 	}
 
@@ -122,14 +118,10 @@ export default class EditOptions extends Component {
 	}
 
 	render () {
-
-		console.log(this.props);
-
 		return (
 			<div className="ds-edit-actions">
 				{this.editOptionContent()}
 			</div>
 		);
-
 	}
 }

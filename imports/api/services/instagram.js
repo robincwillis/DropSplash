@@ -7,20 +7,10 @@ export const getMedia = new ValidatedMethod({
 	name: 'instagram.getMedia',
  	mixins: [CallPromiseMixin],
 	validate : null,
-	run() {
-		var response = 'foo';
+	run(options) {
+		var response;
 		if (!this.isSimulation) {
-			console.log(InstagramAPI);
-			response = InstagramAPI.getMedia().then( ( response ) => {
-
-				console.log( response );
-
-			}).catch( ( error ) => {
-
-				console.warn( error );
-
-			});
-
+			response = InstagramAPI.getMedia(options);
 		}
 		return response;
 	}

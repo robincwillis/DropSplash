@@ -4,14 +4,14 @@
 	margin: -($gutter/2);
 	.grid-item {
 		display: inline-block;
-		padding: 0 ($gutter/2) $gutter;
-		.half {
+		padding: 0 ($gutter/2) ($gutter/2);
+		&.half {
 			width: 50%;
 		}
-		.third {
+		&.third {
 			width: 33.333%;
 		}
-		.quarter {
+		&.quarter {
 			width: 25%;
 		}
 	}
