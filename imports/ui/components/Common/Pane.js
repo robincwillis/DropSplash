@@ -18,8 +18,10 @@ export default class App extends Component {
 		super(props);
 		this.state = {
 			currentView: 0,
+			currentProps: {},
 			transitionDirection: 'pane-next-transition',
-			visible: this.props.visible || false
+			visible: this.props.visible || false,
+			Component : this.props.views[0].Component
 		};
 
 		this.hidePane = this.hidePane.bind(this);
@@ -37,11 +39,23 @@ export default class App extends Component {
 		}
 	}
 
-	goToViewByIndex (index) {
-		this.setState({currentView: index});
+	currentView () {
+		return this.currentView();
 	}
 
-	goToViewById (id) {
+	//Pane Navigation
+
+	goToViewByIndex (index, props={}) {
+		this.setState({
+			currentView: index,
+			currentProps:props
+		});
+		if(this.props.onChangeView) {
+			this.props.onChangeView(index);
+		}
+	}
+
+	goToViewById (id, props={}) {
 		let currentView = this.state.currentView;
 		let nextView = this.props.views.find((view) => {
 			return view.id === id;
@@ -50,36 +64,52 @@ export default class App extends Component {
 		let currentViewIndex = this.props.views.map(function(view) { return view.id; }).indexOf(currentView.id);
 		let nextViewIndex = this.props.views.map(function(view) { return view.id; }).indexOf(nextView.id);
 
-		console.log(nextView);
-
 		this.setState({
 			currentView: nextViewIndex,
-			transitionDirection: nextViewIndex > currentViewIndex ? 'pane-next-transition' : 'pane-prev-transition'
+			transitionDirection: nextViewIndex > currentViewIndex ? 'pane-next-transition' : 'pane-prev-transition',
+			currentProps:props
 		});
+			if(this.props.onChangeView) {
+			this.props.onChangeView(nextViewIndex);
+		}
 	}
 
-	goToNextView () {
+	goToNextView (props={}) {
 		if (this.state.currentView < this.props.views.length - 1) {
 			var currentView = this.state.currentView;
 			currentView++;
-			this.setState({currentView: currentView, transitionDirection: 'pane-next-transition'});
+			this.setState({
+				currentView: currentView,
+				currentProps:props,
+				transitionDirection: 'pane-next-transition'
+			});
+			if(this.props.onChangeView) {
+				this.props.onChangeView(currentView);
+			}
 		}
 	}
 
-	goToPrevView () {
+	goToPrevView (props={}) {
 		if (this.state.currentView > 0) {
 			var currentView = this.state.currentView;
 			currentView--;
-			this.setState({currentView: currentView, transitionDirection: 'pane-prev-transition'});
+			this.setState({
+				currentView: currentView,
+				currentProps:props,
+				transitionDirection: 'pane-prev-transition'
+			});
+			if(this.props.onChangeView) {
+				this.props.onChangeView(currentView);
+			}
 		}
 	}
 
-	showBackArrow () {
-		let backArrow = '';
-		if (this.state.currentView > 0) {
-			backArrow = (<InlineSVG src={BackArrow} element="span" className="icon" onClick={this.goToPrevView.bind(this)} />);
-		}
-		return (backArrow);
+	handleClickBackArrow (event) {
+		this.goToPrevView();
+	}
+
+	handleClickForwardsArrow (event) {
+		this.gotToNextView();
 	}
 
 	handleClickOutsideOfPane (event) {
@@ -95,6 +125,19 @@ export default class App extends Component {
 
 	showPane () {
 		this.setState({visible : true});
+	}
+
+	//Pane Rendering
+	showBackArrow () {
+		let backArrow = '';
+		if (this.state.currentView > 0) {
+			backArrow = (<InlineSVG src={BackArrow}
+															element="span"
+															className="icon"
+															onClick={this.handleClickBackArrow.bind(this)}
+										/>);
+		}
+		return (backArrow);
 	}
 
 	paneClass () {
@@ -146,6 +189,23 @@ export default class App extends Component {
 	}
 
 	renderPane () {
+		// console.log(this.props);
+		// console.log( (this.state.Component instanceof React.Component) );
+		// console.log(this.state);
+
+		// if(!this.state.Component) {
+		// 	console.log('something fucked')
+
+		// }
+
+		// if (!this.props.views[this.props.currentView].Component) {
+		// 	return (<span data-mr-menu/>);
+		// }
+
+		let ViewComponent = this.props.views[this.state.currentView].Component;
+		let viewProps = this.props.views[this.state.currentView].props || {};
+		Object.assign(viewProps, this.state.currentProps);
+
 		if(this.state.visible) {
 			return (
 				<div
@@ -155,8 +215,11 @@ export default class App extends Component {
 					<div className="ds-pane-header">
 						{this.showBackArrow()}
 						<span className="pane-title">{this.props.title}</span>
-						{this.props.closeable ? (<InlineSVG onClick={this.hidePane.bind(this)} src={CloseX} element="span" className="icon right" />
-) : false}
+						{this.props.closeable ? (<InlineSVG
+																			onClick={this.hidePane.bind(this)}
+																			src={CloseX}
+																			element="span"
+																			className="icon right" />) : false}
 					</div>
 					<div className="ds-pane-content">
 						{this.paneTabs()}
@@ -165,7 +228,8 @@ export default class App extends Component {
 							transitionEnterTimeout={550}
 							transitionLeaveTimeout={550}
 						>
-							{this.props.views[this.state.currentView].Component}
+						<ViewComponent {...viewProps} />
+
 						</ReactCSSTransitionGroup>
 					</div>
 				</div>

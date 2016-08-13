@@ -10,6 +10,8 @@ import Button from '../Common/Button';
 export default class ContentTypes extends Component {
 
 	handleClick ( event ) {
+		console.log('clicked...');
+		console.log(this.props);
 		this.props.selectContentType(this.props.type);
 	}
 

@@ -25,17 +25,32 @@ export default class BackgroundPane extends Component {
             {
                 id : 'background-image-view',
                 title : 'Image',
-                Component : (<ImageBackground key="1" title="view 1" clickHandler={this.clickHandler.bind(this)} />)
+                Component : ImageBackground,
+                props : {
+                    key:"1",
+                    title:"view 1",
+                    clickHandler: this.clickHandler.bind(this)
+                }
             },
             {
                 id : 'background-video-view',
                 title : 'Video',
-                Component : (<VideoBackground key="2" title="view 2" clickHandler={this.clickHandler.bind(this)} />)
+                Component : VideoBackground,
+                props : {
+                    key:"2",
+                    title:"view 2",
+                    clickHandler: this.clickHandler.bind(this)
+                }
             },
             {
                 id : 'background-color-view',
                 title : 'Color',
-                Component : (<ColorBackground key="3" title="view 3" clickHandler={this.clickHandler.bind(this)} />)
+                Component : ColorBackground,
+                props : {
+                    key:"3",
+                    title:"view 3",
+                    clickHandler: this.clickHandler.bind(this)
+                }
             }
 
         ];

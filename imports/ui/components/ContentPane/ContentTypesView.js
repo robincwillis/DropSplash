@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import InlineSVG from 'svg-inline-react';
 
 //Icons
-
 import HeadlineIcon from '../../assets/icons/headline.js';
 import ParagraphIcon from '../../assets/icons/paragraph.js';
 import ImageIcon from '../../assets/icons/image.js';
@@ -19,7 +17,7 @@ import MediumIcon from '../../assets/icons/medium.js';
 import Button from '../Common/Button';
 import ContentType from './ContentType';
 
-export default class App extends Component {
+export default class ContentTypesView extends Component {
 
 	render () {
 		return (

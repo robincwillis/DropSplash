@@ -19,18 +19,18 @@ export default class SectionSettingsPane extends Component {
 			{
 				id : 'section-typography-view',
 				title : 'Type',
-				Component : (<SectionTypographyView />)
+				Component : SectionTypographyView
 			},
 			{
 				id : 'section-effects-view',
 				title : 'Effects',
-				Component : (<SectionEffectsView />)
+				Component : SectionEffectsView
 
 			},
 			{
 				id : 'section-layout-view',
 				title : 'Layout',
-				Component : (<SectionLayoutView />)
+				Component : SectionLayoutView
 			}
 		];
 	}

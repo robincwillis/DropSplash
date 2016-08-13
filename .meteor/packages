@@ -32,3 +32,5 @@ session
 accounts-twitter
 mdg:validated-method
 dburles:collection-helpers
+bozhao:accounts-instagram
+didericis:callpromise-mixin

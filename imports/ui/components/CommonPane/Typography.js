@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
-import InlineSVG from 'svg-inline-react';
-
 import Button from '../Common/Button';
 import PlusIcon from '../../assets/icons/plus-icon.js';
 
 import '../../sass/components/common/inputs';
 
-export default class App extends Component {
+export default class TypographyView extends Component {
 
 	render () {
 		console.log('common typography');

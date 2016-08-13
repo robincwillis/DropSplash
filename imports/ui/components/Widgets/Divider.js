@@ -3,6 +3,11 @@ import React, { Component, PropTypes } from 'react';
 export default class Divider extends Component {
 
 	render () {
-		return(<hr className="ds-hr" />);
+		let styles = {
+			minWidth: 100,
+			borderBottom: '1px solid black',
+			borderTop: '1px solid transparent'
+		};
+		return(<hr style={styles} className="ds-hr" />);
 	}
 }

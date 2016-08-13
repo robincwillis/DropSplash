@@ -22,10 +22,13 @@ export default class HeadlineSettingsPane extends Component {
 	paneContent () {
 
 		return [
-			{	
+			{
 				id: 'headline-typography-pane',
 				title: 'Type',
-				Component: (<TypographyView hidePane={this.props.hideSettingsPane} / >)
+				Component: TypographyView,
+				props : {
+					hidePane: this.props.hideSettingsPane
+				}
 			}
 		];
 	}

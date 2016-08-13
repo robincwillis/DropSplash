@@ -29,6 +29,8 @@ class FooterNav extends Component {
 			if (err) {
 				console.log('inserting section fucked');
 				console.log(err);
+			} else {
+				//TODO scroll to section
 			}
 		});
 	}

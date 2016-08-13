@@ -17,10 +17,10 @@ export default class ParagraphSettingsPane extends Component {
 
 	paneContent () {
 		return [
-			{	
+			{
 				id: 'headline-typography-pane',
 				title: 'Type',
-				Typography: (<TypographyView / >)
+				Component: TypographyView
 			}
 		];
 	}

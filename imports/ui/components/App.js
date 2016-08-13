@@ -44,6 +44,7 @@ export default createContainer( () => {
   Meteor.subscribe('pages');
   Meteor.subscribe('sections');
   Meteor.subscribe('app');
+  Meteor.subscribe('user.services');
 
   return {
     currentUser: Meteor.user(),
