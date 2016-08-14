@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import '../../sass/components/common/widgets/hr.scss';
+
 export default class Divider extends Component {
 
 	render () {

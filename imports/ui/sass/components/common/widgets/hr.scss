@@ -1,0 +1,9 @@
+@import '../../../setup/variables';
+
+hr.ds-hr {
+	border: none;
+	height: 1px;
+	width: 100%;
+	background: $white;
+	display: block;
+}
