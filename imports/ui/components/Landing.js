@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
-import '../sass/components/ds-landing';
+
+import Logo from './Logo.js';
+
+import '../sass/components/ds-landing.scss';
 
 //import InlineSVG from 'svg-inline-react';
 
@@ -20,8 +23,8 @@ export default class Landing extends Component {
 			<div className="ds-page-section ds-landing">
 				<div className="section-content">
 					<div className="container">
+						<Logo />
 						<DSLogo className="logo" />
-
 						<p>Easy, elegant, single page websites. <br/>Sign up and we will give you a heads up when we launch.</p>
 						<form className="newsletter-form">
 							<input type="text" id="newsletter" placeholder="drop@splash.com" />

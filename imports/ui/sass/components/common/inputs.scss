@@ -335,3 +335,34 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     }
   }
 } // end .fancy-input-wrap
+
+//File Inputs
+input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+
+input[type="file"] + label {
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover + label {
+    }
+
+    &:focus + label {
+      outline: 1px dotted #000;
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+
+    * {
+      pointer-events: none;
+    }
+}
+
+
+

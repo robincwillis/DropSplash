@@ -3,22 +3,28 @@ import React from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { mount, withOptions } from 'react-mounter';
 
+//Layouts
 import MainLayout from '../../ui/layouts/main.js';
 import AppLayout from '../../ui/layouts/app.js';
+import SandBoxLayout from '../../ui/layouts/sandbox.js';
 
+//Pages
 import Landing from '../../ui/components/Landing.js';
-
 import Login from '../../ui/components/Login.js';
 import Signup from '../../ui/components/Signup.js';
 import ForgotPassword from '../../ui/components/ForgotPassword.js';
-
 import App from '../../ui/components/App.js';
 import FooterNav from '../../ui/components/FooterNav.js';
 import Settings from '../../ui/components/Settings.js';
 
-import { initialize } from '../../api/app/methods.js';
+//Components (for sandbox);
+import FileUpload from '../../ui/components/Common/FileUpload';
 
+//API
+import { initialize } from '../../api/app/methods.js';
 import { Pages } from '../../api/pages/pages.js';
+
+//
 
 const mounter = withOptions({
 		rootId: 'root',
@@ -49,6 +55,20 @@ Layouts
 //page(splash) settings (private)
 
 */
+
+let sandboxRoutes = FlowRouter.group({
+	prefix: '/sandbox',
+	triggersEnter: [function(context, redirect) {
+	}]
+});
+
+sandboxRoutes.route('/file-upload', {
+	action () {
+		mounter(SandBoxLayout, {
+			content: <FileUpload />
+		});
+	}
+});
 
 let publicRoutes = FlowRouter.group({
 	triggersEnter: [function(context, redirect) {
@@ -133,7 +153,9 @@ publicRoutes.route('/logout', {
 
 //THIS IS A WEIRD PLACE FOR THIS
 Accounts.onLogin(function() {
+
 	console.log('logging in');
+
 	var path = FlowRouter.current().path;
 	//Meteor.logoutOtherClients()
 	initialize.call({}, (err, res) => {
@@ -142,6 +164,7 @@ Accounts.onLogin(function() {
 			console.log('ERROR: Could not init splash page.');
 			console.log(err);
 		} else {
+
 			//TODO should check params not path
 			if (path === '/login' || path === '/signup') {
 				FlowRouter.go('/'+res);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default  AppLayout = ({content, settings, footer}) => (
+export default AppLayout = ({content, settings, footer}) => (
 		<div>
 			<main className="app-content">
 				{content}
