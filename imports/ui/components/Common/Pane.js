@@ -208,6 +208,13 @@ export default class App extends Component {
 
 		if(this.state.visible) {
 			return (
+				<ReactCSSTransitionGroup
+					transitionName='pane-transition'
+					transitionAppear={true}
+					transitionAppearTimeout={500}
+					transitionEnterTimeout={500}
+					transitionLeaveTimeout={500}
+				>
 				<div
 					className={this.paneClass()}
 					style={this.paneStyle()}
@@ -233,6 +240,7 @@ export default class App extends Component {
 						</ReactCSSTransitionGroup>
 					</div>
 				</div>
+				</ReactCSSTransitionGroup>
 			);
 		} else {
 			return false;
@@ -246,7 +254,7 @@ export default class App extends Component {
 				transitionAppear={true}
 				transitionAppearTimeout={500}
 				transitionEnterTimeout={500}
-				transitionLeaveTimeout={500}
+				transitionLeaveTimeout={5000}
 			>
 				{this.renderPane()}
 			</ReactCSSTransitionGroup>

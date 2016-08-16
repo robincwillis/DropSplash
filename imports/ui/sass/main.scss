@@ -38,7 +38,7 @@ svg, svg * {
 	position: fixed;
 	top: 0;
 	right: 0;
-	bottom: $footer-height - 1px;
+	bottom: 0;
 	left: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -54,6 +54,13 @@ svg, svg * {
 		width: 100%;
 		text-align: center;
 		z-index: 1;
+		&:last-child {
+			margin-bottom: $footer-height;
+		}
+		&.full-height {
+			min-height: 100vh;
+			margin-bottom: 0;
+		}
 		&.left {
 			text-align: left;
 			.section-content {
@@ -100,13 +107,6 @@ svg, svg * {
 		&:after {
 			visibility: visible;
 			opacity: 1;
-		}
-	}
-	&:active,
-	&:focus {
-		&:after {
-			visibility: hidden;
-			opacity: 0;
 		}
 	}
 	&:after {

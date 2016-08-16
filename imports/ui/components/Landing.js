@@ -20,7 +20,7 @@ export default class Landing extends Component {
 
 	render () {
 		return (
-			<div className="ds-page-section ds-landing">
+			<div className="ds-page-section ds-landing full-height">
 				<div className="section-content">
 					<div className="container">
 						<Logo />

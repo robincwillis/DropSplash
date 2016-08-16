@@ -344,7 +344,7 @@
 }
 
 // Prev Transition
-.pane-prev-transition-enter {
+.pane-prev-transition-appear {
   opacity: 1;
   position: absolute;
   top: 0;
@@ -355,9 +355,10 @@
   transform: translateX(-100%);
   background-color: $pane-bg;
   z-index: 1;
+  background: red !important;
 }
 
-.pane-prev-transition-enter.pane-prev-transition-enter-active {
+.pane-prev-transition-appear.pane-prev-transition-appear-active {
   opacity: 1;
   transform: translateX(0);
 }

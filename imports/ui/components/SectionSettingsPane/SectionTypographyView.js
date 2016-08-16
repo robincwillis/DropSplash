@@ -46,7 +46,7 @@ export default class SectionTypographyView extends Component {
 						<div className="col one-quarter">
 							<label>Opacity</label>
 						</div>
-						<div className="col three-quarter">
+						<div className="col three-quarter opacity">
 							<input type="range" />
 						</div>
 					</div>
