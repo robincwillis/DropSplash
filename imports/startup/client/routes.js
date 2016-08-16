@@ -19,6 +19,7 @@ import Settings from '../../ui/components/Settings.js';
 
 //Components (for sandbox);
 import FileUpload from '../../ui/components/Common/FileUpload';
+import BackgroundPane from '../../ui/components/BackgroundPane/ColorBackgroundView';
 
 //API
 import { initialize } from '../../api/app/methods.js';
@@ -66,6 +67,14 @@ sandboxRoutes.route('/file-upload', {
 	action () {
 		mounter(SandBoxLayout, {
 			content: <FileUpload />
+		});
+	}
+});
+
+sandboxRoutes.route('/background-pane', {
+	action () {
+		mounter(SandBoxLayout, {
+			content: <BackgroundPane />
 		});
 	}
 });

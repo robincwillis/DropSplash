@@ -39,7 +39,7 @@ export default class App extends Component {
 							<label>Opacity</label>
 						</div>
 						<div className="col three-quarter">
-							<input type="range" />
+							<input type="range" className="opacity" />
 						</div>
 					</div>
 				</div>

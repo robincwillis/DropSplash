@@ -6,8 +6,9 @@ import CheckIcon from '../../assets/icons/check.js';
 //Components
 import Button from '../Common/Button.js';
 //ColorPicker is missing
-//import ColorPicker from '../Common/ColorPicker/ColorPicker.js';
+import ColorPicker from 'react-colorpickr';
 
+import '../../sass/components/common/color-picker.scss';
 import '../../sass/components/common/inputs.scss';
 
 export default class App extends Component {
@@ -17,7 +18,7 @@ export default class App extends Component {
 		return (
 			<div className="has-button has-tabs" key="view1">
 				<div className="content">
-					{/*<ColorPicker />*/}
+					<ColorPicker />
 				</div>
 				<div className="pane-view-actions">
 					<Button
