@@ -299,6 +299,7 @@ select:focus {
       &:valid {
         background: $text-color;
         border-color: $text-color;
+        border: none;
         + label {
           color: $primary-color;
         }
@@ -314,10 +315,12 @@ select:focus {
     background-color: $light-grey;
     border-color: $light-grey;
     padding-right: 70px;
+    border: none;
     &:focus,
     &:valid {
       background-color: $light-grey;
       border-color: $light-grey;
+      border: none;
       + label {
         top: 7px;
         left: 13px;

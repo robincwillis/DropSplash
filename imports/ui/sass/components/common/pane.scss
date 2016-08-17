@@ -72,14 +72,20 @@
 			&.right {
 				left: auto;
 				right: 0;
+				float: right;
+				width: 42px;
 			}
 			&:hover {
 				opacity: 1;
 			}
 			svg {
 				height: 12px;
+				width: 12px;
 				max-width: 30px;
 				vertical-align: top;
+				* {
+					fill: $text-color;
+				}
 			}
 		}
 	} // end .ds-pane-header

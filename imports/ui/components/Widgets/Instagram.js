@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import { getMedia } from '../../../api/services/instagram.js';
 
 //Styles
-import '../../sass/components/common/instagram.scss';
+import '../../sass/components/common/widgets/instagram.scss';
 
 export default class InstagramWidget extends Component {
 
@@ -33,11 +33,11 @@ export default class InstagramWidget extends Component {
 		}
 
 		return(
-			<div className="instagram-widget ds-grid">
+			<div className="instagram-widget columns">
 			{
 				this.state.media.map( (item) => {
 					return(
-						<div key={item.id} className="grid-item third">
+						<div key={item.id} className="gram" >
 							<img src={item.images.standard_resolution.url} />
 						</div>
 					);
