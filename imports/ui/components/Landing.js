@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Logo from './Logo.js';
 
 import '../sass/components/ds-landing.scss';
+import '../sass/components/landing-animation.scss';
 
 //import InlineSVG from 'svg-inline-react';
 
@@ -29,6 +30,7 @@ export default class Landing extends Component {
 								<DSLogo />
 							</div>
 							<h2>Create elegant websites  within minutes for free.</h2>
+							<h4>Sign up and we’ll give you a heads up when we launch.</h4>
 							<div className="intro-form">
 								<form className="newsletter-form">
 									<input type="text" id="newsletter" placeholder="drop@splash.com" />

@@ -26,7 +26,7 @@ class Logo extends Component {
 			this.setState({
 				ripple : false
 			});
-		}, 3000);
+		}, 5000);
 	}
 
 	handleHover (event) {

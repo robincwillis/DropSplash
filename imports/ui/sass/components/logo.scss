@@ -1,6 +1,6 @@
 @import '../setup/variables';
 
-$ripple-speed: 2.5s;
+$ripple-speed: 3.75s;
 $ripple-delay: $ripple-speed * .05;
 $ripple-invert-delay: $ripple-speed * .05;
 $ripple-size: 150px;
@@ -44,74 +44,70 @@ $ripple-size: 150px;
 
 	&.ripple {
 		svg {
+			overflow: visible;
 			.ball-center {
-				animation: ripple-invert $ripple-speed ($ripple-invert-delay * 6) ease-in-out forwards;
+				animation: ripple-invert $ripple-speed ($ripple-invert-delay * 6) $ease forwards;
 			}
 			.balls-1 {
-				animation: ripple $ripple-speed ($ripple-delay * 0) ease-in-out forwards;
+				animation: ripple $ripple-speed ($ripple-delay * 0) $ease forwards;
 				circle,
 				ellipse {
-					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 0) ease-in-out forwards;
+					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 0) $ease forwards;
 				}
 			}
 			.balls-2 {
-				animation: ripple $ripple-speed ($ripple-delay * 1) ease-in-out forwards;
+				animation: ripple $ripple-speed ($ripple-delay * 1) $ease forwards;
 				circle,
 				ellipse {
-					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 1) ease-in-out forwards;
+					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 1) $ease forwards;
 				}
 			}
 			.balls-3 {
-				animation: ripple $ripple-speed ($ripple-delay * 2) ease-in-out forwards;
+				animation: ripple $ripple-speed ($ripple-delay * 2) $ease forwards;
 				circle,
 				ellipse {
-					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 2) ease-in-out forwards;
+					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 2) $ease forwards;
 				}
 			}
 			.balls-4 {
-				animation: ripple $ripple-speed ($ripple-delay * 3) ease-in-out forwards;
+				animation: ripple $ripple-speed ($ripple-delay * 3) $ease forwards;
 				circle,
 				ellipse {
-					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 3) ease-in-out forwards;
+					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 3) $ease forwards;
 				}
 			}
 			.balls-5 {
-				animation: ripple $ripple-speed ($ripple-delay * 4) ease-in-out forwards;
+				animation: ripple $ripple-speed ($ripple-delay * 4) $ease forwards;
 				circle,
 				ellipse {
-					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 4) ease-in-out forwards;
+					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 4) $ease forwards;
 				}
 			}
 			.balls-6 {
-				animation: ripple $ripple-speed ($ripple-delay * 5) ease-in-out forwards;
+				animation: ripple $ripple-speed ($ripple-delay * 5) $ease forwards;
 				circle,
 				ellipse {
-					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 5) ease-in-out forwards;
+					animation: ripple-invert $ripple-speed ($ripple-invert-delay * 5) $ease forwards;
 				}
 			}
 		}
 	}
 }
 
-// @keyframes ripple {
-// 	0%, 100% { transform: scale(1); }
-// 	50% { transform: scale(.75); }
-// }
-
-// @keyframes ripple-invert {
-// 	0%, 100% { transform: scale(1); }
-// 	50% { transform: scale(.3); }
-// }
-
 @keyframes ripple {
-	0%, 100% { transform: scale(1); }
-	25% { transform: scale(.85); }
-	50% { transform: scale(1.05); }
-	75% { transform: scale(.95); }
+	0% { transform: scale(1); }
+	18% { transform: scale(.85); }
+	38% { transform: scale(1.1); }
+	60% { transform: scale(.90); }
+	84% { transform: scale(1.05); }
+	100% { transform: scale(1); }
 }
 
 @keyframes ripple-invert {
-	0%, 50%, 100% { transform: scale(1); }
-	25% { transform: scale(.3); }
-	75% { transform: scale(.75); }
+	0% { transform: scale(1); }
+	18% { transform: scale(.5); }
+	38% { transform: scale(1.25); }
+	60% { transform: scale(.85); }
+	84% { transform: scale(1.05); }
+	100% { transform: scale(1); }
 }
