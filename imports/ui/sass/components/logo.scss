@@ -5,6 +5,20 @@ $ripple-delay: $ripple-speed * .05;
 $ripple-invert-delay: $ripple-speed * .05;
 $ripple-size: 150px;
 
+.logotype {
+	margin: $ripple-size/7 auto;
+	i {
+		display: block;
+		svg {
+			display: block; 
+			* {
+				fill: $text-color;
+			}
+		}
+	}
+	width: $ripple-size * 1.5;
+}
+
 .logo {
 	width: $ripple-size;
 	margin: -($ripple-size/2);
@@ -16,12 +30,13 @@ $ripple-size: 150px;
 	}
 	&.dark {
 		svg * {
-			fill: #000;
+			fill: $text-color;
 		}
 	}
 
 	svg {
 		overflow: visible;
+		width: 100%;
 		* {
 			transform-origin: center;
 		}
@@ -90,9 +105,9 @@ $ripple-size: 150px;
 
 @keyframes ripple {
 	0%, 100% { transform: scale(1); }
-	25% { transform: scale(.75); }
+	25% { transform: scale(.85); }
 	50% { transform: scale(1.05); }
-	75% { transform: scale(.9); }
+	75% { transform: scale(.95); }
 }
 
 @keyframes ripple-invert {

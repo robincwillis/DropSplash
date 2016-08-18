@@ -20,6 +20,8 @@ DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy http://sptdp.us
 
 DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy www.dropsplash.com --settings.json --owner gaw
 
+DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy www.dropsplash.com --settings settings.json --owner gaw
+
 
 need to point sptdp.us to>> us-east-1.galaxy-ingress.meteor.com
 

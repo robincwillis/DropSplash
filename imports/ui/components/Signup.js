@@ -72,7 +72,7 @@ export default class Signup extends Component {
 
 	render () {
 		return (
-			<div className="ds-page-section ds-login">
+			<div className="ds-page-section ds-login full-height">
 				<div className="v-center">
 					<div className="ds-login-form">
 						<div className="fancy-input-wrap">

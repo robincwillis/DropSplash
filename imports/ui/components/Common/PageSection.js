@@ -60,21 +60,22 @@ class PageSection extends Component {
 		else {
 
 			const editableComponents = this.props.widgets.map( (widget, index)=> {
+				console.log(widget.title);
 				return(
 					<li key={widget._id}>
-						<EditableComponent widget={widget} />
-						{index < this.props.widgets.length-1 ? <AddContentBetween /> : false}
+						<div className="container" style={this.props.containerStyles} >
+							<EditableComponent widget={widget} />
+							{index < this.props.widgets.length-1 ? <AddContentBetween /> : false}
+						</div>
 					</li>
 				);
 			});
 
 			return (
 				<div className="section-content">
-					<div className="container" style={this.props.containerStyles} >
-						<ul>
+					<ul>
 						{editableComponents}
-						</ul>
-					</div>
+					</ul>
 				</div>
 			);
 		}
