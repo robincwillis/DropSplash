@@ -20,13 +20,12 @@
 		&.intro-section {
 			background: $primary-color;
 			color: #fff;
-			padding-bottom: 60px;
+			padding-bottom: 30px;
 			.arrow-wrapper {
 				position: absolute;
 				bottom: 40px;
 				left: 50%;
 				margin-left: -10px;
-				animation: ds-bounce 3s 6.2s $ease infinite;
 				.arrow {
 					width: 20px;
 					height: 20px;
@@ -50,10 +49,15 @@
 					}
 					.logotype {
 						margin: 20px auto 30px;
-						svg { 
-							height: 20px;
-							* {
-								fill: #fff;
+						i {
+							display: block;
+							svg {
+								display: block;
+								margin: 0 auto;
+								height: 20px;
+								* {
+									fill: #fff;
+								}
 							}
 						}
 					}
@@ -64,7 +68,17 @@
 				line-height: 1.1em;
 				color: #fff;
 				font-weight: 400;
+				max: 10em;
+				margin-top: 20px;
+				margin-left: auto;
+				margin-right: auto;
+				@include respond($sm) {
+					max: 12em;
+				}
 				@include respond($md) {
+					font-size: 40px;
+				}
+				@include respond($lg) {
 					font-size: 55px;
 				}
 			}

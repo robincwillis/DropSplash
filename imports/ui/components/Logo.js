@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import ReactTimeout from 'react-timeout';
 
-// import '../sass/components/logo.scss';
+import '../sass/components/logo.scss';
 
 class Logo extends Component {
 

@@ -1,6 +1,6 @@
 @import '../setup/variables';
 
-$ripple-speed: 3.75s;
+$ripple-speed: 4s;
 $ripple-delay: $ripple-speed * .05;
 $ripple-invert-delay: $ripple-speed * .05;
 $ripple-size: 150px;
@@ -22,6 +22,7 @@ $ripple-size: 150px;
 .logo {
 	width: $ripple-size;
 	margin: -($ripple-size/2);
+	overflow: visible;
 
 	&.light {
 		svg * {
@@ -37,6 +38,7 @@ $ripple-size: 150px;
 	svg {
 		overflow: visible;
 		width: 100%;
+		vertical-align: top;
 		* {
 			transform-origin: center;
 		}
