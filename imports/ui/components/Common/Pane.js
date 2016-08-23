@@ -12,7 +12,7 @@ import '../../sass/components/common/pane.scss';
 import '../../sass/setup/icons.scss';
 
 
-export default class App extends Component {
+export default class Pane extends Component {
 
 	constructor (props) {
 		super(props);
@@ -69,7 +69,8 @@ export default class App extends Component {
 			transitionDirection: nextViewIndex > currentViewIndex ? 'pane-next-transition' : 'pane-prev-transition',
 			currentProps:props
 		});
-			if(this.props.onChangeView) {
+
+		if(this.props.onChangeView) {
 			this.props.onChangeView(nextViewIndex);
 		}
 	}
@@ -167,6 +168,10 @@ export default class App extends Component {
 		return paneStyle;
 	}
 
+	test () {
+
+	}
+
 	paneTabs () {
 		//TOOD
 		if(this.props.paneTabs) {
@@ -175,7 +180,7 @@ export default class App extends Component {
 				return (
 					<div
 						key={'tab-'+index}
-						onClick={this.goToViewById.bind(this, view.id)}
+						onClick={this.goToViewById.bind(this, view.id, {})}
 						className={'tab ' + active}
 					>
 						{view.title}
@@ -189,9 +194,6 @@ export default class App extends Component {
 	}
 
 	renderPane () {
-		// console.log(this.props);
-		// console.log( (this.state.Component instanceof React.Component) );
-		// console.log(this.state);
 
 		// if(!this.state.Component) {
 		// 	console.log('something fucked')
