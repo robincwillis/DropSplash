@@ -26,13 +26,13 @@ $intro-stagger: .2s;
 					margin-top: 0;
 					margin-bottom: 0;
 					opacity: 0;
-					animation: ds-fade-in-up 2s $ease forwards;
+					animation: ds-fade-in 2s $ease forwards;
 					svg {
 						transition: margin 1s $ease, transform 1s $ease;
 						animation: ds-intro-logo 1s $ripple-time $ease forwards;
 						max-width: 100%;
 					}
-				} 
+				}
 				.logotype {
 					opacity: 0;
 					margin-bottom: -200px;
@@ -81,4 +81,9 @@ $intro-stagger: .2s;
 @keyframes ds-fade-in-up {
 	0% { opacity: 0; transform: translateY(50px); }
 	100% { opacity: 1; transform: translateY(0px); margin-bottom: 0; }
+}
+
+@keyframes ds-fade-in {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
 }
