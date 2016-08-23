@@ -1,0 +1,84 @@
+@import '../setup/variables';
+@import '../setup/mixins';
+
+$ripple-time: 3.5s;
+$ds-lockup: 4s;
+$intro-stagger: .2s;
+
+.app-content .ds-page-section {
+
+	&.intro-section {
+		// .arrow-wrapper {
+		// 	animation: ds-bounce 3s 6.2s $ease infinite;
+		// 	.arrow {
+		// 		opacity: 0;
+		// 		margin-top: -120px;
+		// 		animation: ds-fade-in-down 1.5s 6.2s $ease forwards;
+		// 	}
+		// }
+		.section-content {
+			.container {
+				overflow: visible;
+				transform-origin: center;
+				.logo {
+					max-width: 250px;
+					transform-origin: center;
+					margin-top: 0;
+					margin-bottom: 0;
+					opacity: 0;
+					animation: ds-fade-in-up 2s $ease forwards;
+					svg {
+						transition: margin 1s $ease, transform 1s $ease;
+						animation: ds-intro-logo 1s $ripple-time $ease forwards;
+						max-width: 100%;
+					}
+				} 
+				.logotype {
+					opacity: 0;
+					margin-bottom: -200px;
+					animation: ds-fade-in-up 1s $ripple-time $ease forwards, ds-logotype-exit 1s ($ripple-time + $ds-lockup) $ease forwards;
+				}
+			}
+		}
+		h2 {
+			opacity: 0;
+			margin-bottom: -99px;
+			animation: ds-fade-in-up 1s ($ripple-time + $ds-lockup) $ease forwards;
+			@include respond($sm) {
+				width: 12em;
+				margin-bottom: -66px;
+			}
+			@include respond($md) {
+				margin-bottom: -88px;
+			}
+			@include respond($lg) {
+				margin-bottom: -120px;
+			}
+		}
+		h4 {
+			opacity: 0;
+			margin-bottom: -200px;
+			animation: ds-fade-in-up 1s ($ripple-time + $ds-lockup + ($intro-stagger * 1)) $ease forwards;
+		}
+		.intro-form {
+			margin-top: 7px;
+			opacity: 0;
+			margin-bottom: -200px;
+			animation: ds-fade-in-up 1s ($ripple-time + $ds-lockup + ($intro-stagger * 2)) $ease forwards;
+		}
+	}
+}
+
+@keyframes ds-logotype-exit {
+	0% { opacity: 1; }
+	100% { opacity: 0; margin-top: -20px; }
+}
+
+@keyframes ds-intro-logo {
+	100% { opacity: 1; transform: scale(.333); margin-top: -83.333px; margin-bottom: -83.333px; }
+}
+
+@keyframes ds-fade-in-up {
+	0% { opacity: 0; transform: translateY(50px); }
+	100% { opacity: 1; transform: translateY(0px); margin-bottom: 0; }
+}
