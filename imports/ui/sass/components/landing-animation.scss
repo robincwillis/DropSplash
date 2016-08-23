@@ -3,7 +3,6 @@
 
 $ripple-time: 3.5s;
 $ds-lockup: 4s;
-$intro-stagger: .2s;
 
 .app-content .ds-page-section {
 
@@ -58,13 +57,13 @@ $intro-stagger: .2s;
 		h4 {
 			opacity: 0;
 			margin-bottom: -200px;
-			animation: ds-fade-in-up 1s ($ripple-time + $ds-lockup + ($intro-stagger * 1)) $ease forwards;
+			animation: ds-fade-in-up 1s ($ripple-time + $ds-lockup ) $ease forwards;
 		}
 		.intro-form {
 			margin-top: 7px;
 			opacity: 0;
 			margin-bottom: -200px;
-			animation: ds-fade-in-up 1s ($ripple-time + $ds-lockup + ($intro-stagger * 2)) $ease forwards;
+			animation: ds-fade-in-up 1s ($ripple-time + $ds-lockup ) $ease forwards;
 		}
 	}
 }
