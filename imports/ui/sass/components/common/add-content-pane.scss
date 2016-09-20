@@ -10,6 +10,7 @@
 		.new-content-grid {
 			overflow: hidden;
 			border-radius: 0 0 $base-border-radius $base-border-radius;
+			margin-right: -1px;
 			.content-item {
 				width: 90px;
 				height: 66px;
@@ -22,13 +23,13 @@
 				> * {
 					opacity: .45;
 				}
-				&:nth-last-child(-n+3) {
-					border-bottom: none;
-				}
-				&:nth-child(3n+3) {
-					border-right: none;
-					margin-right: 0;
-				}
+				// &:nth-last-child(-n+3) {
+				// 	border-bottom: none;
+				// }
+				// &:nth-child(3n+3) {
+				// 	border-right: none;
+				// 	margin-right: 0;
+				// }
 				&:hover {
 					background-color: $light-grey;
 					* {

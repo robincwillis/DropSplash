@@ -149,8 +149,14 @@ export default class Pane extends Component {
 
 		if (this.props.paneTabs) {
 			paneClass += ' '+'has-tabs';
+			if (this.props.views.length === 2) {
+				paneClass += ' '+'two-tabs';
+			}
 			if (this.props.views.length === 4) {
 				paneClass += ' '+'four-tabs';
+			}
+			if (this.props.views.length === 5) {
+				paneClass += ' '+'five-tabs';
 			}
 		}
 

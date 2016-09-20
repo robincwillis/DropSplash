@@ -90,14 +90,21 @@
 		}
 	} // end .ds-pane-header
 
-	.ds-pane-tabs {
-		height: 35px;
-		background: $pane-bg;
-		text-align: left;
-		position: relative;
-		z-index: 3;
-		@include clearfix();
-		&.four-tabs {
+	&.two-tabs {
+		.ds-pane-tabs {
+			hr,
+			.tab {
+				width: 50%;
+			}
+			.tab.active {
+				&:nth-child(2) ~ hr {
+					left: 50%;
+				}
+			}
+		}
+	}
+	&.four-tabs {
+		.ds-pane-tabs {
 			hr,
 			.tab {
 				width: 25%;
@@ -114,6 +121,38 @@
 				}
 			}
 		}
+	}
+	&.five-tabs {
+		.ds-pane-tabs {
+			hr,
+			.tab {
+				width: 20%;
+			}
+			.tab.active {
+				&:nth-child(2) ~ hr {
+					left: 20%;
+				}
+				&:nth-child(3) ~ hr {
+					left: 40%;
+				}
+				&:nth-child(4) ~ hr {
+					left: 60%;
+				}
+				&:nth-child(5) ~ hr {
+					left: 80%;
+				}
+			}
+		}
+	}
+
+	.ds-pane-tabs {
+		height: 35px;
+		background: $pane-bg;
+		text-align: left;
+		position: relative;
+		z-index: 3;
+		@include clearfix();
+		// the default tab number is 3
 		hr {
 			display: block;
 			height: 2px;
@@ -185,6 +224,38 @@
     	.col {
     		float: left;
     		padding: 0 5px;
+    		input[type=range] {
+    			margin-left: -2px;
+				}
+    		&.one-third {
+    			width: 33.333%;
+    		}
+    		&.two-thirds {
+    			width: 66.666%;
+    		}
+    		&.half {
+    			width: 50%;
+    		}
+    		&.one-quarter {
+    			width: 25%;
+    		}
+    		&.three-quarter {
+    			width: 75%;
+    		}
+    	}
+    	.inline-col {
+    		display: inline-block;
+    		padding: 0 5px;
+    		margin-right: 0;
+    		&.align-right {
+    			text-align: right;
+    		}
+    		&.middle {
+    			vertical-align: middle;
+    			label {
+    				margin-bottom: 0;
+    			}
+    		}
     		input[type=range] {
     			margin-left: -2px;
 				}

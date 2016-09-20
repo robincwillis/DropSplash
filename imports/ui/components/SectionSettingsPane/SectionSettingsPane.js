@@ -17,9 +17,9 @@ export default class SectionSettingsPane extends Component {
 	paneContent () {
 		return [
 			{
-				id : 'section-typography-view',
-				title : 'Type',
-				Component : SectionTypographyView
+				id : 'section-layout-view',
+				title : 'Layout',
+				Component : SectionLayoutView
 			},
 			{
 				id : 'section-effects-view',
@@ -27,11 +27,6 @@ export default class SectionSettingsPane extends Component {
 				Component : SectionEffectsView
 
 			},
-			{
-				id : 'section-layout-view',
-				title : 'Layout',
-				Component : SectionLayoutView
-			}
 		];
 	}
 

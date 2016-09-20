@@ -21,7 +21,7 @@ textarea {
   margin: 0;
   line-height: $input-line-height;
   border-radius: $input-border-radius;
-  transition: background $med-speed ease-in-out, border $med-speed;
+  transition: background $med-speed $ease, border $med-speed;
   resize: none;
   vertical-align: top;
   text-indent: 0px;
@@ -93,7 +93,7 @@ input[type="checkbox"] + label span.checkbox {
   margin-right: 7px;
   margin-bottom: 5px;
   vertical-align: middle;
-  transition: border $med-speed ease-in-out, background $med-speed ease-in-out, color $med-speed ease-in-out;
+  transition: border $med-speed $ease, background $med-speed $ease, color $med-speed $ease;
 }
 
 input[type="radio"] {
@@ -102,7 +102,7 @@ input[type="radio"] {
     background-color: transparent;
     border: 2px solid lighten($text-color, 50%);
     &:after {
-      transition: background $med-speed ease-in-out;
+      transition: background $med-speed $ease;
       content: '';
       display: block;
       width: 8px;
@@ -129,7 +129,7 @@ input[type="checkbox"] {
     background-color: lighten($text-color, 50%);
     border: 1px solid lighten($text-color, 50%);
     &:after {
-      transition: background $med-speed ease-in-out;
+      transition: background $med-speed $ease;
       content: '';
       display: block;
       width: 3px;
@@ -140,7 +140,7 @@ input[type="checkbox"] {
       transform: rotate(45deg) scale(.75);
       margin-top: 1px;
       margin-left: 5px;
-      transition: all $med-speed ease-in-out;
+      transition: all $med-speed $ease;
     }
   }
   &:checked {
@@ -170,7 +170,7 @@ select {
   line-height: 1.2em;
   padding: $input-padding;
   border-radius: $input-border-radius;
-  transition: background $med-speed ease-in-out, border $med-speed;
+  transition: background $med-speed $ease, border $med-speed;
   vertical-align: top;
   cursor: pointer;
   background-repeat: no-repeat;

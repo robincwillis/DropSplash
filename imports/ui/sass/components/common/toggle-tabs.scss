@@ -1,0 +1,79 @@
+@import '../../setup/variables';
+@import '../../setup/mixins';
+
+.toggle-tabs {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 3px;
+	background-color: $light-grey;
+	border-radius: 4px;
+	width: 100%;
+	.tab {
+		display: inline-block;
+		vertical-align: top;
+		min-width: 34px;
+		// margin-right: -4px;
+		&.third {
+			width: 33.333%;
+		}
+		&.half {
+			width: 50%;
+		}
+		input {
+			display: none;
+			&:checked {
+				+ label {
+					background: #fff;
+					span {
+						opacity: 1;
+						svg {
+							* {
+								fill: $primary-color;
+							}
+						}
+					}
+				}
+			}
+			+ label {
+				position: relative;
+				margin: 0;
+				padding: 0 10px;
+				text-align: center;
+				display: block;
+				background: transparent;
+				transition: background $med-speed $ease;
+				line-height: 34px;
+				cursor: pointer;
+				border-radius: 1px;
+				cursor: pointer;
+				font-size: 10px;
+				letter-spacing: .2em;
+				color: $text-color;
+				span {
+					cursor: pointer;
+					display: inline-block;
+					vertical-align: middle;
+					margin: 0;
+					transition: opacity $med-speed $ease;
+					opacity: .3;
+					color: $text-color;
+					svg {
+						display: block;
+						width: 18px;
+						height: 18px;
+						margin-top: -2px;
+						cursor: pointer;
+						* {
+							fill: $text-color;
+						}
+					}
+				}
+				&:hover {
+					span {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+}
