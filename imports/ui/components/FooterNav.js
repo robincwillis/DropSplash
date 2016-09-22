@@ -34,7 +34,7 @@ class FooterNav extends Component {
 				var objDiv = document.querySelector(".app-content");
 				setTimeout(function() {
 					objDiv.scrollTop = objDiv.scrollHeight;
-				}, 200);
+				}, 0);
 			}
 		});
 	}

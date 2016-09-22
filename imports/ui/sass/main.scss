@@ -93,7 +93,7 @@ svg, svg * {
 					margin-bottom: 25px;
 				}
 				.delete-empty-link {
-					border-bottom: 1px solid transparent;
+					border-bottom: 1px solid $light-text-color;
 					padding-bottom: 3px;
 					&:hover {
 						border-bottom-color: $red;

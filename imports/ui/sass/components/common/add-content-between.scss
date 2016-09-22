@@ -24,8 +24,8 @@
 }
 
 .add-content-below {
-	padding-top: 10px;
-	margin-bottom: -60px;
+	padding: 10px 0 15px;
+	margin-bottom: -85px;
 	width: 100%;
 	opacity: 0;
 	transform: translate3d(0,15px,0);
@@ -80,6 +80,7 @@
 					margin: 22px auto;
 				}
 				.label {
+					pointer-events: none;
 					position: absolute;
 					left: 50%;
 					transform: translateX(-50%);

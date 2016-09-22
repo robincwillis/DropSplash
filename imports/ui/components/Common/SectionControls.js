@@ -28,7 +28,17 @@ export default class App extends Component {
 		};
 	}
 
+	stickyControls () {
+		var appContainer = document.querySelector('.app-content');
+		console.log(appContainer);
+		// appContainer.addEventListener(scroll, function() {
+		// 	console.log('scrollin');
+		// });
+	}
+
 	showContentPane () {
+		var appContainer = document.querySelector('.app-content');
+		console.log(appContainer);
 		this.setState({
 			showContentPane: true,
 			showSectionSettingsPane: false,
