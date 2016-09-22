@@ -51,8 +51,11 @@ class PageSection extends Component {
 		//should probably check loading and widgets length
 		if (this.props.widgets.length === 0) {
 			return (
-				<div className="section-content">
+				<div className="section-content empty">
 					<ContentPane section={this.props.section} closeable={false} />
+					<div>
+						<span className="small-caps link hover-red delete-empty-link">Delete Section</span>
+					</div>
 				</div>
 			);
 		}

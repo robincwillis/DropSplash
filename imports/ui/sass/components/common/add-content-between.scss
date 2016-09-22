@@ -24,20 +24,28 @@
 }
 
 .add-content-below {
-	padding-top: 15px;
-	margin-bottom: -42px;
+	padding-top: 10px;
+	margin-bottom: -60px;
 	width: 100%;
 	opacity: 0;
-	transition: opacity $med-speed $ease, margin $med-speed $ease;
+	transform: translate3d(0,15px,0);
+	transition: opacity $med-speed $ease, margin $med-speed $ease, transform $med-speed $ease;
+	.container {
+		width: 100% !important;
+    max-width: none !important;
+	}
 	&:hover {
 		opacity: 1;
+		transform: translate3d(0,0,0);
 	}
 	.ds-pane.add-content-pane {
 		max-width: none;
 		min-height: 0;
-		height: 42px !important;
-		width: 587px;
-		overflow: visible;
+		height: 60px !important;
+    width: 649px;
+    padding: 0 15px;
+    overflow: visible;
+    // padding: 0 10px;
 		.ds-pane-header {
 			display: none;
 		}
@@ -50,9 +58,10 @@
 			}
 			.content-item {
 				height: auto;
-				width: 48px;
+				width: auto;
 				position: relative;
-				border-bottom: 0;
+				border: 0;
+				padding: 0 10px;
 				&:first-child {
 					border-radius: 4px 0 0 4px;
 				}
@@ -61,22 +70,26 @@
 					border-right: none;
 				}
 				&:hover {
+					background: transparent;
 					.label {
 						opacity: 1;
 						visibility: visible;
 					}
 				}
 				.icon {
-					margin: 14px auto;
+					margin: 22px auto;
 				}
 				.label {
 					position: absolute;
 					left: 50%;
 					transform: translateX(-50%);
-					bottom: calc(100% + 10px);
+					bottom: calc(100% + 7px);
 					background-color: $text-color;
 					color: #fff;
 					font-size: 12px;
+					text-transform: none;
+					font-weight: 400;
+					letter-spacing: .02em;
 					padding: 7px 10px;
 					border-radius: 3px;
 			    opacity: 1;

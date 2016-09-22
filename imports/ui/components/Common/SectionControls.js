@@ -3,6 +3,7 @@ import InlineSVG from 'svg-inline-react';
 
 //Icons
 import PlusIcon from '../../assets/icons/plus-icon.js';
+import TrashIcon from '../../assets/icons/trash.js';
 
 //Components
 import Button from './Button.js';
@@ -109,6 +110,14 @@ export default class App extends Component {
 					{this.addContentPane()}
 				</div>
 				<div className="right-controls">
+					<Button
+						clickEvent={this.showSectionSettingsPane.bind(this)}
+						buttonClass="delete-section circle secondary medium"
+						icon={TrashIcon}
+						tooltipText="Delete Section"
+						tooltipPosition="left"
+						{...this.props}
+					/>
 					<div className="button-group two-buttons">
 						<Button
 							clickEvent={this.showSectionSettingsPane.bind(this)}

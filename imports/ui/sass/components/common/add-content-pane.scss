@@ -3,26 +3,25 @@
 .ds-pane.add-content-pane {
 
 	&.wide {
-		width:272px;
+		max-width: none;
+		width: 359px;
 	}
 
 	.ds-pane-content {
+		overflow: hidden;
 		.new-content-grid {
 			overflow: hidden;
 			border-radius: 0 0 $base-border-radius $base-border-radius;
 			margin-right: -1px;
 			.content-item {
-				width: 90px;
-				height: 66px;
+				width: 89px;
+				height: 80px;
 				border-right: 1px solid $pane-line-color;
 				border-bottom: 1px solid $pane-line-color;
 				float: left;
 				transition: background $med-speed ease-in-out;
 				cursor: pointer;
 				box-sizing: content-box;
-				> * {
-					opacity: .45;
-				}
 				// &:nth-last-child(-n+3) {
 				// 	border-bottom: none;
 				// }
@@ -32,7 +31,8 @@
 				// }
 				&:hover {
 					background-color: $light-grey;
-					* {
+					.icon,
+					.label {
 						opacity: 1;
 					}
 				}
@@ -42,20 +42,23 @@
 				.icon {
 					display: block;
 					text-align: center;
-					margin: 17px auto 7px;
+					margin: 21px auto 10px;
 					transition: opacity $med-speed ease-in-out;
+					opacity: .3;
 					svg {
-						max-width: 28px;
-						height: 14px;
+						max-width: 22px;
+						height: 16px;
 						vertical-align: top;
 					}
 				}
 				.label {
 					display: block;
 					text-align: center;
-					font-size: 12px;
 					line-height: 1em;
-					letter-spacing: .02em;
+					font-size: 11px;
+			    font-weight: 400;
+			    letter-spacing: .010em;
+			    opacity: .4;
 					transition: opacity $med-speed ease-in-out;
 				}
 			}

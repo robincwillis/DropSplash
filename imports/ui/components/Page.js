@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 //Components
 import PageSection from './Common/PageSection';
@@ -23,11 +24,19 @@ class Page extends Component {
 
 		return this.props.sections.map( (section) => {
 			return (
-				<PageSection
-					key={section._id}
-					section={section}
-					empty={this.props.page.empty}
-				/>
+				<ReactCSSTransitionGroup
+					transitionName='ds-section-transition'
+					transitionAppear={true}
+					transitionAppearTimeout={3200}
+					transitionEnterTimeout={3200}
+					transitionLeaveTimeout={3200}
+				>
+					<PageSection
+						key={section._id}
+						section={section}
+						empty={this.props.page.empty}
+					/>
+				</ReactCSSTransitionGroup>
 			);
 
 		});

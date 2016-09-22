@@ -31,6 +31,10 @@ class FooterNav extends Component {
 				console.log(err);
 			} else {
 				//TODO scroll to section
+				var objDiv = document.querySelector(".app-content");
+				setTimeout(function() {
+					objDiv.scrollTop = objDiv.scrollHeight;
+				}, 200);
 			}
 		});
 	}
@@ -62,7 +66,7 @@ class FooterNav extends Component {
 		};
 
 		return (
-			<div className="footer-nav">
+			<div id="Bottom" className="footer-nav">
 				<div className="left-items">
 					<div onClick={this.togglePageSettings.bind(this)} className="link"><InlineSVG src={SettingsIcon} element="span" className="icon" />Settings</div>
 				</div>

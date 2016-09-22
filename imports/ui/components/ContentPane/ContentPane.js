@@ -147,6 +147,18 @@ export default class ContentPane extends Component {
 				this.refs.addContentPane.goToViewById('account-link');
 				this.updatePaneTitle('MailChimp');
 			break;
+			case 'GALLERY':
+				this.createContentWidget(type);
+			break;
+			case 'SLIDESHOW':
+				this.createContentWidget(type);
+			break;
+			case 'HTML':
+				this.createContentWidget(type);
+			break;
+			case 'SOCIAL':
+				this.createContentWidget(type);
+			break;
 		}
 	}
 
@@ -179,7 +191,7 @@ export default class ContentPane extends Component {
 				title={this.state.title}
 				views={this.paneViews()}
 				onChangeView={this.onChangeView.bind(this)}
-				paneHeight="317px"
+				paneHeight="373px"
 				ref="addContentPane"
 				{...this.props}
 			/>

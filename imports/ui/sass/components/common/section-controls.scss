@@ -1,3 +1,5 @@
+@import '../../setup/variables';
+
 .ds-section-controls {
 	position: absolute;
 	width: 100%;
@@ -17,6 +19,18 @@
 		pointer-events: all;
 		float: right;
 		position: relative;
+		.button.secondary.delete-section {
+			margin-right: 10px;
+			background: rgba(0, 0, 0, 0.3);
+			&:hover {
+				background: $red;
+				svg {
+					* {
+						fill: $white;
+					}
+				}
+			}
+		}
 		.button-group {
 			.button {
 				min-width: 150px;
@@ -24,8 +38,8 @@
 		}
 		.ds-pane {
 			position: absolute;
-			top:50px;
-			left:0;
+			top: 50px;
+			left: 0;
 		}
 	}
 }

@@ -38,7 +38,7 @@ svg, svg * {
 	position: fixed;
 	top: 0;
 	right: 0;
-	bottom: 0;
+	bottom: $footer-height;
 	left: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -55,7 +55,7 @@ svg, svg * {
 		text-align: center;
 		z-index: 1;
 		&:last-child {
-			margin-bottom: $footer-height;
+			// margin-bottom: $footer-height;
 		}
 		&.full-height {
 			min-height: 100vh;
@@ -86,6 +86,19 @@ svg, svg * {
 				width: 85%;
 				max-width: 600px;
 				margin: 0 auto;
+			}
+			&.empty {
+				.add-content-pane {
+					vertical-align: top;
+					margin-bottom: 25px;
+				}
+				.delete-empty-link {
+					border-bottom: 1px solid transparent;
+					padding-bottom: 3px;
+					&:hover {
+						border-bottom-color: $red;
+					}
+				}
 			}
 		}
 	}
@@ -177,3 +190,53 @@ svg, svg * {
 		}
 	}
 }
+
+// Prev Transition
+.ds-section-transition-appear {
+  opacity: .01;
+  transition: transform 3s .2s $ease, opacity 3s .2s $ease;
+  transform: translate3d(0,40%,0) scale(.85);
+}
+
+.ds-section-transition-appear.ds-section-transition-appear-active {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+}
+
+// .ds-section-transition-leave {
+// 	opacity: 1;
+// 	position: absolute;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+// 	transition: transform $slow-speed $ease, opacity $slow-speed $ease;
+// 	&:after {
+// 		content: '';
+// 		display: block;
+// 		position: absolute;
+// 	  top: 0;
+// 	  right: 0;
+// 	  bottom: 0;
+// 	  left: 0;
+// 	  background: #000;
+// 	  opacity: 0;
+// 	  transition: opacity $slow-speed $ease;
+// 	}
+// }
+
+// .ds-section-transition-leave.ds-section-transition-leave-active {
+// 	opacity: 1;
+// 	transform: translateX(50%);
+// 	&:after {
+// 		content: '';
+// 		display: block;
+// 		position: absolute;
+// 	  top: 0;
+// 	  right: 0;
+// 	  bottom: 0;
+// 	  left: 0;
+// 	  background: #000;
+// 	  opacity: .1;
+// 	}
+// }
