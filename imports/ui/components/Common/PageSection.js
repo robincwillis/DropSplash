@@ -14,14 +14,19 @@ import BackgroundContent from './BackgroundContent.js';
 import EmptyContent from './EmptyContent.js';
 import SectionControls from './SectionControls.js';
 import EditableComponent from './EditableComponent.js';
+import ReorderControls from './ReorderSectionControls.js';
 
 //Collections
 import { Sections } from '../../../api/sections/sections.js';
 import { Widgets } from '../../../api/widgets/widgets.js';
 import { Pages } from '../../../api/pages/pages.js';
 
+// Style
+import '../../sass/components/common/reorder-sections';
+
 //API
 import { insertWidget } from '../../../api/widgets/methods.js';
+import { removeSection } from '../../../api/sections/methods.js';
 
 
 class PageSection extends Component {
@@ -40,6 +45,15 @@ class PageSection extends Component {
 		return sectionClass;
 	}
 
+	removeSection (event) {
+		//TODO confirm dialog before deleting
+		removeSection.call({sectionId : this.props.section._id}, (err)=> {
+			if (err) {
+				console.log(err);
+			}
+		});
+	}
+
 	sectionStyle () {
 		var sectionStyle = {
 			minHeight: this.props.section.style.height
@@ -54,8 +68,9 @@ class PageSection extends Component {
 				<div className="section-content empty">
 					<ContentPane section={this.props.section} closeable={false} />
 					<div>
-						<span className="small-caps link hover-red delete-empty-link">Delete Section</span>
+						<span onClick={this.removeSection.bind(this)} className="small-caps link hover-red delete-empty-link">Delete Section</span>
 					</div>
+					<ReorderControls />
 				</div>
 			);
 		}
@@ -84,6 +99,7 @@ class PageSection extends Component {
 							<ContentPane section={this.props.section} closeable={false} />
 						</div>
 					</div>
+					<ReorderControls />
 				</div>
 			);
 		}

@@ -28,17 +28,22 @@ export default class App extends Component {
 		};
 	}
 
-	stickyControls () {
+	scroll () {
 		var appContainer = document.querySelector('.app-content');
-		console.log(appContainer);
-		// appContainer.addEventListener(scroll, function() {
-		// 	console.log('scrollin');
-		// });
+		var sectionControls = document.querySelectorAll('.ds-section-controls');
+    // console.log(appContainer.scrollTop)
+    // console.log(sectionControls)
+    for (var i = sectionControls.length - 1; i >= 0; i++) {
+    	// console.log(sectionControls[i].offsetTop)
+    }
+	}
+
+	componentDidMount () {
+		var appContainer = document.querySelector('.app-content');
+		appContainer.addEventListener('scroll', this.scroll);
 	}
 
 	showContentPane () {
-		var appContainer = document.querySelector('.app-content');
-		console.log(appContainer);
 		this.setState({
 			showContentPane: true,
 			showSectionSettingsPane: false,
