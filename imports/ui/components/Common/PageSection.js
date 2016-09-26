@@ -26,7 +26,7 @@ import '../../sass/components/common/reorder-sections';
 
 //API
 import { insertWidget } from '../../../api/widgets/methods.js';
-import { removeSection } from '../../../api/sections/methods.js';
+// import { removeSection } from '../../../api/sections/methods.js';
 
 
 class PageSection extends Component {
@@ -46,12 +46,12 @@ class PageSection extends Component {
 	}
 
 	removeSection (event) {
-		//TODO confirm dialog before deleting
-		removeSection.call({sectionId : this.props.section._id}, (err)=> {
-			if (err) {
-				console.log(err);
-			}
-		});
+	// 	//TODO confirm dialog before deleting
+	// 	removeSection.call({sectionId : this.props.section._id}, (err)=> {
+	// 		if (err) {
+	// 			console.log(err);
+	// 		}
+	// 	});
 	}
 
 	sectionStyle () {

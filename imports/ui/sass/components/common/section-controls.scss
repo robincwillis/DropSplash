@@ -6,8 +6,35 @@
 	background: transparent;
 	top: 0;
 	z-index: 3;
-	padding: 20px;
+	padding: 0;
 	pointer-events: none;
+	height: 80px;
+	transition: opacity $med-speed $ease;
+	&.fixed {
+		z-index: 6;
+		.controls-wrap {
+			position: fixed;
+			top: 0px;
+		}
+	}
+	&.bottom {
+		position: absolute;
+		top: auto;
+		bottom: 0;
+		opacity: .5;
+		* {
+			pointer-events: none;
+		}
+		.button {
+			background: rgba(0, 0, 0, 0.3);
+			&:before {
+				display: none;
+			}
+		}
+		.controls-wrap {
+			position: static;
+		}
+	}
 	.left-controls {
 		pointer-events: all;
 		float: left;
@@ -42,5 +69,8 @@
 			top: 50px;
 			left: 0;
 		}
+	}
+	.controls-wrap {
+		padding: 20px;
 	}
 }
