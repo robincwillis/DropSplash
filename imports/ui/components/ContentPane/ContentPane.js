@@ -191,7 +191,7 @@ export default class ContentPane extends Component {
 				title={this.state.title}
 				views={this.paneViews()}
 				onChangeView={this.onChangeView.bind(this)}
-				paneHeight="373px"
+				paneHeight="353px"
 				ref="addContentPane"
 				{...this.props}
 			/>

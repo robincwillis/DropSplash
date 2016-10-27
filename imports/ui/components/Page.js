@@ -45,7 +45,7 @@ class Page extends Component {
 
 	render () {
 		return (
-			<div>
+			<div className="content-wrap">
 				{this.renderPageSections()}
 			</div>
 		);

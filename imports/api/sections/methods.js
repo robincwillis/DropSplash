@@ -48,6 +48,15 @@ export const insertSection = new ValidatedMethod({
 	}
 });
 
+export const removeSection = new ValidatedMethod({
+	name: 'section.remove',
+	validate : null,
+	run({ pageId }){
+		const section = Sections.findOne(pageId);
+		Sections.remove(pageId);
+	}
+});
+
 // export const update = new ValidatedMethod({
 
 // });
