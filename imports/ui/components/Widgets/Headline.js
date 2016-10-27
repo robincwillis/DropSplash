@@ -3,7 +3,7 @@ import ContentEditable from 'react-contenteditable';
 import { _ } from 'meteor/underscore';
 
 //Components
-import EditOptions from '../Common/EditOptions.js';
+//import EditOptions from '../Common/EditOptions.js';
 
 //API
 import { updateWidgetContent } from '../../../api/widgets/methods.js';

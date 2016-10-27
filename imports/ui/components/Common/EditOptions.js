@@ -32,7 +32,7 @@ export default class EditOptions extends Component {
 		super(props);
 		this.state = {
 			showSettingsPane : false
-		}
+		};
 	}
 
 	saveWidget () {

@@ -114,10 +114,10 @@ export default class Pane extends Component {
 	}
 
 	handleClickOutsideOfPane (event) {
-		const node = ReactDOM.findDOMNode(this);
-		if(!node.contains(event.target)) {
-			this.setState({visible : false});
-		}
+		// const node = ReactDOM.findDOMNode(this);
+		// if(!node.contains(event.target)) {
+		// 	this.setState({visible : false});
+		// }
 	}
 
 	hidePane () {
@@ -168,10 +168,6 @@ export default class Pane extends Component {
 		return paneStyle;
 	}
 
-	test () {
-
-	}
-
 	paneTabs () {
 		//TOOD
 		if(this.props.paneTabs) {
@@ -194,15 +190,6 @@ export default class Pane extends Component {
 	}
 
 	renderPane () {
-
-		// if(!this.state.Component) {
-		// 	console.log('something fucked')
-
-		// }
-
-		// if (!this.props.views[this.props.currentView].Component) {
-		// 	return (<span data-mr-menu/>);
-		// }
 
 		let ViewComponent = this.props.views[this.state.currentView].Component;
 		let viewProps = this.props.views[this.state.currentView].props || {};
