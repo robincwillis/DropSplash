@@ -18,7 +18,7 @@ export default class ParagraphSettingsPane extends Component {
 	paneContent () {
 		return [
 			{
-				id: 'headline-typography-pane',
+				id: 'paragraph-typography-pane',
 				title: 'Type',
 				Component: TypographyView
 			}
@@ -29,8 +29,12 @@ export default class ParagraphSettingsPane extends Component {
 	render() {
 		return (
 			<Pane
-				views={this.paneContent}
-				ref="headlineSettingsPane"
+				title="Settings"
+				closeable={true}
+				views={this.paneContent()}
+				ref="paragraphSettingsPane"
+				visible={this.props.visible}
+				onHide={this.props.hideSettingsPane}
 			/>
 		);
 	}

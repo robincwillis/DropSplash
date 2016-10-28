@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import ReactDOM from 'react-dom';
+import onClickOutside  from 'react-onclickoutside';
 
 //Icons
 import InlineSVG from 'svg-inline-react';
@@ -12,7 +12,8 @@ import '../../sass/components/common/pane.scss';
 import '../../sass/setup/icons.scss';
 
 
-export default class Pane extends Component {
+
+class PaneComponent extends Component {
 
 	constructor (props) {
 		super(props);
@@ -120,12 +121,27 @@ export default class Pane extends Component {
 		// }
 	}
 
-	hidePane () {
-		this.setState({visible : false});
+	handleClickOutside(event) {
+		if(this.state.visible) {
+			this.hidePane(event);
+		};
+  }
+
+	hidePane (event) {
+		if(this.props.onHide) {
+			this.props.onHide(event);
+		} else {
+			this.setState({visible : false});
+		}
 	}
 
-	showPane () {
-		this.setState({visible : true});
+	showPane (event) {
+
+		if(this.props.onShow) {
+			this.props.onShow(event);
+		} else {
+			this.setState({visible : true});
+		}
 	}
 
 	//Pane Rendering
@@ -251,3 +267,6 @@ export default class Pane extends Component {
 	}
 
 }
+
+export default onClickOutside(PaneComponent);
+

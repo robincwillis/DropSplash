@@ -31,7 +31,7 @@ export default class EditOptions extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			showSettingsPane : false
+			settingsPaneVisible : true
 		};
 	}
 
@@ -50,20 +50,29 @@ export default class EditOptions extends Component {
 
 	showSettingsPane () {
 		this.setState({
-			showSettingsPane:true
+			settingsPaneVisible:true
 		});
 	}
 
 	hideSettingsPane () {
-		this.setState({showSettingsPane:false});
+		this.setState({
+			settingsPaneVisible:false,
+			something:'else'
+		});
+	}
+
+	componentWillReceiveProps (nextProps) {
+		if(this.props.editing && !nextProps.editing){
+			this.hideSettingsPane();
+		}
 	}
 
 	renderSettingsPane () {
 		switch (WidgetTypes[this.props.widget.type]) {
 			case 'HEADLINE_WIDGET':
-				return(<HeadlineSettingsPane hideSettingsPane={this.hideSettingsPane.bind(this)} visible={this.state.showSettingsPane} />);
+				return(<HeadlineSettingsPane hideSettingsPane={this.hideSettingsPane.bind(this)} visible={this.state.settingsPaneVisible} />);
 			case 'PARAGRAPH_WIDGET':
-				return(<ParagraphSettingsPane />);
+				return(<ParagraphSettingsPane hideSettingsPane={this.hideSettingsPane.bind(this)} visible={this.state.settingsPaneVisible} />);
 			case 'IMAGE_WIDGET':
 				return(<ImageSettingsPane />);
 			case 'BUTTON_WIDGET':
@@ -92,11 +101,11 @@ export default class EditOptions extends Component {
 	}
 
 	editOptionContent () {
+
 		if(this.props.editing === true) {
 			return (<div className="ds-edit-options">
-					<div onClick={this.showSettingsPane.bind(this)} data-tooltip-text="Settings" className="option edit">
+					<div data-tooltip-text="Settings" className="option edit" onClick={this.showSettingsPane.bind(this)}>
 						<InlineSVG src={SettingsIcon} element="span" className="icon" />
-						{this.renderSettingsPane()}
 					</div>
 					<div data-tooltip-text="Save" className="option done" onClick={this.props.clickHandler}>
 						<InlineSVG src={CheckIcon} element="span" className="icon" />
@@ -104,6 +113,7 @@ export default class EditOptions extends Component {
 					<div onClick={this.removeWidget.bind(this)} data-tooltip-text="Delete" className="option">
 						<InlineSVG src={DeleteIcon} element="span" className="icon" />
 					</div>
+					{this.renderSettingsPane()}
 				</div>);
 		} else {
 			return (

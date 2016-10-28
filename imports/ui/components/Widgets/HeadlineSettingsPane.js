@@ -15,12 +15,7 @@ export default class HeadlineSettingsPane extends Component {
 		super(props);
 	}
 
-	hidePane () {
-
-	}
-
 	paneContent () {
-
 		return [
 			{
 				id: 'headline-typography-pane',
@@ -34,8 +29,6 @@ export default class HeadlineSettingsPane extends Component {
 	}
 
 	render () {
-		console.log('rendering headline settings');
-		console.log(this.props);
 		return (
 			<Pane
 				title="Settings"
@@ -43,6 +36,7 @@ export default class HeadlineSettingsPane extends Component {
 				views={this.paneContent()}
 				ref="headlineSettingsPane"
 				visible={this.props.visible}
+				onHide={this.props.hideSettingsPane}
 			/>
 		);
 	}
