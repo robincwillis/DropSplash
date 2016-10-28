@@ -14,6 +14,9 @@ import SectionSettingsPane from '../SectionSettingsPane/SectionSettingsPane.js';
 import BackgroundPane from '../BackgroundPane/BackgroundPane.js';
 //TODO Fonts Pane
 
+//API
+import { removeSection } from '../../../api/sections/methods.js';
+
 import '../../sass/components/common/section-controls.scss';
 
 export default class App extends Component {
@@ -32,13 +35,13 @@ export default class App extends Component {
 		// var appContainer = document.querySelector('.app-content');
 		// var sectionControls = document.querySelectorAll('.ds-section-controls');
 		// var fixedSectionControls = document.querySelectorAll('.ds-section-controls.fixed');
-    
+
     var appWrapper = document.querySelector('.app-content');
 
 		appWrapper.addEventListener('scroll', function(event) {
 			var scrollTop = appWrapper.scrollTop;
 			var sections = document.querySelectorAll('.ds-page-section');
-			
+
 			for(var i = 0; i < sections.length; i++) {
 				var sectionHeight = sections[i].clientHeight;
 				var sectionPosition = sections[i].getBoundingClientRect().top;
@@ -147,6 +150,17 @@ export default class App extends Component {
 		}
 	}
 
+	removeSection () {
+		removeSection.call({sectionId : this.props.section._id}, (err) => {
+			if (err) {
+				console.log('removing section fucked');
+				console.log(err);
+			} else {
+
+			}
+		});
+	}
+
 	render () {
 		return (
 			<div className="ds-section-controls">
@@ -161,7 +175,7 @@ export default class App extends Component {
 				<div className="right-controls">
 					<div className="controls-wrap">
 						<Button
-							clickEvent={this.showSectionSettingsPane.bind(this)}
+							clickEvent={this.removeSection.bind(this)}
 							buttonClass="delete-section circle secondary medium"
 							icon={TrashIcon}
 							tooltipText="Delete Section"

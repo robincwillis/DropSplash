@@ -25,8 +25,10 @@ export const insertWidget = new ValidatedMethod({
 
 		widget.ownerId = this.userId;
 		widget.sectionId = sectionId;
+
 		//TODO check if widget was inserted a specific index
 		widget.index = Widgets.find(sectionId).count();
+
 		widget.type = WidgetTypes[type];
 
 		widget.settings = options && options.settings ? options.settings : {};

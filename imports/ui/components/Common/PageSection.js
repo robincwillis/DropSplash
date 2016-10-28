@@ -84,7 +84,7 @@ class PageSection extends Component {
 					<li key={widget._id}>
 						<div className="container" style={this.props.containerStyles} >
 							<EditableComponent widget={widget} />
-							{index < this.props.widgets.length-1 ? <AddContentBetween /> : false}
+							{index < this.props.widgets.length-1 ? <AddContentBetween section={this.props.section} index={index} /> : false}
 						</div>
 					</li>
 				);

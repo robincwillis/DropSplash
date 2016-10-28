@@ -12,9 +12,16 @@ import { WidgetTypes } from '../../../api/widgets/schema.js';
 // Setting Panes
 import HeadlineSettingsPane from '../Widgets/HeadlineSettingsPane';
 import ParagraphSettingsPane from '../Widgets/ParagraphSettingsPane';
-import ButtonSettingsPane from '../Widgets/HeadlineSettingsPane';
-import ImageSettingsPane from '../Widgets/HeadlineSettingsPane';
-import DividerSettingsPane from '../Widgets/HeadlineSettingsPane';
+import ButtonSettingsPane from '../Widgets/ButtonSettingsPane';
+import ImageSettingsPane from '../Widgets/ImageSettingsPane';
+import DividerSettingsPane from '../Widgets/DividerSettingsPane';
+import AudioSettingsPane from '../Widgets/AudioSettingsPane';
+import InstagramSettingsPane from '../Widgets/InstagramSettingsPane';
+import MailchimpSettingsPane from '../Widgets/MailchimpSettingsPane';
+import MapSettingsPane from '../Widgets/MapSettingsPane';
+import MediumSettingsPane from '../Widgets/MediumSettingsPane';
+import VideoSettingsPane from '../Widgets/VideoSettingsPane';
+import TwitterSettingsPane from '../Widgets/TwitterSettingsPane';
 
 //Components
 import Button from './Button.js';
@@ -32,7 +39,7 @@ export default class EditOptions extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			settingsPaneVisible : true
+			settingsPaneVisible : false
 		};
 	}
 
@@ -69,33 +76,39 @@ export default class EditOptions extends Component {
 	}
 
 	renderSettingsPane () {
+		const props = {
+			hideSettingsPane: this.hideSettingsPane.bind(this),
+			visible: this.state.settingsPaneVisible
+		};
+
 		switch (WidgetTypes[this.props.widget.type]) {
 			case 'HEADLINE_WIDGET':
-				return(<HeadlineSettingsPane hideSettingsPane={this.hideSettingsPane.bind(this)} visible={this.state.settingsPaneVisible} />);
+				return(<HeadlineSettingsPane {...props}  />);
 			case 'PARAGRAPH_WIDGET':
-				return(<ParagraphSettingsPane hideSettingsPane={this.hideSettingsPane.bind(this)} visible={this.state.settingsPaneVisible} />);
+				return(<ParagraphSettingsPane {...props} />);
 			case 'IMAGE_WIDGET':
-				return(<ImageSettingsPane />);
+				return(<ImageSettingsPane {...props} />);
 			case 'BUTTON_WIDGET':
-				return(<ButtonSettingsPane />);
+				return(<ButtonSettingsPane {...props} />);
 			case 'DIVIDER_WIDGET':
-				return(<DividerSettingsPane />);
+				return(<DividerSettingsPane {...props} />);
 			case 'VIDEO_WIDGET':
-				return false;
+				return(<VideoSettingsPane {...props} />);
 			case 'AUDIO_WIDGET':
-				return false;
+				return(<AudioSettingsPane {...props} />);
 			case 'MAP_WIDGET':
-				return false;
+				return(<MapSettingsPane {...props} />);
 			case 'MEDIUM_WIDGET':
-				return false;
+				return(<MediumSettingsPane {...props} />);
 			case 'TWITTER_WIDGET':
+				return(<TwitterSettingsPane {...props} />);
 				//EX go to a specific view
 				//this.refs.addContentPane.goToView();
-				return false;
+
 			case 'INSTAGRAM_WIDGET':
-				return false;
+				return(<InstagramSettingsPane {...props} />);
 			case 'MAILCHIMP_WIDGET':
-				return false;
+				return(<MailchimpSettingsPane {...props} />);
 			default :
 				return false;
 		}

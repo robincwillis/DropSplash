@@ -18,7 +18,7 @@ export default class HeadlineSettingsPane extends Component {
 	paneContent () {
 		return [
 			{
-				id: 'headline-typography-pane',
+				id: 'headline-typography-view',
 				title: 'Type',
 				Component: TypographyView,
 				props : {

@@ -25,6 +25,7 @@ class Page extends Component {
 		return this.props.sections.map( (section) => {
 			return (
 				<ReactCSSTransitionGroup
+					key={section._id}
 					transitionName='ds-section-transition'
 					transitionAppear={true}
 					transitionAppearTimeout={3200}

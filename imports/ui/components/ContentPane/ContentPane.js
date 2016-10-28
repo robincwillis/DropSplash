@@ -84,37 +84,46 @@ export default class ContentPane extends Component {
 
 	selectContentType (type) {
 		let props = {};
+		let options = {};
+
+		//TODO Add index
+		//options.index = this.props.index;
+
+		const ref = this.refs.addContentPane;
+		const addContentPane = ref.getInstance();
+
 		switch (type) {
 			case 'HEADLINE':
-				this.createContentWidget(type, {content : 'A Headline'});
+				options.content = 'A Headline';
+				this.createContentWidget(type, options);
 			break;
 			case 'PARAGRAPH':
-				this.createContentWidget(type);
+				this.createContentWidget(type, options);
 			break;
 			case 'IMAGE':
-				this.createContentWidget(type);
+				this.createContentWidget(type, options);
 			break;
 			case 'VIDEO':
-				this.createContentWidget(type);
+				this.createContentWidget(type, options);
 			break;
 			case 'AUDIO':
-				this.createContentWidget(type);
+				this.createContentWidget(type, options);
 			break;
 			case 'MAP':
-				this.createContentWidget(type);
+				this.createContentWidget(type, options);
 			break;
 			case 'BUTTON':
-				this.createContentWidget(type);
+				this.createContentWidget(type, options);
 			break;
 			case 'DIVIDER':
-				this.createContentWidget(type);
+				this.createContentWidget(type, options);
 			break;
 			case 'MEDIUM':
 				props = {
 					type : type,
 					fields : ''
 				};
-				this.refs.addContentPane.goToViewById('account-link');
+				addContentPane.goToViewById('account-link');
 				this.updatePaneTitle('Medium');
 			break;
 			case 'TWITTER':
@@ -122,7 +131,8 @@ export default class ContentPane extends Component {
 					type : type,
 					fields : ''
 				};
-				this.refs.addContentPane.goToViewById('account-link');
+
+				addContentPane.getInstance().goToViewById('account-link');
 				this.updatePaneTitle('Twitter');
 			break;
 			case 'INSTAGRAM':
@@ -133,9 +143,9 @@ export default class ContentPane extends Component {
 
 				//is account linked?
 				if(Meteor.user().services.instagram) {
-					this.createContentWidget(type);
+					this.createContentWidget(type, options);
 				} else {
-					this.refs.addContentPane.goToViewById('account-link', props);
+					addContentPane.goToViewById('account-link', props);
 					this.updatePaneTitle('Instagram');
 				}
 			break;
@@ -144,20 +154,20 @@ export default class ContentPane extends Component {
 					type : type,
 					fields : ''
 				};
-				this.refs.addContentPane.goToViewById('account-link');
+				addContentPane.goToViewById('account-link');
 				this.updatePaneTitle('MailChimp');
 			break;
 			case 'GALLERY':
-				this.createContentWidget(type);
+				this.createContentWidget(type, options);
 			break;
 			case 'SLIDESHOW':
-				this.createContentWidget(type);
+				this.createContentWidget(type, options);
 			break;
 			case 'HTML':
-				this.createContentWidget(type);
+				this.createContentWidget(type, options);
 			break;
 			case 'SOCIAL':
-				this.createContentWidget(type);
+				this.createContentWidget(type, options);
 			break;
 		}
 	}
@@ -193,6 +203,7 @@ export default class ContentPane extends Component {
 				onChangeView={this.onChangeView.bind(this)}
 				paneHeight="353px"
 				ref="addContentPane"
+				onHide={this.props.hideContentPane}
 				{...this.props}
 			/>
 		);

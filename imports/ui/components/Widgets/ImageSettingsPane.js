@@ -4,12 +4,7 @@ import React, { Component } from 'react';
 import Pane from '../Common/Pane.js';
 import TypographyView from '../CommonPane/Typography.js';
 
-//Pane Views
-//Typography
-//Font
-//Color
-
-export default class ParagraphSettingsPane extends Component {
+export default class ImageSettingsPane extends Component {
 
 	constructor (props) {
 		super(props);
@@ -18,7 +13,7 @@ export default class ParagraphSettingsPane extends Component {
 	paneContent () {
 		return [
 			{
-				id: 'paragraph-typography-view',
+				id: 'image-typography-pane',
 				title: 'Type',
 				Component: TypographyView
 			}
@@ -32,7 +27,7 @@ export default class ParagraphSettingsPane extends Component {
 				title="Settings"
 				closeable={true}
 				views={this.paneContent()}
-				ref="paragraphSettingsPane"
+				ref="imageSettingsPane"
 				visible={this.props.visible}
 				onHide={this.props.hideSettingsPane}
 			/>

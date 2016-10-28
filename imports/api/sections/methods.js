@@ -51,9 +51,9 @@ export const insertSection = new ValidatedMethod({
 export const removeSection = new ValidatedMethod({
 	name: 'section.remove',
 	validate : null,
-	run({ pageId }){
-		const section = Sections.findOne(pageId);
-		Sections.remove(pageId);
+	run({ sectionId }){
+		const section = Sections.findOne(sectionId);
+		Sections.remove(sectionId);
 	}
 });
 
