@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import ReactDOM from 'react-dom';
+import onClickOutside  from 'react-onclickoutside';
 
 //Icons
 import InlineSVG from 'svg-inline-react';
@@ -12,7 +12,8 @@ import '../../sass/components/common/pane.scss';
 import '../../sass/setup/icons.scss';
 
 
-export default class Pane extends Component {
+
+class PaneComponent extends Component {
 
 	constructor (props) {
 		super(props);
@@ -114,18 +115,33 @@ export default class Pane extends Component {
 	}
 
 	handleClickOutsideOfPane (event) {
-		const node = ReactDOM.findDOMNode(this);
-		if(!node.contains(event.target)) {
+		// const node = ReactDOM.findDOMNode(this);
+		// if(!node.contains(event.target)) {
+		// 	this.setState({visible : false});
+		// }
+	}
+
+	handleClickOutside(event) {
+		if(this.state.visible) {
+			this.hidePane(event);
+		};
+  }
+
+	hidePane (event) {
+		if(this.props.onHide) {
+			this.props.onHide(event);
+		} else {
 			this.setState({visible : false});
 		}
 	}
 
-	hidePane () {
-		this.setState({visible : false});
-	}
+	showPane (event) {
 
-	showPane () {
-		this.setState({visible : true});
+		if(this.props.onShow) {
+			this.props.onShow(event);
+		} else {
+			this.setState({visible : true});
+		}
 	}
 
 	//Pane Rendering
@@ -174,10 +190,6 @@ export default class Pane extends Component {
 		return paneStyle;
 	}
 
-	test () {
-
-	}
-
 	paneTabs () {
 		//TOOD
 		if(this.props.paneTabs) {
@@ -200,15 +212,6 @@ export default class Pane extends Component {
 	}
 
 	renderPane () {
-
-		// if(!this.state.Component) {
-		// 	console.log('something fucked')
-
-		// }
-
-		// if (!this.props.views[this.props.currentView].Component) {
-		// 	return (<span data-mr-menu/>);
-		// }
 
 		let ViewComponent = this.props.views[this.state.currentView].Component;
 		let viewProps = this.props.views[this.state.currentView].props || {};
@@ -270,3 +273,6 @@ export default class Pane extends Component {
 	}
 
 }
+
+export default onClickOutside(PaneComponent);
+

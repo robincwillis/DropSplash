@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import onClickOutside  from 'react-onclickoutside';
+
 
 //Components
 import HeadlineWidget from '../Widgets/Headline.js';
@@ -21,22 +23,18 @@ import { WidgetTypes } from '../../../api/widgets/schema.js';
 
 import '../../sass/components/common/input-switch.scss';
 
-export default class EditableComponent extends Component {
+class EditableComponent extends Component {
 
 	constructor (props) {
-    super(props);
-    this.state = {
-      editing: false
-    };
-  }
+		super(props);
+		this.state = {
+			editing: false
+		};
+	}
 
-	componentDidMount () {
-    document.body.addEventListener('click', this.exitEditMode.bind(this));
-  }
-
-  componentWillUnmount () {
-    document.body.removeEventListener('click', this.exitEditMode);
-  }
+	handleClickOutside (event) {
+		this.exitEditMode(event);
+	}
 
 	renderWidget () {
 		switch (WidgetTypes[this.props.widget.type]) {
@@ -87,22 +85,22 @@ export default class EditableComponent extends Component {
 	}
 
 	editableClass () {
-    var editableClass = 'ds-editable';
-    if (this.state.editing === true) {
-      editableClass += ' editing';
-    }
-    return editableClass;
-  }
+		var editableClass = 'ds-editable';
+		if (this.state.editing === true) {
+			editableClass += ' editing';
+		}
+		return editableClass;
+	}
 
-  clickHandler () {
-    if (this.state.editing === true) {
+	clickHandler () {
+		if (this.state.editing === true) {
 			this.setState({editing: false});
 		} else {
 			if (this.state.editing === false) {
 				this.setState({editing: true});
 			}
 		}
-  }
+	}
 
 	render () {
 		return (
@@ -123,3 +121,6 @@ export default class EditableComponent extends Component {
 
 	}
 }
+
+export default onClickOutside(EditableComponent);
+

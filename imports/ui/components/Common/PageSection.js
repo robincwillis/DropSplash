@@ -78,7 +78,6 @@ class PageSection extends Component {
 		else {
 
 			const editableComponents = this.props.widgets.map( (widget, index)=> {
-				console.log(widget.title);
 				return(
 					<li key={widget._id}>
 						<div className="container" style={this.props.containerStyles} >

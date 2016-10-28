@@ -2,6 +2,9 @@
 @import '../../setup/mixins';
 
 .ds-pane {
+	position: absolute;
+	top:0;
+	left:0;
 	font-family: $main-font;
 	display: inline-block;
 	vertical-align: top;
@@ -11,7 +14,6 @@
 	background: $pane-bg;
 	box-shadow: 0 10px 40px rgba(0, 0, 0, .2);
 	border-radius: $base-border-radius;
-	position: relative;
 	overflow: hidden;
 	min-width: 225px;
 	min-height: 250px;
