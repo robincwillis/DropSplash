@@ -139,7 +139,7 @@ export default class App extends Component {
 			/>);
 		} else {
 			return(<Button
-				buttonClass="circle medium add-content-button"
+				buttonClass="circle medium add-content-button disabled"
 				icon={PlusIcon}
 				tooltipText="Add Content"
 				{...this.props}
@@ -153,7 +153,9 @@ export default class App extends Component {
 				<div className="left-controls">
 					<div className="controls-wrap">
 						{this.contentPaneButton()}
-						{this.addContentPane()}
+						<div className="pane-position on-right">
+							{this.addContentPane()}
+						</div>	
 					</div>
 				</div>
 				<div className="right-controls">

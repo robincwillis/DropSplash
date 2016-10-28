@@ -1,10 +1,50 @@
 @import '../../setup/variables';
 @import '../../setup/mixins';
 
+.pane-position {
+	position: relative;
+	.on-right {
+		.ds-pane {
+			left: calc(100% + 20px);
+		}
+	}
+	.cover-right {
+		.ds-pane {
+			left: 0;
+		}
+	}
+	.on-left {
+		.ds-pane {
+			right: calc(100% + 20px);
+		}
+	}
+	.cover-left {
+		.ds-pane {
+			right: 0;
+		}
+	}
+	.above {
+		.ds-pane {
+			bottom: calc(100% + 20px);
+		}
+	}
+	.below {
+		.ds-pane {
+			top: calc(100% + 20px);
+		}
+	}
+}
+
+.pane-static {
+	.ds-pane {
+		position: relative;
+	}
+}
+
 .ds-pane {
 	position: absolute;
-	top:0;
-	left:0;
+	top: 0;
+	left: 0;
 	font-family: $main-font;
 	display: inline-block;
 	vertical-align: top;

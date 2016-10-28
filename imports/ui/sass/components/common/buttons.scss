@@ -153,6 +153,11 @@ button {
     transition: all $med-speed ease-in-out;
   }
 
+  &.disabled {
+    background-color: lighten($text-color, 70%) !important;
+    color: #fff;
+  }
+
   &.loading {
     color: transparent !important;
     background-color: lighten($text-color, 70%) !important;

@@ -66,7 +66,9 @@ class PageSection extends Component {
 		if (this.props.widgets.length === 0) {
 			return (
 				<div className="section-content empty">
-					<ContentPane section={this.props.section} closeable={false} />
+					<div className="pane-static">
+						<ContentPane section={this.props.section} closeable={false} />
+					</div>
 					<div>
 						<span onClick={this.removeSection.bind(this)} className="small-caps link hover-red delete-empty-link">Delete Section</span>
 					</div>

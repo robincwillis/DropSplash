@@ -138,7 +138,7 @@
 		.icon {
 			width: 100%;
 		}
-		&:last-child {
+		&:nth-child(3) {
 			height: 34px;
 			padding-bottom: 3px;
 			border-radius: 0 0 50px 50px;

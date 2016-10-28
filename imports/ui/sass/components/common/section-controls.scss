@@ -39,7 +39,11 @@
 		pointer-events: all;
 		float: left;
 		.add-content-button {
-			margin-right: 10px;
+			margin-right: 0px;
+		}
+		.ds-pane {
+			top: 20px;
+			left: 100%;
 		}
 	}
 	.right-controls {

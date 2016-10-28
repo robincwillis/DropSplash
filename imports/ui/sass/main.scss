@@ -3,7 +3,7 @@
 @import './setup/typography';
 @import './setup/icons';
 @import './setup/mixins';
-// @import './setup/fonts';
+@import './setup/fonts';
 
 //TODO Sort this out
 @import './components/common/buttons';
@@ -132,6 +132,13 @@ svg, svg * {
 		&:after {
 			visibility: visible;
 			opacity: 1;
+		}
+	}
+	&:focus,
+	&:active {
+		&:after {
+			visibility: hidden;
+			opacity: 0;
 		}
 	}
 	&:after {
