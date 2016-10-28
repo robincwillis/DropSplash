@@ -6,6 +6,7 @@ import SettingsIcon from '../../assets/icons/settings-icon.js';
 import CheckIcon from '../../assets/icons/check.js';
 import DeleteIcon from '../../assets/icons/trash.js';
 import EditIcon from '../../assets/icons/edit.js';
+import ReorderIcon from '../../assets/icons/reorder.js';
 import { WidgetTypes } from '../../../api/widgets/schema.js';
 
 // Setting Panes
@@ -129,8 +130,18 @@ export default class EditOptions extends Component {
 
 	render () {
 		return (
-			<div className="ds-edit-actions">
-				{this.editOptionContent()}
+			<div>
+				<div className="ds-edit-actions">
+					{this.editOptionContent()}
+				</div>
+				<div className="ds-edit-actions left">
+					<Button
+						buttonClass="tiny circle ds-reorder-button"
+						icon={ReorderIcon}
+						tooltipText="Reorder"
+						tooltipPosition="left"
+					/>
+				</div>
 			</div>
 		);
 	}

@@ -47,6 +47,15 @@
 		top: 0;
 		bottom: 0;
 		padding-left: 46px;
+		&.left {
+			position: absolute;
+			left: auto;
+			right: 100%;
+			top: 0;
+			bottom: 0;
+			padding-left: 0;
+			padding-right: 46px;
+		}
 	}
 	.ds-edit-button {
 		position: absolute;
@@ -58,12 +67,23 @@
 		transform: translateX(-6px);
 		transition: visibility $med-speed $ease, opacity $med-speed $ease, transform $med-speed $ease;
 	}
+	.ds-reorder-button {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		margin-top: -15px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(6px);
+		transition: visibility $med-speed $ease, opacity $med-speed $ease, transform $med-speed $ease;
+	}
 	&:hover {
 		z-index: 9;
 		&:after {
 			border-color: $primary-color;
 		}
-		.ds-edit-button {
+		.ds-edit-button,
+		.ds-reorder-button {
 			opacity: 1;
 			visibility: visible;
 			transform: translateX(0);
