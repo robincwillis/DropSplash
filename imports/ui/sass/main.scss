@@ -49,14 +49,14 @@ svg, svg * {
     top: 0;
     left: 0;
     right: 0;
-    bottom: 50px;
+    bottom: $footer-height;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 	}
 	.ds-page-section {
 		background: $white;
-		min-height: calc(100vh - 50px);
+		min-height: calc(100vh - 60px);
 		transition: transform $slow-speed $ease, box-shadow $slow-speed $ease;
 		position: relative;
 		z-index: 0;

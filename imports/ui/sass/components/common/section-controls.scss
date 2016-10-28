@@ -41,9 +41,14 @@
 		.add-content-button {
 			margin-right: 0px;
 		}
-		.ds-pane {
+		.pane-position {
+			position: absolute;
 			top: 20px;
-			left: 100%;
+			left: 20px;
+			.ds-pane {
+				top: 0;
+				left: 60px;
+			}
 		}
 	}
 	.right-controls {
@@ -68,13 +73,20 @@
 				min-width: 150px;
 			}
 		}
-		.ds-pane {
+		.pane-position {
 			position: absolute;
-			top: 50px;
-			left: 0;
+			top: 0;
+			right: 0;
+			border: 2px;
+			.ds-pane {
+				position: absolute;
+				top: 50px;
+				left: 0;
+			}
 		}
 	}
 	.controls-wrap {
+		position: relative;
 		padding: 20px;
 	}
 }

@@ -155,9 +155,9 @@ export default class App extends Component {
 				<div className="left-controls">
 					<div className="controls-wrap">
 						{this.contentPaneButton()}
-						<div className="pane-position on-right">
+						<div className="pane-position">
 							{this.addContentPane()}
-						</div>	
+						</div>
 					</div>
 				</div>
 				<div className="right-controls">
@@ -185,8 +185,10 @@ export default class App extends Component {
 								{...this.props}
 							/>
 						</div>
-						{this.sectionSettingsPane()}
-						{this.backgroundPane()}
+						<div className="pane-position">
+							{this.sectionSettingsPane()}
+							{this.backgroundPane()}
+						</div>
 					</div>
 				</div>
 			</div>
