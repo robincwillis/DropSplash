@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import InlineSVG from 'svg-inline-react';
 import Button from './Common/Button.js';
+import Logo from '../assets/icons/ds-logo-sm.js';
 
 import '../sass/components/login';
 
@@ -74,6 +76,11 @@ export default class Login extends Component {
 		return (
 			<div className="ds-page-section ds-login full-height">
 				<div className="v-center">
+					<InlineSVG
+						src={Logo}
+						element="div"
+						className="login-logo" 
+					/>
 					<div className="ds-login-form">
 						<div className="fancy-input-wrap">
 							<input

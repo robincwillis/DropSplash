@@ -38,74 +38,82 @@ svg, svg * {
 	position: fixed;
 	top: 0;
 	right: 0;
-	bottom: $footer-height;
+	bottom: 0;
 	left: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
-	// -webkit-overflow-scrolling: touch;
-	// .content-wrap {
-		transition: transform $slow-speed $ease;
-		.ds-page-section {
-			background: $white;
-			min-height: calc(100vh - 50px);
-			transition: transform $slow-speed $ease, box-shadow $slow-speed $ease;
-			position: relative;
-			z-index: 0;
-			display: table;
-			width: 100%;
-			text-align: center;
-			z-index: 1;
-			* [class^="reorder-"] {
-				display: none;
-				opacity: 0;
-				transition: opacity $med-speed $ease;
-			}
-			&:last-child {
-				// margin-bottom: $footer-height;
-			}
-			&.full-height {
-				min-height: 100vh;
-				margin-bottom: 0;
-			}
-			&.left {
-				text-align: left;
-				.section-content {
-					.container {
-						margin: 0 7.5%;
-					}
-				}
-			}
-			&.right {
-				text-align: right;
-			}
+	-webkit-overflow-scrolling: touch;
+	transition: transform $slow-speed $ease;
+	.content-wrap {
+		position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+	}
+	.ds-page-section {
+		background: $white;
+		min-height: calc(100vh - 50px);
+		transition: transform $slow-speed $ease, box-shadow $slow-speed $ease;
+		position: relative;
+		z-index: 0;
+		display: table;
+		width: 100%;
+		text-align: center;
+		z-index: 1;
+		* [class^="reorder-"] {
+			display: none;
+			opacity: 0;
+			transition: opacity $med-speed $ease;
+		}
+		&:last-child {
+			// margin-bottom: $footer-height;
+		}
+		&.full-height {
+			min-height: 100vh;
+			margin-bottom: 0;
+		}
+		&.left {
+			text-align: left;
 			.section-content {
-				display: table-cell;
-				vertical-align: middle;
-				position: relative;
-				z-index: 2;
-				padding: 50px 0 55px;
-				transform-style: preserve-3d;
 				.container {
-					width: 85%;
-					max-width: 600px;
-					margin: 0 auto;
+					margin: 0 7.5%;
 				}
-				&.empty {
-					.add-content-pane {
-						vertical-align: top;
-						margin-bottom: 25px;
-					}
-					.delete-empty-link {
-						border-bottom: 1px solid $light-text-color;
-						padding-bottom: 3px;
-						&:hover {
-							border-bottom-color: $red;
-						}
+			}
+		}
+		&.right {
+			text-align: right;
+		}
+		.section-content {
+			display: table-cell;
+			vertical-align: middle;
+			position: relative;
+			z-index: 2;
+			padding: 50px 0 55px;
+			transform-style: preserve-3d;
+			.container {
+				width: 85%;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			&.empty {
+				.add-content-pane {
+					vertical-align: top;
+					margin-bottom: 25px;
+				}
+				.delete-empty-link {
+					border-bottom: 1px solid $light-text-color;
+					padding-bottom: 3px;
+					&:hover {
+						border-bottom-color: $red;
 					}
 				}
 			}
 		}
-	// }
+	}
 }
 
 .app-sandbox {
