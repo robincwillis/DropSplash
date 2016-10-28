@@ -91,5 +91,5 @@ export default createContainer( ({page : {_id}}) => {
 		pageExists,
     sections: pageExists ? page.sections().fetch() : []
   };
-}, Page);
+}, Page );
 

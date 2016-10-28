@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import { DropTarget } from 'react-dnd';
+import update from 'react-addons-update';
 
 //Icons
 import InlineSVG from 'svg-inline-react';
@@ -25,9 +27,11 @@ import { Pages } from '../../../api/pages/pages.js';
 import '../../sass/components/common/reorder-sections';
 
 //API
-import { insertWidget } from '../../../api/widgets/methods.js';
-// import { removeSection } from '../../../api/sections/methods.js';
+import { insertWidget, updateWidgetOrder } from '../../../api/widgets/methods.js';
+import { removeSection } from '../../../api/sections/methods.js';
 
+
+import ItemTypes from '../ItemTypes';
 
 class PageSection extends Component {
 
@@ -45,13 +49,15 @@ class PageSection extends Component {
 		return sectionClass;
 	}
 
-	removeSection (event) {
-	// 	//TODO confirm dialog before deleting
-	// 	removeSection.call({sectionId : this.props.section._id}, (err)=> {
-	// 		if (err) {
-	// 			console.log(err);
-	// 		}
-	// 	});
+	removeSection () {
+		removeSection.call({sectionId : this.props.section._id}, (err) => {
+			if (err) {
+				console.log('removing section fucked');
+				console.log(err);
+			} else {
+
+			}
+		});
 	}
 
 	sectionStyle () {
@@ -83,7 +89,10 @@ class PageSection extends Component {
 				return(
 					<li key={widget._id}>
 						<div className="container" style={this.props.containerStyles} >
-							<EditableComponent widget={widget} />
+							<EditableComponent
+								widget={widget}
+								moveWidget={this.moveWidget.bind(this)}
+							/>
 							{index < this.props.widgets.length-1 ? <AddContentBetween section={this.props.section} index={index} /> : false}
 						</div>
 					</li>
@@ -106,14 +115,51 @@ class PageSection extends Component {
 		}
 	}
 
+	moveWidget (dragIndex, hoverIndex) {
+		console.log(this.props.widgets[dragIndex].content);
+		//let widgets == this.props.widgets;
+		let dragWidget = this.props.widgets[dragIndex];
+		let widgets = update(this.props.widgets,
+			{$splice: [
+				[dragIndex, 1],
+				[hoverIndex, 0, dragWidget]
+			]}
+		).map( (widget, index)=> {
+			widget.index = index;
+			return widget;
+		});
+		//widgets.splice(dragIndex, 0).splice(hoverIndex, 0, dragWidget);
+		console.log(widgets);
+
+		updateWidgetOrder.call({
+			widgets : widgets,
+		},(err) => {
+			if (err) {
+				console.log('updated widget order barf');
+				console.log(err);
+			}
+		});
+
+		// set new index's on items
+		// widgets.splice(hoverIndex, 0, "drum");
+		// console.log('move widget called');
+		// console.log(dragIndex);
+		// console.log(hoverIndex);
+		//get updated Order
+		//call reorder function on backend
+
+	}
+
 	render () {
 		if(this.props.loading) {
 			return (<div>loading</div>);
 		}
 
+		console.log(this.props.widgets);
+
 		return (
 			<div className={this.sectionClass()} style={this.props.section.styles} >
-				<SectionControls {...this.props} />
+				<SectionControls removeSection={this.removeSection.bind(this)} {...this.props} />
 
 				{this.sectionContent()}
 
@@ -129,6 +175,20 @@ class PageSection extends Component {
 PageSection.propTypes = {
 
 };
+
+const cardTarget = {
+	drop(props, monitor, component ) {
+		console.log('drop on list');
+		console.log(props);
+		const { id } = props;
+		const sourceObj = monitor.getItem();
+		//if ( id !== sourceObj.listId ) component.pushCard(sourceObj.card);
+		return props
+	}
+};
+
+
+
 
 export default createContainer( ({ section : {_id}, empty }) => {
 
@@ -163,4 +223,10 @@ export default createContainer( ({ section : {_id}, empty }) => {
 		loading,
 		widgets: sectionExists ? section.widgets().fetch() : []
 	};
-}, PageSection);
+}, PageSection );
+
+// DropTarget(ItemTypes.CARD, cardTarget, (connect, monitor) => ({
+// 	connectDropTarget: connect.dropTarget(),
+// 	isOver: monitor.isOver(),
+// 	canDrop: monitor.canDrop()
+// }))(PageSection)

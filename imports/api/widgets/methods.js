@@ -27,7 +27,7 @@ export const insertWidget = new ValidatedMethod({
 		widget.sectionId = sectionId;
 
 		//TODO check if widget was inserted a specific index
-		widget.index = Widgets.find(sectionId).count();
+		widget.index = Widgets.find({sectionId:sectionId}).count();
 
 		widget.type = WidgetTypes[type];
 
@@ -45,6 +45,8 @@ export const insertWidget = new ValidatedMethod({
 	}
 
 });
+
+//insert at
 
 export const updateWidget = new ValidatedMethod({
 	name : 'widget.update',
@@ -73,6 +75,16 @@ export const removeWidget = new ValidatedMethod({
 	run({ widgetId }){
 		const widget = Widgets.findOne(widgetId);
 		Widgets.remove(widgetId);
+	}
+});
+
+export const updateWidgetOrder = new ValidatedMethod({
+	name: 'widget.update.order',
+	validate : null,
+	run({widgets}) {
+		widgets.forEach( (widget)=> {
+      Widgets.update( { _id: widget._id }, { $set: { index: widget.index } } );
+		});
 	}
 });
 

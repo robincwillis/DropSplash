@@ -14,9 +14,6 @@ import SectionSettingsPane from '../SectionSettingsPane/SectionSettingsPane.js';
 import BackgroundPane from '../BackgroundPane/BackgroundPane.js';
 //TODO Fonts Pane
 
-//API
-import { removeSection } from '../../../api/sections/methods.js';
-
 import '../../sass/components/common/section-controls.scss';
 
 export default class App extends Component {
@@ -150,16 +147,7 @@ export default class App extends Component {
 		}
 	}
 
-	removeSection () {
-		removeSection.call({sectionId : this.props.section._id}, (err) => {
-			if (err) {
-				console.log('removing section fucked');
-				console.log(err);
-			} else {
 
-			}
-		});
-	}
 
 	render () {
 		return (
@@ -175,7 +163,7 @@ export default class App extends Component {
 				<div className="right-controls">
 					<div className="controls-wrap">
 						<Button
-							clickEvent={this.removeSection.bind(this)}
+							clickEvent={this.props.removeSection.bind(this)}
 							buttonClass="delete-section circle secondary medium"
 							icon={TrashIcon}
 							tooltipText="Delete Section"

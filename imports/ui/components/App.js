@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 
+
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
+
 import Page from './Page.js';
 
 import { App } from '../../api/app/app.js';
@@ -51,4 +56,5 @@ export default createContainer( () => {
     app: App.findOne(),
     page: Pages.findOne()
   };
-}, AppComponent);
+}, DragDropContext(HTML5Backend)(AppComponent) );
+
