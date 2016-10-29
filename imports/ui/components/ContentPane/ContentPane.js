@@ -18,7 +18,7 @@ import '../../sass/components/common/buttons.scss';
 import '../../sass/components/common/add-content-pane.scss';
 
 //API
-import { insertWidget } from '../../../api/widgets/methods.js';
+import { insertWidget, insertWidgetAfter } from '../../../api/widgets/methods.js';
 
 export default class ContentPane extends Component {
 
@@ -64,17 +64,29 @@ export default class ContentPane extends Component {
 
 	}
 
-	createContentWidget (type, options) {
-
-		const widgetId = insertWidget.call({
+	createContentWidget (type, options, index) {
+		let data = {
 			sectionId : this.props.section._id,
 			type : type + '_WIDGET',
-			options : options
-		}, (err) => {
-			if (err) {
-				console.log(err);
-			}
-		});
+			options : options,
+			index : index
+		};
+
+		if (index){
+			const widgetId = insertWidgetAfter.call(data, (err, res)=> {
+				if (err) {
+					console.log(err);
+				} else {
+					console.log(res);
+				}
+			});
+		} else {
+			const widgetId = insertWidget.call(data, (err) => {
+				if (err) {
+					console.log(err);
+				}
+			});
+		}
 
 		if(this.props.closeable && this.props.hideContentPane) {
 			this.props.hideContentPane();
@@ -85,9 +97,7 @@ export default class ContentPane extends Component {
 	selectContentType (type) {
 		let props = {};
 		let options = {};
-
-		//TODO Add index
-		//options.index = this.props.index;
+		let index = this.props.index;
 
 		const ref = this.refs.addContentPane;
 		const addContentPane = ref.getInstance();
@@ -95,28 +105,28 @@ export default class ContentPane extends Component {
 		switch (type) {
 			case 'HEADLINE':
 				options.content = 'A Headline';
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 			case 'PARAGRAPH':
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 			case 'IMAGE':
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 			case 'VIDEO':
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 			case 'AUDIO':
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 			case 'MAP':
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 			case 'BUTTON':
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 			case 'DIVIDER':
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 			case 'MEDIUM':
 				props = {
@@ -143,7 +153,7 @@ export default class ContentPane extends Component {
 
 				//is account linked?
 				if(Meteor.user().services.instagram) {
-					this.createContentWidget(type, options);
+					this.createContentWidget(type, options, index);
 				} else {
 					addContentPane.goToViewById('account-link', props);
 					this.updatePaneTitle('Instagram');
@@ -158,16 +168,16 @@ export default class ContentPane extends Component {
 				this.updatePaneTitle('MailChimp');
 			break;
 			case 'GALLERY':
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 			case 'SLIDESHOW':
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 			case 'HTML':
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 			case 'SOCIAL':
-				this.createContentWidget(type, options);
+				this.createContentWidget(type, options, index);
 			break;
 		}
 	}

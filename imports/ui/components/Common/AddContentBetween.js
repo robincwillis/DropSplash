@@ -47,7 +47,7 @@ export default class App extends Component {
 			hideContentPane={this.hideContentPane.bind(this)}
 			section={this.props.section}
 			closeable={true}
-			index={this.props.index}
+			index={this.props.index+1}
 			visible={this.state.contentPaneVisible}
 		/>);
 	}
