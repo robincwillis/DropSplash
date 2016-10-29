@@ -1,0 +1,57 @@
+//--Bagnard----------------------
+
+@font-face {
+  font-family: 'Questa';
+  src:  url('/fonts/questa/questa-regular.woff') format('woff'),
+  			url('/fonts/questa/questa-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Questa Sans';
+  src:  url('/fonts/questa/questa-sans-regular.woff') format('woff'),
+  			url('/fonts/questa/questa-sans-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Questa Slab';
+  src:  url('/fonts/questa/questa-slab-regular.woff') format('woff'),
+  			url('/fonts/questa/questa-slab-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Questa Grande';
+  src:  url('/fonts/questa/questa-grande-regular.woff') format('woff'),
+  			url('/fonts/questa/questa-grande-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.questa {
+	font-family: 'Questa', serif !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+}
+
+.questa-sans {
+	font-family: 'Questa Sans', serif !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+}
+
+.questa-slab {
+	font-family: 'Questa Slab', serif !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+}
+
+.questa-grande {
+	font-family: 'Questa Grande', serif !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+}

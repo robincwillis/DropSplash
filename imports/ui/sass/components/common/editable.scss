@@ -7,6 +7,7 @@
 		outline: none;
 	}
 	display: inline-block;
+	vertical-align: top;
 	position: relative;
 	cursor: pointer;
 	margin: 10px 0;
@@ -16,13 +17,14 @@
 		display: inline-block;
 		margin: 0 auto;
 		line-height: 1.333em;
-		font-family: 'Work Sans', sans-serif;
-		font-weight: 600;
+		font-family: 'Young Serif', sans-serif;
+		font-weight: normal;
 	}
 
 	p {
-		font-family: 'Cotham Sans', sans-serif;
-		letter-spacing: .02em;
+		font-family: 'Questa Sans', sans-serif;
+		font-weight: normal;
+		letter-spacing: .01em;
 	}
 	&:after {
 		content: '';
@@ -78,7 +80,6 @@
 		transition: visibility $med-speed $ease, opacity $med-speed $ease, transform $med-speed $ease;
 	}
 	&:hover {
-		z-index: 9;
 		&:after {
 			border-color: $primary-color;
 		}
@@ -90,7 +91,7 @@
 		}
 	}
 	&.editing {
-		z-index: 9;
+		z-index: 12;
 		&:after {
 			border-color: $primary-color;
 		}

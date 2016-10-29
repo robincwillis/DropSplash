@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import InlineSVG from 'svg-inline-react';
 
 import Button from '../Common/Button';
 import PlusIcon from '../../assets/icons/plus-icon.js';
+
+import DSColorPicker from '../Common/DSColorPicker';
 
 import '../../sass/components/common/inputs';
 
@@ -42,7 +45,38 @@ export default class TypographyView extends Component {
 							<input type="range" min="0" max="100" value="100" />
 						</div>
 					</div>
+					<div className="row range">
+						<label className="divider"><span className="text">Color</span></label>
+						<div className="color-options">
+							<div className="color active"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="color"></div>
+							<div className="add-color">
+								<InlineSVG src={PlusIcon} element="span" className="icon" />
+							</div>
+						</div>
+					</div>
 				</div>
+
+				<div className="ds-pane-bottom-drawer">
+					<div className="color-picker">
+						<DSColorPicker />
+					</div>
+				</div>
+				
 				<div className="pane-view-actions two-actions">
 					<Button
 						buttonClass="medium tertiary"

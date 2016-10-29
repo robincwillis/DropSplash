@@ -36,6 +36,7 @@
 	&.v-center {
 		position: absolute;
 		top: 0;
+		bottom: 0;
 		left: 0;
 		.ds-pane {
 			top: 50%;
@@ -63,11 +64,11 @@
 	background: $pane-bg;
 	box-shadow: 0 10px 40px rgba(0, 0, 0, .2);
 	border-radius: $base-border-radius;
-	overflow: hidden;
+	overflow: visible;
 	min-width: 225px;
 	min-height: 250px;
 	text-align: left;
-	z-index: 10;
+	z-index: 100;
 	color: $text-color;
 	&.wide {
 		width: 300px;
@@ -105,7 +106,7 @@
 			text-align: center;
 			font-size: 14px;
 			font-weight: 500;
-			line-height: $ds-pane-header-height + 1px;
+			line-height: $ds-pane-header-height;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
@@ -244,10 +245,20 @@
 		}
 	} // end .ds-pane-tabs
 
+	.ds-pane-bottom-drawer {
+		position: absolute;
+		// bottom: 40px;
+		// left: 0;
+		// right: 0;
+		// height: 20px;
+		// overflow-x: hidden;
+		// overflow-y: auto;
+		right: 100%;
+	}
+
 	.ds-pane-content {
 		display: block;
-		overflow-x: hidden;
-		overflow-y: auto;
+		overflow: visible;
     height: calc(100% - 50px);
     position: absolute;
     width: 100%;
@@ -262,10 +273,31 @@
     .row {
     	margin-bottom: 15px;
     	&.range {
-    		padding-top: 5px;
+    		padding-top: 3px;
+		    margin-bottom: 10px;
     	}
     	&:last-of-type {
     		margin-bottom: 0;
+    	}
+    	label.divider {
+    		position: relative;
+    		.text {
+    			background: $pane-bg;
+			    z-index: 2;
+			    position: relative;
+			    padding-right: 5px;
+    		}
+    		&:after {
+    			content: '';
+    			position: absolute;
+    			display: block;
+    			left: 2px;
+    			right: 0;
+    			height: 1px; 
+    			background: $pane-line-color;
+    			top: 4px;
+    			z-index: 1;
+    		}
     	}
     }
     .pane-grid-row {
@@ -346,6 +378,8 @@
 				bottom: 0;
 				left: 0;
 				right: 0;
+				border-radius: 0 0 $base-border-radius $base-border-radius;
+				overflow: hidden;
 				.button {
 					border-radius: 0;
 					&.hollow {
@@ -384,6 +418,101 @@
 			.has-button {
 				.content {
 					bottom: $btn-medium-height;
+				}
+			}
+		}
+	}
+
+	.color-options {
+		.add-color {
+			width: 13.333%;
+			padding-bottom: calc(13.333% - 4px);
+			border-radius: 50%;
+			display: inline-block;
+			border: 2px solid lighten(#000, 75%);
+			margin-top: 4%;
+			position: relative;
+			transition: border $med-speed $ease;
+			cursor: pointer;
+			&:hover {
+				border-color: #000;
+				.icon {
+					svg {
+						* {
+							fill: #000;
+						}
+					}
+				}
+			}
+			.icon {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				svg {
+					margin: 0 auto;
+					display: block;
+					width: 14px;
+					height: 22px;
+					* {
+						fill: lighten(#000, 75%);
+					}
+				}
+			}
+		}
+		.color {
+			width: 13.333%;
+			padding-bottom: 13.333%;
+			cursor: pointer;
+			background: #ccc;
+			border-radius: 50%;
+			display: inline-block;
+			vertical-align: top;
+			margin-right: 4%;
+			background: attr(data-color);
+			position: relative;
+			margin-top: 4%;
+			&:nth-child(6n+6) {
+				margin-right: 0;
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				border-radius: 50%;
+				border: 2px solid rgba(0, 0, 0, .07);
+				transition: border $med-speed $ease, opacity $med-speed $ease, top $med-speed $ease, right $med-speed $ease, bottom $med-speed $ease, left $med-speed $ease;
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				top: 2px;
+				right: 2px;
+				bottom: 2px;
+				left: 2px;
+				border-radius: 50%;
+				border: 2px solid transparent;
+				transition: border $med-speed $ease;
+			}
+			&:hover {
+				&:after {
+					border-color: #333;
+				}
+				&:before {
+					border-color: $pane-bg;
+				}
+			}
+			&.active,
+			&:active {
+				&:after {
+					border-color: $primary-color;
+				}
+				&:before {
+					border-color: $pane-bg;
 				}
 			}
 		}

@@ -36,6 +36,7 @@ export default class HeadlineSettingsPane extends Component {
 				views={this.paneContent()}
 				ref="headlineSettingsPane"
 				visible={this.props.visible}
+				paneHeight="300px"
 				onHide={this.props.hideSettingsPane}
 			/>
 		);

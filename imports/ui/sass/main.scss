@@ -51,12 +51,12 @@ svg, svg * {
     right: 0;
     bottom: $footer-height;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 	}
 	.ds-page-section {
 		background: $white;
-		min-height: calc(100vh - 60px);
+		min-height: calc(100vh - 50px);
 		transition: transform $slow-speed $ease, box-shadow $slow-speed $ease;
 		position: relative;
 		z-index: 0;
@@ -154,7 +154,7 @@ svg, svg * {
 	  position: absolute;
 	  line-height: 1.4em !important;
 	  text-transform: none;
-	  padding: 7px 9px;
+	  padding: 6px 9px 7px;
 	  border-radius: 3px;
 	  opacity: 0;
 	  visibility: hidden;

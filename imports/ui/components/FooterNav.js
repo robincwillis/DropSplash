@@ -14,6 +14,7 @@ import PlusIcon from '../assets/icons/plus-icon.js';
 import ForwardsArrow from '../assets/icons/arrow-2-forwards.js';
 import SettingsIcon from '../assets/icons/settings-icon.js';
 import InlineSVG from 'svg-inline-react';
+import ReorderSectionsIcon from '../assets/icons/reorder-sections.js';
 
 //Components
 import Button from './Common/Button';
@@ -76,6 +77,12 @@ class FooterNav extends Component {
 						buttonClass="tiny"
 						label="Add Page Section"
 						icon={PlusIcon}
+					/>
+
+					<Button
+						buttonClass="tiny tertiary"
+						tooltip-text="Reorder Sections"
+						icon={ReorderSectionsIcon}
 					/>
 
 					<a style={logoutStyles} className="button tiny" href="/logout">∆</a>

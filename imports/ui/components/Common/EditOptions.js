@@ -85,23 +85,23 @@ export default class EditOptions extends Component {
 			case 'HEADLINE_WIDGET':
 				return(<div className="pane-position static v-center"><HeadlineSettingsPane {...props}  /></div>);
 			case 'PARAGRAPH_WIDGET':
-				return(<div className="pane-position"><ParagraphSettingsPane {...props} /></div>);
+				return(<div className="pane-position static v-center"><ParagraphSettingsPane {...props} /></div>);
 			case 'IMAGE_WIDGET':
-				return(<div className="pane-position"><ImageSettingsPane {...props} /></div>);
+				return(<div className="pane-position static v-center"><ImageSettingsPane {...props} /></div>);
 			case 'BUTTON_WIDGET':
-				return(<div className="pane-position"><ButtonSettingsPane {...props} /></div>);
+				return(<div className="pane-position static v-center"><ButtonSettingsPane {...props} /></div>);
 			case 'DIVIDER_WIDGET':
-				return(<div className="pane-position"><DividerSettingsPane {...props} /></div>);
+				return(<div className="pane-position static v-center"><DividerSettingsPane {...props} /></div>);
 			case 'VIDEO_WIDGET':
-				return(<div className="pane-position"><VideoSettingsPane {...props} /></div>);
+				return(<div className="pane-position static v-center"><VideoSettingsPane {...props} /></div>);
 			case 'AUDIO_WIDGET':
-				return(<div className="pane-position"><AudioSettingsPane {...props} /></div>);
+				return(<div className="pane-position static v-center"><AudioSettingsPane {...props} /></div>);
 			case 'MAP_WIDGET':
-				return(<div className="pane-position"><MapSettingsPane {...props} /></div>);
+				return(<div className="pane-position static v-center"><MapSettingsPane {...props} /></div>);
 			case 'MEDIUM_WIDGET':
-				return(<div className="pane-position"><MediumSettingsPane {...props} /></div>);
+				return(<div className="pane-position static v-center"><MediumSettingsPane {...props} /></div>);
 			case 'TWITTER_WIDGET':
-				return(<div className="pane-position"><TwitterSettingsPane {...props} /></div>);
+				return(<div className="pane-position static v-center"><TwitterSettingsPane {...props} /></div>);
 				//EX go to a specific view
 				//this.refs.addContentPane.goToView();
 

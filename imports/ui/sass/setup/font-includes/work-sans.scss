@@ -1,0 +1,115 @@
+//--Bagnard----------------------
+
+@font-face {
+  font-family: 'Work Sans';
+  src:  url('/fonts/work-sans/worksans-regular-webfont.woff') format('woff'),
+  			url('/fonts/work-sans/worksans-regular-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src:  url('/fonts/work-sans/worksans-medium-webfont.woff') format('woff'),
+  			url('/fonts/work-sans/worksans-medium-webfont.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src:  url('/fonts/work-sans/worksans-semibold-webfont.woff') format('woff'),
+  			url('/fonts/work-sans/worksans-semibold-webfont.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src:  url('/fonts/work-sans/worksans-bold-webfont.woff') format('woff'),
+  			url('/fonts/work-sans/worksans-bold-webfont.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src:  url('/fonts/work-sans/worksans-light-webfont.woff') format('woff'),
+  			url('/fonts/work-sans/worksans-light-webfont.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src:  url('/fonts/work-sans/worksans-extralight-webfont.woff') format('woff'),
+  			url('/fonts/work-sans/worksans-extralight-webfont.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src:  url('/fonts/work-sans/worksans-thin-webfont.woff') format('woff'),
+  			url('/fonts/work-sans/worksans-thin-webfont.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src:  url('/fonts/work-sans/worksans-extrabold-webfont.woff') format('woff'),
+  			url('/fonts/work-sans/worksans-extrabold-webfont.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src:  url('/fonts/work-sans/worksans-black-webfont.woff') format('woff'),
+  			url('/fonts/work-sans/worksans-black-webfont.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans Hairline';
+  src:  url('/fonts/work-sans/worksans-hairline-webfont.woff') format('woff'),
+  			url('/fonts/work-sans/worksans-hairline-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.work-sans {
+	font-family: 'Work Sans', serif !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+	&.medium {
+		font-weight: 500 !important;
+	}
+	&.semi-bold {
+		font-weight: 600 !important;
+	}
+	&.bold {
+		font-weight: 700 !important;
+	}
+	&.extra-bold {
+		font-weight: 800 !important;
+	}
+	&.black {
+		font-weight: 900 !important;
+	}
+	&.light {
+		font-weight: 300 !important;
+	}
+	&.extra-light {
+		font-weight: 200 !important;
+	}
+	&.thin {
+		font-weight: 100 !important;
+	}
+	&.hairline {
+		font-family: 'Work Sans Hairline', serif !important;
+		font-weight: normal !important;
+	}
+}

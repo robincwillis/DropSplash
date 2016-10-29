@@ -34,6 +34,7 @@ export default class ParagraphSettingsPane extends Component {
 				views={this.paneContent()}
 				ref="paragraphSettingsPane"
 				visible={this.props.visible}
+				paneHeight="300px"
 				onHide={this.props.hideSettingsPane}
 			/>
 		);

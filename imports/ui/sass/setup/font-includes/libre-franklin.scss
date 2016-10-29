@@ -1,0 +1,210 @@
+//--Libre Franklin----------------------
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-thin-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-thin-webfont.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-thinitalic-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-thinitalic-webfont.woff2') format('woff2');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-extralight-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-extralight-webfont.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-extralightitalic-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-extralightitalic-webfont.woff2') format('woff2');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-light-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-light-webfont.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-lightitalic-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-lightitalic-webfont.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-regular-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-regular-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-italic-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-italic-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-medium-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-medium-webfont.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-mediumitalic-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-mediumitalic-webfont.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-semibold-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-semibold-webfont.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-semibolditalic-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-semibolditalic-webfont.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-bold-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-bold-webfont.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-bolditalic-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-bolditalic-webfont.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-extrabold-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-extrabold-webfont.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-extrabolditalic-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-extrabolditalic-webfont.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-black-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-black-webfont.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src:  url('/fonts/libre-franklin/librefranklin-blackitalic-webfont.woff') format('woff'),
+  			url('/fonts/libre-franklin/librefranklin-blackitalic-webfont.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
+.libre-franklin {
+	font-family: 'Libre Franklin', sans-serif !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+	&.italic {
+		font-style: italic !important;
+	}
+	&.thin {
+		font-weight: 100 !important;
+	}
+	&.thin-italic {
+		font-weight: 100 !important;
+		font-style: italic !important;
+	}
+	&.extra-light {
+		font-weight: 200 !important;
+	}
+	&.extra-light-italic {
+		font-weight: 200 !important;
+		font-style: italic !important;
+	}
+	&.light {
+		font-weight: 300 !important;
+	}
+	&.light-italic {
+		font-weight: 200 !important;
+		font-style: italic !important;
+	}
+	&.medium {
+		font-weight: 500 !important;
+	}
+	&.medium-italic {
+		font-weight: 500 !important;
+		font-style: italic !important;
+	}
+	&.semi-bold {
+		font-weight: 600 !important;
+	}
+	&.semi-bold-italic {
+		font-weight: 600 !important;
+		font-style: italic !important;
+	}
+	&.bold {
+		font-weight: 700 !important;
+	}
+	&.bold-italic {
+		font-weight: 700 !important;
+		font-style: italic !important;
+	}
+	&.extra-bold {
+		font-weight: 800 !important;
+	}
+	&.extra-bold-italic {
+		font-weight: 800 !important;
+		font-style: italic !important;
+	}
+	&.black {
+		font-weight: 900 !important;
+	}
+	&.black-italic {
+		font-weight: 900 !important;
+		font-style: italic !important;
+	}
+}

@@ -6,9 +6,11 @@ export default class Divider extends Component {
 
 	render () {
 		let styles = {
-			minWidth: 100,
-			borderBottom: '1px solid black',
-			borderTop: '1px solid transparent'
+			minWidth: "100px",
+			height: "2px",
+			background: "#333",
+			marginTop: "3px",
+			marginBottom: "3px"
 		};
 		return(<hr style={styles} className="ds-hr" />);
 	}

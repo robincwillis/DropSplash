@@ -75,9 +75,9 @@
 		}
 		.pane-position {
 			position: absolute;
-			top: 0;
-			left: 0;
-			border: 2px;
+	    top: 0;
+	    right: 0;
+	    left: auto;
 			.ds-pane {
 				position: absolute;
 				top: 80px;
