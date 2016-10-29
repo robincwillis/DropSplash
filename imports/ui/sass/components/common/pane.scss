@@ -3,34 +3,40 @@
 
 .pane-position {
 	position: relative;
-	.on-right {
+	&.on-right {
 		.ds-pane {
 			left: calc(100% + 20px);
 		}
 	}
-	.cover-right {
+	&.cover-right {
 		.ds-pane {
 			left: 0;
 		}
 	}
-	.on-left {
+	&.on-left {
 		.ds-pane {
 			right: calc(100% + 20px);
 		}
 	}
-	.cover-left {
+	&.cover-left {
 		.ds-pane {
 			right: 0;
 		}
 	}
-	.above {
+	&.above {
 		.ds-pane {
 			bottom: calc(100% + 20px);
 		}
 	}
-	.below {
+	&.below {
 		.ds-pane {
 			top: calc(100% + 20px);
+		}
+	}
+	&.v-center {
+		.ds-pane {
+			top: 50%;
+			transform: translateY(-50%);
 		}
 	}
 }
@@ -58,7 +64,7 @@
 	min-width: 225px;
 	min-height: 250px;
 	text-align: left;
-	z-index: 6;
+	z-index: 10;
 	color: $text-color;
 	&.wide {
 		width: 300px;

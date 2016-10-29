@@ -69,14 +69,18 @@ label {
 
 }
 
-.ds-pane-content label {
-  font-size: 8px;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-  color: $light-text-color;
-  line-height: 1em;
-  display: block;
-  margin-bottom: 3px;
+.ds-pane-content {
+  .row {
+    label {
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: $light-text-color;
+      line-height: 1em;
+      display: block;
+      margin-bottom: 3px;
+    }
+  }
 }
 
 input[type="radio"] + label,

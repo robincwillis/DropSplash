@@ -44,7 +44,7 @@ export default class FileUpload extends Component {
 				</div>
 				<div>
 					<input onChange={this.handleOnChange.bind(this)} type="file" name="file" id="file"/>
-					<label className="button" htmlFor="file">{this.state.buttonLabel}</label>
+					<label className="button" htmlFor="file"><span className="label">{this.state.buttonLabel}</span></label>
 				</div>
 			</div>
 		);

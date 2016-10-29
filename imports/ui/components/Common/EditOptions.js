@@ -83,25 +83,25 @@ export default class EditOptions extends Component {
 
 		switch (WidgetTypes[this.props.widget.type]) {
 			case 'HEADLINE_WIDGET':
-				return(<HeadlineSettingsPane {...props}  />);
+				return(<div className="pane-poistion v-center"><HeadlineSettingsPane {...props}  /></div>);
 			case 'PARAGRAPH_WIDGET':
-				return(<ParagraphSettingsPane {...props} />);
+				return(<div className="pane-poistion"><ParagraphSettingsPane {...props} /></div>);
 			case 'IMAGE_WIDGET':
-				return(<ImageSettingsPane {...props} />);
+				return(<div className="pane-poistion"><ImageSettingsPane {...props} /></div>);
 			case 'BUTTON_WIDGET':
-				return(<ButtonSettingsPane {...props} />);
+				return(<div className="pane-poistion"><ButtonSettingsPane {...props} /></div>);
 			case 'DIVIDER_WIDGET':
-				return(<DividerSettingsPane {...props} />);
+				return(<div className="pane-poistion"><DividerSettingsPane {...props} /></div>);
 			case 'VIDEO_WIDGET':
-				return(<VideoSettingsPane {...props} />);
+				return(<div className="pane-poistion"><VideoSettingsPane {...props} /></div>);
 			case 'AUDIO_WIDGET':
-				return(<AudioSettingsPane {...props} />);
+				return(<div className="pane-poistion"><AudioSettingsPane {...props} /></div>);
 			case 'MAP_WIDGET':
-				return(<MapSettingsPane {...props} />);
+				return(<div className="pane-poistion"><MapSettingsPane {...props} /></div>);
 			case 'MEDIUM_WIDGET':
-				return(<MediumSettingsPane {...props} />);
+				return(<div className="pane-poistion"><MediumSettingsPane {...props} /></div>);
 			case 'TWITTER_WIDGET':
-				return(<TwitterSettingsPane {...props} />);
+				return(<div className="pane-poistion"><TwitterSettingsPane {...props} /></div>);
 				//EX go to a specific view
 				//this.refs.addContentPane.goToView();
 

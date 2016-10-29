@@ -24,7 +24,7 @@ button {
   font-family: $main-font;
   font-weight: 400;
   cursor: pointer;
-  line-height: $btn-height - 4px;
+  line-height: $btn-height;
   width: 100%;
   max-width: 300px;
   border: $btn-border;
@@ -154,15 +154,15 @@ button {
   }
 
   &.disabled {
-    background-color: lighten($text-color, 70%) !important;
+    background-color: lighten($text-color, 70%);
     color: #fff;
   }
 
   &.loading {
-    color: transparent !important;
-    background-color: lighten($text-color, 70%) !important;
+    color: transparent;
+    background-color: lighten($text-color, 70%);
     border: $btn-border;
-    border-color: lighten($text-color, 70%) !important;
+    border-color: lighten($text-color, 70%);
     cursor: default;
     &:before {
       border: 2px solid rgba($bg-color, .5);
@@ -268,8 +268,8 @@ button {
 
   &.tertiary {
     background-color: $tertiary-btn-bg;
-    color: $tertiary-btn-color;
     border: $tertiary-btn-border;
+    color: $tertiary-btn-color;
     svg {
       * {
         fill: $tertiary-btn-color;
@@ -277,9 +277,9 @@ button {
     }
     &:hover,
     &:active {
-      color: $tertiary-btn-hover-color;
       background-color: $tertiary-btn-hover-bg;
       border: $tertiary-btn-hover-border;
+      color: $tertiary-btn-hover-color;
       svg {
         * {
           fill: $tertiary-btn-hover-color;

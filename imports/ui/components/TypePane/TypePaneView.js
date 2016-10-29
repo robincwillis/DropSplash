@@ -16,8 +16,8 @@ export default class App extends Component {
 					<div className="row">
 						<label>font</label>
 						<div className="input-group">
-							<input className="two-thirds" type="text" />
-							<input className="one-third" type="text" />
+							<input className="two-thirds" type="text" placeholder="Work Sans" />
+							<input className="one-third" type="text" placeholder="Bold" />
 						</div>
 					</div>
 					<div className="row pane-grid-row">

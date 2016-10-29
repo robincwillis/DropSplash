@@ -16,22 +16,22 @@ export default class TypographyView extends Component {
 					<div className="row">
 						<label>font</label>
 						<div className="input-group">
-							<input className="two-thirds" type="text" />
-							<input className="one-third" type="text" />
+							<input className="two-thirds" type="text" placeholder="Work Sans" />
+							<input className="one-third" type="text" placeholder="Bold" />
 						</div>
 					</div>
 					<div className="row pane-grid-row">
 						<div className="col one-third">
 							<label>Size</label>
-							<input type="text" />
+							<input type="text" placeholder="40px" />
 						</div>
 						<div className="col one-third">
 							<label>Letter</label>
-							<input type="text" />
+							<input type="text" placeholder="0" />
 						</div>
 						<div className="col one-third">
 							<label>Line</label>
-							<input type="text" />
+							<input type="text" placeholder="1.333" />
 						</div>
 					</div>
 					<div className="row pane-grid-row range">
@@ -39,7 +39,7 @@ export default class TypographyView extends Component {
 							<label>Opacity</label>
 						</div>
 						<div className="col three-quarter opacity">
-							<input type="range" />
+							<input type="range" min="0" max="100" value="100" />
 						</div>
 					</div>
 				</div>
