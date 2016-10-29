@@ -22,6 +22,7 @@ import ReorderControls from './ReorderSectionControls.js';
 import { Sections } from '../../../api/sections/sections.js';
 import { Widgets } from '../../../api/widgets/widgets.js';
 import { Pages } from '../../../api/pages/pages.js';
+import { Files } from '../../../api/files/files.js';
 
 // Style
 import '../../sass/components/common/reorder-sections';
@@ -61,10 +62,33 @@ class PageSection extends Component {
 	}
 
 	sectionStyle () {
-		var sectionStyle = {
-			minHeight: this.props.section.style.height
-		};
+		// let sectionStyle = {
+		// 	minHeight: this.props.section.style.height
+		// };
+
+		let sectionStyle = Object.assign({},this.props.section.styles);
+		let settings = this.props.section.settings;
+		if(settings && settings.background) {
+
+			switch (settings.background.type) {
+				case 'image':
+					let file = Files.findOne(settings.background.fileId);
+					console.log(file);
+					sectionStyle.background = 'url('+file.url+') no-repeat center center';
+					sectionStyle.backgroundSize = 'cover';
+					break;
+				case 'video':
+					break;
+				case 'color':
+					break;
+			}
+		}
+
 		return sectionStyle;
+	}
+
+	sectionBackground() {
+
 	}
 
 	sectionContent () {
@@ -147,7 +171,6 @@ class PageSection extends Component {
 		// console.log(hoverIndex);
 		//get updated Order
 		//call reorder function on backend
-
 	}
 
 	render () {
@@ -155,10 +178,11 @@ class PageSection extends Component {
 			return (<div>loading</div>);
 		}
 
-		console.log(this.props.widgets);
+		console.log(this.props.section);
+		//console.log(this.props.widgets);
 
 		return (
-			<div className={this.sectionClass()} style={this.props.section.styles} >
+			<div className={this.sectionClass()} style={this.sectionStyle()} >
 				<SectionControls removeSection={this.removeSection.bind(this)} {...this.props} />
 
 				{this.sectionContent()}
@@ -183,7 +207,7 @@ const cardTarget = {
 		const { id } = props;
 		const sourceObj = monitor.getItem();
 		//if ( id !== sourceObj.listId ) component.pushCard(sourceObj.card);
-		return props
+		return props;
 	}
 };
 

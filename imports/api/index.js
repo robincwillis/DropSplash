@@ -24,8 +24,13 @@ import './widgets/methods.js';
 import './widgets/schema.js';
 import './widgets/server/publications.js';
 
+import './files/methods.js';
+import './files/schema.js';
+import './files/server/publications.js';
+
 import './services/instagram.js';
 import './services/mailchimp.js';
 import './services/maps.js';
 import './services/mailchimp.js';
 import './services/twitter.js';
+import './services/slingshot.js';

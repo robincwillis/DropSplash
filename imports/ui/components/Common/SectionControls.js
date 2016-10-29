@@ -117,6 +117,7 @@ export default class App extends Component {
 			section={this.props.section}
 			closeable={true}
 			visible={this.state.showSectionSettingsPane}
+			{...this.props}
 			/>);
 	}
 
@@ -125,6 +126,7 @@ export default class App extends Component {
 			section={this.props.section}
 			closeable={true}
 			visible={this.state.showBackgroundPane}
+			{...this.props}
 		/>);
 	}
 

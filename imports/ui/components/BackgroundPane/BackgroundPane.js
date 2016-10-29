@@ -21,6 +21,7 @@ export default class BackgroundPane extends Component {
     }
 
     paneContent () {
+        console.log(this.props);
         return [
             {
                 id : 'background-image-view',
@@ -29,7 +30,9 @@ export default class BackgroundPane extends Component {
                 props : {
                     key:"1",
                     title:"view 1",
-                    clickHandler: this.clickHandler.bind(this)
+                    clickHandler: this.clickHandler.bind(this),
+                    page: this.props.page,
+                    section : this.props.section
                 }
             },
             {

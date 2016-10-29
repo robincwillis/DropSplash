@@ -50,6 +50,7 @@ export default createContainer( () => {
   Meteor.subscribe('sections');
   Meteor.subscribe('app');
   Meteor.subscribe('user.services');
+  Meteor.subscribe('files');
 
   return {
     currentUser: Meteor.user(),

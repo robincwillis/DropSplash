@@ -36,6 +36,7 @@ class Page extends Component {
 						key={section._id}
 						section={section}
 						empty={this.props.page.empty}
+						{...this.props}
 					/>
 				</ReactCSSTransitionGroup>
 			);

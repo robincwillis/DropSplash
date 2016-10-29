@@ -25,7 +25,8 @@
     "Meteor": true,
     "Accounts": true,
     "Session": true,
-    "ServiceConfiguration": true
+    "ServiceConfiguration": true,
+    "Slingshot": true
   },
   "rules": {
     "eqeqeq": 2,

@@ -57,7 +57,18 @@ export const removeSection = new ValidatedMethod({
 	}
 });
 
-// export const update = new ValidatedMethod({
+export const updateSectionSettings = new ValidatedMethod({
+	name: 'section.update.settings',
+	validate : null,
+	run({sectionId, settings}) {
+		return Sections.update(sectionId, {
+			$set: {settings : settings}
+		});
+	}
+
+});
+
+// export const updateSectionStyles = new ValidatedMethod({
 
 // });
 

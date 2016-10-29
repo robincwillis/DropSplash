@@ -358,6 +358,10 @@ input[type="file"] {
 input[type="file"] + label {
     display: inline-block;
     cursor: pointer;
+    line-height: 50px;
+    color: $white;
+    font-size: 12px;
+    letter-spacing: .2em;
 
     &:hover + label {
     }
