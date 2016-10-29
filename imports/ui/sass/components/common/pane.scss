@@ -34,6 +34,9 @@
 		}
 	}
 	&.v-center {
+		position: absolute;
+		top: 0;
+		left: 0;
 		.ds-pane {
 			top: 50%;
 			transform: translateY(-50%);
