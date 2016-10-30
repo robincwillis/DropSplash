@@ -246,23 +246,17 @@
 	} // end .ds-pane-tabs
 
 	.ds-pane-bottom-drawer {
-		display: none;
-		//
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		right: 0;
 		height: 100%;
 		overflow: hidden;
-		background: rgba(0, 0, 0, .15);
+		background: transparent;
     z-index: 12;
     border-radius: 0 0 $base-border-radius $base-border-radius;
-    transition: background $slow-speed $ease;
     .slider {
     	height: 100%;
-    	transition: transform $slow-speed $ease;
-    	transform: translate3d(0, 100%, 0);
-    	transform: translate3d(0, 0, 0);
     	.pane-view-actions {
 	    	position: relative;
 	    }
@@ -664,4 +658,45 @@
 	  background: #000;
 	  opacity: .1;
 	}
+}
+
+// Drawer Transition
+.pane-drawer-appear {
+  background: transparent;
+  transition: opacity .5s $ease;
+  .slider {
+  	transition: transform .5s $ease;
+  	transform: translate3d(0, 100%, 0);
+  }
+}
+
+.pane-drawer-appear.pane-drawer-appear-active {
+	background: rgba(0, 0, 0, .2);
+  .slider {
+  	transform: translate3d(0, 0, 0);
+  }
+}
+
+// .pane-drawer-enter {
+//   background-color: transparent;
+//   transition: background .5s $ease;
+//   .slider {
+//   	transition: transform .5s $ease;
+//   	transform: translate3d(0, 100%, 0);
+//   }
+// }
+
+// .pane-drawer-enter.pane-drawer-enter-active {
+// 	background-color: rgba(0, 0, 0, .2);
+//   .slider {
+//   	transform: translate3d(0, 0, 0);
+//   }
+// }
+
+.pane-drawer-leave {
+
+}
+
+.pane-drawer-leave.pane-drawer-leave-active {
+
 }
