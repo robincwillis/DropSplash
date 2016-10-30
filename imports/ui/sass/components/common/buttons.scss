@@ -37,11 +37,13 @@ button {
   transition: border $med-speed ease-in-out, background $med-speed ease-in-out, color $med-speed ease-in-out, background $med-speed ease-in-out, padding $med-speed ease-in-out;
   .label {
     display: inline-block;
+    height: $btn-height;
   }
   .icon {
     display: inline-block;
     vertical-align: top;
     line-height: 0;
+    height: $btn-height;
     + .label {
       margin-left: 10px;
     }
@@ -59,7 +61,11 @@ button {
     padding: $btn-large-padding;
     line-height: $btn-large-height - 2px;
     font-size: 12px;
+    .label {
+      height: $btn-large-height;
+    }
     .icon {
+      height: $btn-large-height;
       svg {
         height: $btn-large-height;
       }
@@ -74,8 +80,12 @@ button {
     font-size: 10px;
     height: $btn-medium-height;
     padding: $btn-medium-padding;
-    line-height: $btn-medium-height - 0px;
+    line-height: $btn-medium-height - 1px;
+    .label {
+      height: $btn-medium-height;
+    }
     .icon {
+      height: $btn-medium-height;
       svg {
         height: $btn-medium-height;
       }
@@ -90,8 +100,12 @@ button {
     font-size: 10px;
     height: $btn-tiny-height;
     padding: $btn-tiny-padding;
-    line-height: $btn-tiny-height - 0px;
+    line-height: $btn-tiny-height - 1px;
+    .label {
+      height: $btn-tiny-height;
+    }
     .icon {
+      height: $btn-tiny-height;
       svg {
         height: $btn-tiny-height;
       }

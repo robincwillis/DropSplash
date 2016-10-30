@@ -11,7 +11,7 @@ export default class Button extends Component {
 	render () {
 		return (
 			<div className="ds-color-picker">
-                
+                <Alpha {...this.props} />
             </div>
 		);
 	}

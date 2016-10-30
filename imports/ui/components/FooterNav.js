@@ -80,8 +80,9 @@ class FooterNav extends Component {
 					/>
 
 					<Button
-						buttonClass="tiny tertiary"
+						buttonClass="tiny reorder-sections"
 						tooltip-text="Reorder Sections"
+						label="Reorder Sections"
 						icon={ReorderSectionsIcon}
 					/>
 

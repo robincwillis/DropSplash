@@ -246,14 +246,27 @@
 	} // end .ds-pane-tabs
 
 	.ds-pane-bottom-drawer {
+		display: none;
+		//
 		position: absolute;
-		// bottom: 40px;
-		// left: 0;
-		// right: 0;
-		// height: 20px;
-		// overflow-x: hidden;
-		// overflow-y: auto;
-		right: 100%;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 100%;
+		overflow: hidden;
+		background: rgba(0, 0, 0, .15);
+    z-index: 12;
+    border-radius: 0 0 $base-border-radius $base-border-radius;
+    transition: background $slow-speed $ease;
+    .slider {
+    	height: 100%;
+    	transition: transform $slow-speed $ease;
+    	transform: translate3d(0, 100%, 0);
+    	transform: translate3d(0, 0, 0);
+    	.pane-view-actions {
+	    	position: relative;
+	    }
+    }
 	}
 
 	.ds-pane-content {
@@ -424,48 +437,10 @@
 	}
 
 	.color-options {
-		.add-color {
-			width: 13.333%;
-			padding-bottom: calc(13.333% - 4px);
-			border-radius: 50%;
-			display: inline-block;
-			border: 2px solid lighten(#000, 75%);
-			margin-top: 4%;
-			position: relative;
-			transition: border $med-speed $ease;
-			cursor: pointer;
-			&:hover {
-				border-color: #000;
-				.icon {
-					svg {
-						* {
-							fill: #000;
-						}
-					}
-				}
-			}
-			.icon {
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				svg {
-					margin: 0 auto;
-					display: block;
-					width: 14px;
-					height: 22px;
-					* {
-						fill: lighten(#000, 75%);
-					}
-				}
-			}
-		}
 		.color {
 			width: 13.333%;
 			padding-bottom: 13.333%;
 			cursor: pointer;
-			background: #ccc;
 			border-radius: 50%;
 			display: inline-block;
 			vertical-align: top;
@@ -473,16 +448,37 @@
 			background: attr(data-color);
 			position: relative;
 			margin-top: 4%;
+			transition: border $med-speed $ease;
+			&.add-color {
+				&:after {
+					border-color: lighten(#000, 80%);
+				}
+			}
+			.icon {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin: -7px;
+				svg {
+					margin: 0 auto;
+					display: block;
+					width: 14px;
+					height: 14px;
+					* {
+						fill: lighten(#000, 80%);
+					}
+				}
+			}
 			&:nth-child(6n+6) {
 				margin-right: 0;
 			}
 			&:after {
 				content: '';
 				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
+				top: -1px;
+				right: -1px;
+				bottom: -1px;
+				left: -1px;
 				border-radius: 50%;
 				border: 2px solid rgba(0, 0, 0, .07);
 				transition: border $med-speed $ease, opacity $med-speed $ease, top $med-speed $ease, right $med-speed $ease, bottom $med-speed $ease, left $med-speed $ease;
@@ -490,15 +486,22 @@
 			&:before {
 				content: '';
 				position: absolute;
-				top: 2px;
-				right: 2px;
-				bottom: 2px;
-				left: 2px;
+				top: 0px;
+				right: 0px;
+				bottom: 0px;
+				left: 0px;
 				border-radius: 50%;
-				border: 2px solid transparent;
+				border: 3px solid transparent;
 				transition: border $med-speed $ease;
 			}
 			&:hover {
+				.icon {
+					svg {
+						* {
+							fill: #000;
+						}
+					}
+				}
 				&:after {
 					border-color: #333;
 				}
@@ -508,6 +511,11 @@
 			}
 			&.active,
 			&:active {
+				&.add-color {
+					&:after {
+						border-color: #000;
+					}
+				}
 				&:after {
 					border-color: $primary-color;
 				}

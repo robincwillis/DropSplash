@@ -39,7 +39,7 @@ export default class Paragraph extends Component {
 	render () {
 		return (
 			<ContentEditable
-				spellcheck={false}
+				spellCheck={false}
 				className="content"
 				tagName="p"
 				html={this.state.content} // innerHTML of the editable div

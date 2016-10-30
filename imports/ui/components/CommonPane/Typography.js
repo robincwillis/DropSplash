@@ -45,26 +45,12 @@ export default class TypographyView extends Component {
 							<input type="range" min="0" max="100" value="100" />
 						</div>
 					</div>
-					<div className="row range">
+					<div className="row">
 						<label className="divider"><span className="text">Color</span></label>
 						<div className="color-options">
-							<div className="color active"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="color"></div>
-							<div className="add-color">
+							<div className="color active" style={{ background: '#000' }}></div>
+							<div className="color" style={{ background: '#fff' }}></div>
+							<div className="color add-color">
 								<InlineSVG src={PlusIcon} element="span" className="icon" />
 							</div>
 						</div>
@@ -72,8 +58,19 @@ export default class TypographyView extends Component {
 				</div>
 
 				<div className="ds-pane-bottom-drawer">
-					<div className="color-picker">
-						<DSColorPicker />
+					<div className="slider">
+						<div className="content">
+							<div className="color-picker">
+								<DSColorPicker />
+							</div>
+						</div>
+						<div className="pane-view-actions">
+							<Button
+								buttonClass="medium"
+								label="Save Color"
+								clickEvent={this.props.hidePane}
+							/>
+						</div>
 					</div>
 				</div>
 				

@@ -10,10 +10,14 @@
 	.chrome-picker {
 		overflow: hidden !important;
 		background: $pane-bg !important;
-		width: 200px !important;
+		width: 100% !important;
 		box-shadow: none !important;
-		box-shadow: 0 10px 40px rgba(0, 0, 0, .2) !important;
-		border-radius: $base-border-radius !important;
+		// box-shadow: 0 10px 40px rgba(0, 0, 0, .2) !important;
+		border-radius: 0 !important;
+		> div:first-of-type {
+			border-radius: 0 !important;
+			padding-bottom: 91px !important;
+		}
 		input[type=text] {
 	    -webkit-appearance: none;
 	    -moz-appearance: none;
