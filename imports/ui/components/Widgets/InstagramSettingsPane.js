@@ -15,7 +15,11 @@ export default class InstagramSettingsPane extends Component {
 			{
 				id: 'instagram-settings-view',
 				title: 'Type',
-				Component: InstagramSettingsView
+				Component: InstagramSettingsView,
+				props : {
+					hidePane: this.props.hideSettingsPane,
+					widget : this.props.widget
+				}
 			}
 		];
 	}

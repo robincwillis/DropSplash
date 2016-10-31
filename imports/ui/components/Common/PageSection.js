@@ -73,7 +73,6 @@ class PageSection extends Component {
 			switch (settings.background.type) {
 				case 'image':
 					let file = Files.findOne(settings.background.fileId);
-					console.log(file);
 					sectionStyle.background = 'url('+file.url+') no-repeat center center';
 					sectionStyle.backgroundSize = 'cover';
 					break;
@@ -114,6 +113,8 @@ class PageSection extends Component {
 					<li key={widget._id}>
 						<div className="container" style={this.props.containerStyles} >
 							<EditableComponent
+								page={this.props.page}
+								section={this.props.page}
 								widget={widget}
 								moveWidget={this.moveWidget.bind(this)}
 							/>
@@ -140,8 +141,7 @@ class PageSection extends Component {
 	}
 
 	moveWidget (dragIndex, hoverIndex) {
-		console.log(this.props.widgets[dragIndex].content);
-		//let widgets == this.props.widgets;
+
 		let dragWidget = this.props.widgets[dragIndex];
 		let widgets = update(this.props.widgets,
 			{$splice: [
@@ -153,10 +153,8 @@ class PageSection extends Component {
 			return widget;
 		});
 		//widgets.splice(dragIndex, 0).splice(hoverIndex, 0, dragWidget);
-		console.log(widgets);
-
 		updateWidgetOrder.call({
-			widgets : widgets,
+			widgets : widgets
 		},(err) => {
 			if (err) {
 				console.log('updated widget order barf');
@@ -178,7 +176,9 @@ class PageSection extends Component {
 			return (<div>loading</div>);
 		}
 
-		console.log(this.props.section);
+		console.log(this.props);
+
+		//console.log(this.props.section);
 		//console.log(this.props.widgets);
 
 		return (

@@ -37,8 +37,11 @@ export default class Paragraph extends Component {
 	}
 
 	render () {
+		const widgetStyles = this.props.widget.styles || {};
+		const style = Object.assign({},widgetStyles);
 		return (
 			<ContentEditable
+				style={style}
 				spellCheck={false}
 				className="content"
 				tagName="p"

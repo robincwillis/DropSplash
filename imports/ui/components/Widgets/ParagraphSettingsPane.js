@@ -20,7 +20,11 @@ export default class ParagraphSettingsPane extends Component {
 			{
 				id: 'paragraph-typography-view',
 				title: 'Type',
-				Component: TypographyView
+				Component: TypographyView,
+				props : {
+					hidePane: this.props.hideSettingsPane,
+					widget : this.props.widget
+				}
 			}
 		];
 	}

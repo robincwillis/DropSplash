@@ -1,82 +1,59 @@
 import React, { Component } from 'react';
-import InlineSVG from 'svg-inline-react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 import Button from '../Common/Button';
-import PlusIcon from '../../assets/icons/plus-icon.js';
-
-import DSColorPicker from '../Common/DSColorPicker';
+import Color from '../Common/Color';
 
 import '../../sass/components/common/inputs';
 
+//API
+import { updateWidgetStyles } from '../../../api/widgets/methods';
+
 export default class TypographyView extends Component {
 
-	constructor (props) {
+	constructor(props){
 		super(props);
+		//TODO load init styles into here to set controls
 		this.state = {
-			colorPickerVisible : false
+			styles : {}
 		};
 	}
 
-	showColorPicker () {
-		this.setState({
-			colorPickerVisible: true
+	updateStyles (styles) {
+		const widgetStyles = this.props.widget.styles || {};
+		const stylesObj = Object.assign(widgetStyles, styles);
+		updateWidgetStyles.call({
+			widgetId : this.props.widget._id,
+			styles : stylesObj
 		});
 	}
 
-	hideColorPicker () {
-		this.setState({
-			colorPickerVisible: false
-		});
+	updateColor (color) {
+		let colorStyle = {
+			color : color.hex
+		};
+		this.updateStyles(colorStyle);
+		//create color style out of colorObj
 	}
 
-	renderColorPicker () {
-		if (this.state.colorPickerVisible) {
-			return (
-				<div>
-					<ReactCSSTransitionGroup
-						transitionName='pane-drawer'
-						transitionAppear={true}
-						transitionAppearTimeout={500}
-						transitionEnterTimeout={500}
-						transitionLeaveTimeout={500}
-					>
-						<div className="ds-pane-bottom-drawer">
-							<div className="slider">
-								<div className="content">
-									<div className="color-picker">
-										<DSColorPicker />
-									</div>
-								</div>
-								<div className="pane-view-actions">
-									<Button
-										buttonClass="medium"
-										label="Save Color"
-										clickEvent={this.hideColorPicker.bind(this)}
-									/>
-								</div>
-							</div>
-						</div>
-					</ReactCSSTransitionGroup>
-				</div>
-			);
-		}
-		else {
-			return false;	
-		}
+
+	save() {
+		this.updateStyles(this.state.styles);
+		this.props.hidePane();
 	}
+
+	cancel() {
+		this.props.hidePane();
+	}
+
 
 	render () {
-		
-		// console.log('common typography');
-		// console.log(this.props);
-		console.log(this.state.colorPickerVisible);
 
 		return (
 			<div className="has-button" key="view1">
 				<div className="content pane-padded">
 					<div className="row">
-						<label>font</label>
+						<label>Font</label>
 						<div className="input-group">
 							<input className="two-thirds" type="text" placeholder="Work Sans" />
 							<input className="one-third" type="text" placeholder="Bold" />
@@ -101,33 +78,28 @@ export default class TypographyView extends Component {
 							<label>Opacity</label>
 						</div>
 						<div className="col three-quarter opacity">
-							<input type="range" min="0" max="100" value="100" />
+							<input type="range" min="0" max="100" defaultValue="100" />
 						</div>
 					</div>
 					<div className="row">
 						<label className="divider"><span className="text">Color</span></label>
-						<div className="color-options">
-							<div className="color active" style={{ background: '#000' }}></div>
-							<div className="color" style={{ background: '#fff' }}></div>
-							<div className="color add-color" onClick={this.showColorPicker.bind(this)}>
-								<InlineSVG src={PlusIcon} element="span" className="icon" />
-							</div>
-						</div>
+						<Color
+							onSelectColor={this.updateColor.bind(this)}
+							{...this.props}
+						/>
 					</div>
 				</div>
 
-				{this.renderColorPicker()}
-				
 				<div className="pane-view-actions two-actions">
 					<Button
 						buttonClass="medium tertiary"
 						label="Cancel"
-						clickEvent={this.props.hidePane}
+						clickEvent={this.cancel.bind(this)}
 					/>
 					<Button
 						buttonClass="medium"
 						label="Done"
-						clickEvent={this.props.hidePane}
+						clickEvent={this.save.bind(this)}
 					/>
 				</div>
 			</div>

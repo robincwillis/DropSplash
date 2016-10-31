@@ -43,9 +43,9 @@ const cardSource = {
 		return {
 			id: props.widget._id,
       index: props.widget.index
-		}
+		};
 	}
-}
+};
 
 const cardTarget = {
 	hover(props, monitor, component) {
@@ -174,21 +174,30 @@ class EditableComponent extends Component {
 	}
 
 	render () {
+		const {canDrop, isOver, isDragging, connectDragSource, connectDropTarget } = this.props;
 
-		const {isDragging, connectDragSource, connectDropTarget } = this.props;
+		const isActive = canDrop && isOver;
 
-		let opacity = isDragging ? 0.5 : 1;
-		let dragStyle = {opacity : opacity };
+
+		let dragStyle = isDragging ? {
+			opacity : 0.5 ,
+			backgroundColor : '#ffffff'
+		} : {};
+		let dropStyle = isOver ? {backgroundColor: 'rgba(22, 225, 185, 0.3)'} : {};
+		let isActiveStyle = isActive ? {backgroundColor: 'red'} : {};
+		let dragDropStyle = Object.assign({}, dragStyle, dropStyle, isActiveStyle);
 
 		return connectDragSource(connectDropTarget(
 		//return (
-			<div style={dragStyle}>
+			<div style={dragDropStyle}>
 				<div
 					className={this.editableClass()}
 					onClick={this.enterEditMode.bind(this)}
 				>
 					{this.renderWidget()}
 					<EditOptions
+						page={this.props.page}
+						section={this.props.page}
 						widget={this.props.widget}
 						editing={this.state.editing}
 						clickHandler={this.clickHandler.bind(this)}
@@ -206,8 +215,10 @@ export default _.compose(
   DragSource(ItemTypes.CARD, cardSource, connect => ({
     connectDragSource: connect.dragSource()
   })),
-  DropTarget(ItemTypes.CARD, cardTarget, connect => ({
-    connectDropTarget: connect.dropTarget()
+  DropTarget(ItemTypes.CARD, cardTarget, (connect, monitor) => ({
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver(),
+		canDrop: monitor.canDrop()
   }))
 )(onClickOutside(EditableComponent));
 

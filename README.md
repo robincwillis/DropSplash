@@ -6,6 +6,17 @@ DropSplash the Real App
 meteor --settings settings.json
 ````
 
+````
+mkdir build;
+meteor build ./build
+````
+
+reboot droplet
+````
+sudo shutdown -r now
+
+````
+
 https://galaxy.meteor.com/robincwillis
 
 https://mlab.com/databases/dsdb

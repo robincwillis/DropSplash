@@ -15,7 +15,11 @@ export default class VideoSettingsPane extends Component {
 			{
 				id: 'video-typography-pane',
 				title: 'Type',
-				Component: TypographyView
+				Component: TypographyView,
+				props : {
+					hidePane: this.props.hideSettingsPane,
+					widget : this.props.widget
+				}
 			}
 		];
 	}

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import ContentEditable from 'react-contenteditable';
+import ContentEditable from '../Common/ContentEditable';
 import { _ } from 'meteor/underscore';
 
 //Components
@@ -37,8 +37,11 @@ export default class Headline extends Component {
 	}
 
 	render () {
+		const widgetStyles = this.props.widget.styles || {};
+		const style = Object.assign({},widgetStyles);
 		return (
 			<ContentEditable
+				style={style}
 				className="content"
 				tagName="h1"
 				html={this.state.content} // innerHTML of the editable div

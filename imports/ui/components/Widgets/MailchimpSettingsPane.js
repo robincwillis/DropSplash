@@ -15,7 +15,11 @@ export default class MailchimpSettingsPane extends Component {
 			{
 				id: 'mailchimp-typography-pane',
 				title: 'Type',
-				Component: TypographyView
+				Component: TypographyView,
+				props : {
+					hidePane: this.props.hideSettingsPane,
+					widget : this.props.widget
+				}
 			}
 		];
 	}

@@ -15,7 +15,11 @@ export default class MapSettingsPane extends Component {
 			{
 				id: 'map-typography-pane',
 				title: 'Type',
-				Component: TypographyView
+				Component: TypographyView,
+				props : {
+					hidePane: this.props.hideSettingsPane,
+					widget : this.props.widget
+				}
 			}
 		];
 	}

@@ -15,6 +15,18 @@ export default class HeadlineSettingsPane extends Component {
 		super(props);
 	}
 
+	setColor () {
+
+	}
+
+	setFont () {
+
+	}
+
+	setOpacity () {
+
+	}
+
 	paneContent () {
 		return [
 			{
@@ -22,7 +34,8 @@ export default class HeadlineSettingsPane extends Component {
 				title: 'Type',
 				Component: TypographyView,
 				props : {
-					hidePane: this.props.hideSettingsPane
+					hidePane: this.props.hideSettingsPane,
+					widget : this.props.widget
 				}
 			}
 		];

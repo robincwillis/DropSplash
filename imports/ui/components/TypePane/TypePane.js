@@ -8,7 +8,7 @@ import TypePaneView from 'Components/TypePane/TypePaneView';
 
 import 'sass/components/common/modal';
 
-export default class App extends Component {
+export default class TypePane extends Component {
 
     constructor (props) {
         super(props);

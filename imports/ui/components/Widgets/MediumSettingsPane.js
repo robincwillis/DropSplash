@@ -15,7 +15,11 @@ export default class MediumSettingsPane extends Component {
 			{
 				id: 'medium-typography-pane',
 				title: 'Type',
-				Component: TypographyView
+				Component: TypographyView,
+				props : {
+					hidePane: this.props.hideSettingsPane,
+					widget : this.props.widget
+				}
 			}
 		];
 	}

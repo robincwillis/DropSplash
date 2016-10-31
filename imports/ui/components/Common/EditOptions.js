@@ -64,8 +64,7 @@ export default class EditOptions extends Component {
 
 	hideSettingsPane () {
 		this.setState({
-			settingsPaneVisible:false,
-			something:'else'
+			settingsPaneVisible:false
 		});
 	}
 
@@ -78,7 +77,8 @@ export default class EditOptions extends Component {
 	renderSettingsPane () {
 		const props = {
 			hideSettingsPane: this.hideSettingsPane.bind(this),
-			visible: this.state.settingsPaneVisible
+			visible: this.state.settingsPaneVisible,
+			widget : this.props.widget
 		};
 
 		switch (WidgetTypes[this.props.widget.type]) {

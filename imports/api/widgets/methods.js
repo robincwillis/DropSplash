@@ -64,6 +64,28 @@ export const updateWidgetContent = new ValidatedMethod({
 	}
 });
 
+export const updateWidgetSettings = new ValidatedMethod({
+	name : 'widget.update.settings',
+	validate : null,
+	run({widgetId, settings}){
+		return Widgets.update(widgetId, {
+			$set: {settings : settings}
+		});
+	}
+});
+
+export const updateWidgetStyles = new ValidatedMethod({
+	name : 'widget.update.styles',
+	validate : null,
+	run({widgetId, styles}){
+		return Widgets.update(widgetId, {
+			$set: {styles : styles}
+		});
+
+		//TODO update default styles
+	}
+});
+
 export const updateWidgetOrder = new ValidatedMethod({
 	name: 'widget.update.order',
 	validate : null,
@@ -114,11 +136,3 @@ export const insertWidgetAfter = new ValidatedMethod({
 		return widgetId;
 	}
 });
-
-//update widget styles
-//update widget settings
-//move widget
-//resort section widgets
-
-
-

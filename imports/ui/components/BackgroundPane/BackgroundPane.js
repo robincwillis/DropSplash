@@ -21,7 +21,6 @@ export default class BackgroundPane extends Component {
     }
 
     paneContent () {
-        console.log(this.props);
         return [
             {
                 id : 'background-image-view',
