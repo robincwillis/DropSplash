@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+import PlusIcon from '../../assets/icons/plus-icon.js';
+import DownArrow from '../../assets/icons/arrow-2-forwards.js';
 
 import Button from '../Common/Button';
 import Color from '../Common/Color';
@@ -37,7 +40,6 @@ export default class TypographyView extends Component {
 		//create color style out of colorObj
 	}
 
-
 	save() {
 		this.updateStyles(this.state.styles);
 		this.props.hidePane();
@@ -45,6 +47,51 @@ export default class TypographyView extends Component {
 
 	cancel() {
 		this.props.hidePane();
+	}
+
+	renderColorPicker () {
+		if (this.state.colorPickerVisible) {
+			return (
+				<div>
+					<ReactCSSTransitionGroup
+						transitionName='pane-drawer'
+						transitionAppear={true}
+						transitionAppearTimeout={700}
+						transitionEnterTimeout={700}
+						transitionLeaveTimeout={700}
+					>
+						<div className="ds-pane-bottom-drawer">
+							<div className="slider">
+								<div className="ds-pane-header" onClick={this.hideColorPicker.bind(this)}>
+									<span className="pane-title">Add A Color</span>
+									<InlineSVG
+										src={DownArrow}
+										element="span"
+										className="icon right" 
+									/>
+								</div>
+								<div className="content">
+									<div className="color-picker">
+										<DSColorPicker />
+									</div>
+								</div>
+								<div className="pane-view-actions">
+									<Button
+										buttonClass="medium"
+										label="Save Color"
+										clickEvent={this.hideColorPicker.bind(this)}
+									/>
+								</div>
+							</div>
+						</div>
+					</ReactCSSTransitionGroup>
+				</div>
+			);
+		}
+		else {
+			return false;	
+		}
+
 	}
 
 	render () {
@@ -90,9 +137,21 @@ export default class TypographyView extends Component {
 					</div>
 
 				</div>
+
 				<div className="content pane-padded fonts-view">
 					<Fonts {...this.props} />
 				</div>
+
+				<ReactCSSTransitionGroup
+					transitionName='pane-drawer'
+					transitionAppear={true}
+					transitionAppearTimeout={700}
+					transitionEnterTimeout={700}
+					transitionLeaveTimeout={700}
+				>
+					{this.renderColorPicker()}
+				</ReactCSSTransitionGroup>
+				
 				<div className="pane-view-actions two-actions">
 					<Button
 						buttonClass="medium tertiary"

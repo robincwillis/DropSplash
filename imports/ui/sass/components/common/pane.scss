@@ -247,16 +247,26 @@
 
 	.ds-pane-bottom-drawer {
 		position: absolute;
+		top: -$ds-pane-header-height;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		height: 100%;
+		min-height: 100%;
 		overflow: hidden;
 		background: transparent;
     z-index: 12;
     border-radius: 0 0 $base-border-radius $base-border-radius;
     .slider {
+    	border-radius: $base-border-radius;
     	height: 100%;
+    	background: $pane-bg;
+    	.content {
+    		top: 50px !important;
+    	}
+    	.ds-pane-header {
+    		position: relative;
+    		border-radius: $base-border-radius $base-border-radius 0 0;
+    	}
     	.pane-view-actions {
 	    	position: relative;
 	    }
@@ -669,40 +679,32 @@
 // Drawer Transition
 .pane-drawer-appear {
   background: transparent;
-  transition: opacity .5s $ease;
+  transition: background .5s $ease;
   .slider {
   	transition: transform .5s $ease;
-  	transform: translate3d(0, 100%, 0);
+  	transform: translateY(100%);
   }
 }
 
 .pane-drawer-appear.pane-drawer-appear-active {
-	background: rgba(0, 0, 0, .2);
+	background: rgba(0, 0, 0, .3);
   .slider {
-  	transform: translate3d(0, 0, 0);
+  	transform: translateY(0);
   }
 }
 
-// .pane-drawer-enter {
-//   background-color: transparent;
-//   transition: background .5s $ease;
-//   .slider {
-//   	transition: transform .5s $ease;
-//   	transform: translate3d(0, 100%, 0);
-//   }
-// }
-
-// .pane-drawer-enter.pane-drawer-enter-active {
-// 	background-color: rgba(0, 0, 0, .2);
-//   .slider {
-//   	transform: translate3d(0, 0, 0);
-//   }
-// }
-
 .pane-drawer-leave {
-
+  background: rgba(0, 0, 0, .3);
+  transition: background .5s $ease;
+  .slider {
+  	transition: transform .5s $ease;
+  	transform: translateY(0);
+  }
 }
 
 .pane-drawer-leave.pane-drawer-leave-active {
-
+	background: transparent;
+  .slider {
+  	transform: translatey(100%);
+  }
 }
