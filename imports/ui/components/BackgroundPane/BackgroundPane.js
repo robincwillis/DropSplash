@@ -5,6 +5,7 @@ import Pane from '../Common/Pane.js';
 import ImageBackground from './ImageBackgroundView.js';
 import VideoBackground from './VideoBackgroundView.js';
 import ColorBackground from './ColorBackgroundView.js';
+import OverlayBackground from './OverlayBackgroundView.js';
 
 import '../../sass/components/common/buttons.scss';
 
@@ -51,6 +52,16 @@ export default class BackgroundPane extends Component {
                 props : {
                     key:"3",
                     title:"view 3",
+                    clickHandler: this.clickHandler.bind(this)
+                }
+            },
+            {
+                id : 'background-overlay-view',
+                title : 'Overlay',
+                Component : OverlayBackground,
+                props : {
+                    key:"4",
+                    title:"view 4",
                     clickHandler: this.clickHandler.bind(this)
                 }
             }

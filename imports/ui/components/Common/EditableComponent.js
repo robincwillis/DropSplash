@@ -18,6 +18,10 @@ import DividerWidget from '../Widgets/Divider.js';
 import TwitterWidget from '../Widgets/Twitter.js';
 import InstagramWidget from '../Widgets/Instagram.js';
 import MailchimpWidget from '../Widgets/Mailchimp.js';
+import SlideshowWidget from '../Widgets/Slideshow.js';
+import GalleryWidget from '../Widgets/Gallery.js';
+import HtmlWidget from '../Widgets/Html.js';
+import SocialWidget from '../Widgets/Social.js';
 
 import EditOptions from './EditOptions.js';
 
@@ -135,6 +139,15 @@ class EditableComponent extends Component {
 				return(<InstagramWidget {...this.props} />);
 			case 'MAILCHIMP_WIDGET':
 				return(<MailchimpWidget {...this.props} />);
+			case 'SLIDESHOW_WIDGET':
+				return(<Slideshow {...this.props} />);
+			case 'GALLERY_WIDGET':
+				return(<Gallery {...this.props} />);
+			case 'HTML_WIDGET':
+				return(<Html {...this.props} />);
+			case 'SOCIAL_WIDGET':
+				return(<Social {...this.props} />);
+
 			default :
 				return false;
 		}

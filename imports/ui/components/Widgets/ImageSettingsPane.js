@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 //Components
 import Pane from '../Common/Pane.js';
-import TypographyView from '../CommonPane/Typography.js';
+import Image from '../CommonPane/Image.js';
+import Layout from '../CommonPane/Layout.js';
 
 export default class ImageSettingsPane extends Component {
 
@@ -13,12 +14,23 @@ export default class ImageSettingsPane extends Component {
 	paneContent () {
 		return [
 			{
-				id: 'image-typography-pane',
-				title: 'Type',
-				Component: TypographyView,
+				id: 'image-upload-pane',
+				title: 'Image',
+				Component: Image,
 				props : {
 					hidePane: this.props.hideSettingsPane,
-					widget : this.props.widget
+					widget : this.props.widget,
+					key : '1'
+				}
+			},
+			{
+				id: 'image-layout-pane',
+				title: 'Layout',
+				Component: Layout,
+				props : {
+					hidePane: this.props.hideSettingsPane,
+					widget : this.props.widget,
+					key : '2'
 				}
 			}
 		];
@@ -30,6 +42,7 @@ export default class ImageSettingsPane extends Component {
 			<Pane
 				title="Settings"
 				closeable={true}
+				paneTabs={true}
 				views={this.paneContent()}
 				ref="imageSettingsPane"
 				visible={this.props.visible}

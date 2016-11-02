@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 //Components
 import Pane from '../Common/Pane.js';
-import TypographyView from '../CommonPane/Typography.js';
+import UrlView from '../CommonPane/Url.js';
+import MapView from '../CommonPane/Map.js';
+import LayoutView from '../CommonPane/Layout.js';
 
 export default class MapSettingsPane extends Component {
 
@@ -13,12 +15,33 @@ export default class MapSettingsPane extends Component {
 	paneContent () {
 		return [
 			{
-				id: 'map-typography-pane',
-				title: 'Type',
-				Component: TypographyView,
+				id: 'map-url-view',
+				title: 'Url',
+				Component: UrlView,
 				props : {
 					hidePane: this.props.hideSettingsPane,
-					widget : this.props.widget
+					widget : this.props.widget,
+					key : '1'
+				}
+			},
+			{
+				id: 'map-settings-view',
+				title: 'Settings',
+				Component: MapView,
+				props : {
+					hidePane: this.props.hideSettingsPane,
+					widget : this.props.widget,
+					key : '2'
+				}
+			},
+			{
+				id: 'map-layout-view',
+				title: 'Layout',
+				Component: LayoutView,
+				props : {
+					hidePane: this.props.hideSettingsPane,
+					widget : this.props.widget,
+					key : '3'
 				}
 			}
 		];
@@ -30,6 +53,7 @@ export default class MapSettingsPane extends Component {
 			<Pane
 				title="Settings"
 				closeable={true}
+				paneTabs={true}
 				views={this.paneContent()}
 				ref="mapSettingsPane"
 				visible={this.props.visible}

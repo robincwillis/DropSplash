@@ -124,7 +124,7 @@ class PaneComponent extends Component {
 	handleClickOutside(event) {
 		if(this.state.visible) {
 			this.hidePane(event);
-		};
+		}
   }
 
 	hidePane (event) {

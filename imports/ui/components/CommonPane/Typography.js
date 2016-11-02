@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import Button from '../Common/Button';
 import Color from '../Common/Color';
+import Fonts from '../Common/Fonts';
 
 import '../../sass/components/common/inputs';
 
@@ -46,7 +47,6 @@ export default class TypographyView extends Component {
 		this.props.hidePane();
 	}
 
-
 	render () {
 
 		return (
@@ -88,8 +88,11 @@ export default class TypographyView extends Component {
 							{...this.props}
 						/>
 					</div>
-				</div>
 
+				</div>
+				<div className="content pane-padded fonts-view">
+					<Fonts {...this.props} />
+				</div>
 				<div className="pane-view-actions two-actions">
 					<Button
 						buttonClass="medium tertiary"

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 //Components
 import Pane from '../Common/Pane.js';
-import TypographyView from '../CommonPane/Typography.js';
+
+import DividerSettings from '../CommonPane/Divider.js';
+import LayoutView from '../CommonPane/Layout.js';
 
 export default class DividerSettingsPane extends Component {
 
@@ -13,12 +15,23 @@ export default class DividerSettingsPane extends Component {
 	paneContent () {
 		return [
 			{
-				id: 'divider-typography-pane',
-				title: 'Type',
-				Component: TypographyView,
+				id: 'divider-settings-view',
+				title: 'Settings',
+				Component: DividerSettings,
 				props : {
 					hidePane: this.props.hideSettingsPane,
-					widget : this.props.widget
+					widget : this.props.widget,
+					key : '1'
+				}
+			},
+			{
+				id: 'divider-layout-view',
+				title: 'Layout',
+				Component: LayoutView,
+				props : {
+					hidePane: this.props.hideSettingsPane,
+					widget : this.props.widget,
+					key : '1'
 				}
 			}
 		];
@@ -30,6 +43,7 @@ export default class DividerSettingsPane extends Component {
 			<Pane
 				title="Settings"
 				closeable={true}
+				paneTabs={true}
 				views={this.paneContent()}
 				ref="dividerSettingsPane"
 				visible={this.props.visible}

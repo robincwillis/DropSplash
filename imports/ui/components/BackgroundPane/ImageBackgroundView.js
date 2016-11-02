@@ -11,10 +11,7 @@ import { updateSectionSettings } from '../../../api/sections/methods.js';
 export default class ImageBackgroundView extends Component {
 
 	onFileUpload (fileId) {
-		console.log('onFileUpload Called');
-		console.log(fileId);
 		let settings = this.props.section.settings || {};
-		console.log(settings);
 		settings.background = {
 			type : 'image',
 			fileId : fileId

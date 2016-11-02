@@ -7,7 +7,6 @@ import PlusIcon from '../../assets/icons/plus-icon.js';
 //Components
 import Button from '../Common/Button.js';
 
-
 import '../../sass/components/common/inputs';
 
 export default class SectionTypographyView extends Component {

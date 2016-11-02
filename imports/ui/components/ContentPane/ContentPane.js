@@ -12,7 +12,7 @@ import ContentTypes from './ContentTypesView';
 import AccountLinkView from '../CommonPane/AccountLink.js';
 
 //Instagram Pane Views
-import InstagramSettingsView from '../Widgets/InstagramSettingsView.js';
+import InstagramSettingsView from '../CommonPane/Instagram.js';
 
 import '../../sass/components/common/buttons.scss';
 import '../../sass/components/common/add-content-pane.scss';
@@ -142,7 +142,7 @@ export default class ContentPane extends Component {
 					fields : ''
 				};
 
-				addContentPane.getInstance().goToViewById('account-link');
+				addContentPane.goToViewById('account-link');
 				this.updatePaneTitle('Twitter');
 			break;
 			case 'INSTAGRAM':
