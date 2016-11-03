@@ -34,7 +34,7 @@ export default class App extends Component {
 
 		return (
 			<div className="has-button has-tabs" key="view1">
-				<div className="content">
+				<div className="content pane-padded">
 					<Color
 						onSelectColor={this.selectColor.bind(this)}
 						{...this.props}

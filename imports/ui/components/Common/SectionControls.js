@@ -141,7 +141,7 @@ export default class App extends Component {
 			/>);
 		} else {
 			return(<Button
-				buttonClass="circle medium add-content-button disabled"
+				buttonClass="circle medium add-content-button"
 				icon={PlusIcon}
 				tooltipText="Add Content"
 				{...this.props}
