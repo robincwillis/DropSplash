@@ -135,11 +135,11 @@ class PageSection extends Component {
 					<ul>
 						{editableComponents}
 					</ul>
-					<div className="add-content-below">
+					{/*<div className="add-content-below">
 						<div className="container">
 							<ContentPane section={this.props.section} visible="true" closeable={false} />
 						</div>
-					</div>
+					</div>*/}
 					<ReorderControls />
 				</div>
 			);

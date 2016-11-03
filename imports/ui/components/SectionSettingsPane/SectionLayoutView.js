@@ -183,13 +183,15 @@ export default class SectionLayoutView extends Component {
 							<label>Width</label>
 						</div>
 						<div className="inline-col middle align-right one-third">
+
 							<input
 								onChange={this.updateWidth.bind(this)}
 								value={this.getWidthValue()}
-								className="lg"
+								className=""
 								type="text"
 								placeholder="600"
 							/>
+
 						</div>
 						<div className="inline-col middle align-right one-third">
 							<ul className="toggle-tabs">
