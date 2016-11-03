@@ -1,0 +1,9 @@
+@import '../../setup/variables';
+
+.file-upload {
+	.file-upload-drop-area {
+		&.is-dragover {
+			background: $white;
+		}
+	}
+}

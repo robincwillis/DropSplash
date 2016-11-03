@@ -33,7 +33,8 @@ export const AppSchema = new SimpleSchema({
 		defaultValue : {
 			overlayColor : '#00000',
 			overlayOpacity : 0.3,
-			alignment : 'center'
+			alignment : 'center',
+			verticalAlignment : 'top'
 		}
 	},
 
@@ -51,10 +52,7 @@ export const AppSchema = new SimpleSchema({
 		type : Object,
 		blackbox: true,
 		defaultValue : {
-			maxWidth : 600,
-			color :  '#000000',
-			opacity : 1,
-			backgroundColor : '#ffffff'
+			maxWidth : 600
 		}
 	}
 

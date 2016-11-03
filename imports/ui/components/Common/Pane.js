@@ -32,12 +32,12 @@ class PaneComponent extends Component {
 	componentWillReceiveProps(nextProps) {
 		this.setState({visible: nextProps.visible});
 		//TODO close pane if we click outside of it
-		if(this.props.closeable && nextProps.visible !== this.props.visible && nextProps.visible) {
-			document.body.addEventListener('click', this.handleClickOutsideOfPane.bind(this));
-		}
-		if(this.props.closeable && nextProps.visible !== this.props.visible && !nextProps.visible) {
-			document.body.removeEventListener('click', this.handleClickOutsideOfPane);
-		}
+		// if(this.props.closeable && nextProps.visible !== this.props.visible && nextProps.visible) {
+		// 	document.body.addEventListener('click', this.handleClickOutsideOfPane.bind(this));
+		// }
+		// if(this.props.closeable && nextProps.visible !== this.props.visible && !nextProps.visible) {
+		// 	document.body.removeEventListener('click', this.handleClickOutsideOfPane);
+		// }
 	}
 
 	currentView () {
@@ -114,15 +114,15 @@ class PaneComponent extends Component {
 		this.gotToNextView();
 	}
 
-	handleClickOutsideOfPane (event) {
-		// const node = ReactDOM.findDOMNode(this);
-		// if(!node.contains(event.target)) {
-		// 	this.setState({visible : false});
-		// }
-	}
+	// handleClickOutsideOfPane (event) {
+	// 	// const node = ReactDOM.findDOMNode(this);
+	// 	// if(!node.contains(event.target)) {
+	// 	// 	this.setState({visible : false});
+	// 	// }
+	// }
 
 	handleClickOutside(event) {
-		if(this.state.visible) {
+		if(this.props.closable && this.state.visible) {
 			this.hidePane(event);
 		}
   }
@@ -136,6 +136,8 @@ class PaneComponent extends Component {
 	}
 
 	showPane (event) {
+
+		console.log(this.props);
 
 		if(this.props.onShow) {
 			this.props.onShow(event);

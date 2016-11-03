@@ -32,10 +32,11 @@ class FooterNav extends Component {
 				console.log(err);
 			} else {
 				//TODO scroll to section
-				var objDiv = document.querySelector(".app-content");
+				//var objDiv = document.querySelector(".app-content");
+				let lastSection = document.querySelector('.ds-page-section-container:last-child');
 				setTimeout(function() {
-					objDiv.scrollTop = objDiv.scrollHeight;
-				}, 0);
+					lastSection.scrollIntoView();
+				}, 10);
 			}
 		});
 	}

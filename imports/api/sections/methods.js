@@ -4,8 +4,6 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { Sections } from './sections.js';
 import { App } from '../app/app.js';
 
-
-
 export const insertSection = new ValidatedMethod({
 
 	name: 'section.insert',
@@ -17,8 +15,6 @@ export const insertSection = new ValidatedMethod({
 			throw new Meteor.Error('app.initialize.notLoggedIn',
 				'Must be logged in to start the app.');
 		}
-
-
 
 		var app = App.findOne({userId : this.userId});
 
@@ -65,18 +61,27 @@ export const updateSectionSettings = new ValidatedMethod({
 			$set: {settings : settings}
 		});
 	}
-
 });
 
-// export const updateSectionStyles = new ValidatedMethod({
+export const updateSectionStyles = new ValidatedMethod({
+	name: 'section.update.styles',
+	validate : null,
+	run({sectionId, styles}) {
+		return Sections.update(sectionId, {
+			$set: {styles : styles}
+		});
+	}
+});
 
-// });
+export const updateSectionContainerStyles = new ValidatedMethod({
+	name: 'section.update.container.styles',
+	validate : null,
+	run({sectionId, containerStyles}) {
+		return Sections.update(sectionId, {
+			$set: {containerStyles : containerStyles}
+		});
+	}
+});
 
-// export const remove = new ValidatedMethod({
-
-// });
-
-//TODO : update
 //TODO : upsert
-//TODO : delete
 //TODO : reset

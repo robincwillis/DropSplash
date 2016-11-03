@@ -52,7 +52,9 @@ export default class BackgroundPane extends Component {
                 props : {
                     key:"3",
                     title:"view 3",
-                    clickHandler: this.clickHandler.bind(this)
+                    clickHandler: this.clickHandler.bind(this),
+                    page: this.props.page,
+                    section : this.props.section
                 }
             },
             {

@@ -12,14 +12,11 @@ Meteor.publish('sections', function sectionsPublication() {
 	});
 });
 
-
 Meteor.publish('sections.inPage', function sectionsInPagePublication(pageId) {
 	if (!this.userId) {
 		this.ready();
 		return;
 	}
-
-	console.log(pageId);
 
 	return Sections.find({
 		ownerId : this.userId,

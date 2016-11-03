@@ -260,6 +260,12 @@
     	.pane-view-actions {
 	    	position: relative;
 	    }
+	    .content {
+	    	position: absolute;
+	    	width:100%;
+	    	top: 0 !important;
+	    	bottom: 0;
+	    }
     }
 	}
 
@@ -300,7 +306,7 @@
     			display: block;
     			left: 2px;
     			right: 0;
-    			height: 1px; 
+    			height: 1px;
     			background: $pane-line-color;
     			top: 4px;
     			z-index: 1;
@@ -371,7 +377,7 @@
     }
 		.has-button {
 			padding-bottom: $btn-medium-height;
-			.content {
+			> .content {
 				position: absolute;
 				top: 0;
 				right: 0;

@@ -62,12 +62,18 @@ class PageSection extends Component {
 	}
 
 	sectionStyle () {
-		// let sectionStyle = {
-		// 	minHeight: this.props.section.style.height
-		// };
 
 		let sectionStyle = Object.assign({},this.props.section.styles);
 		let settings = this.props.section.settings;
+
+		if(settings && settings.alignment) {
+			sectionStyle.textAlign = settings.alignment;
+		}
+
+		if(settings && settings.verticalAlignment) {
+			sectionStyle.verticalAlign = settings.verticalAlignment;
+		}
+
 		if(settings && settings.background) {
 
 			switch (settings.background.type) {
@@ -111,7 +117,7 @@ class PageSection extends Component {
 			const editableComponents = this.props.widgets.map( (widget, index)=> {
 				return(
 					<li key={widget._id}>
-						<div className="container" style={this.props.containerStyles} >
+						<div className="container" style={this.props.section.containerStyles} >
 							<EditableComponent
 								page={this.props.page}
 								section={this.props.page}
@@ -152,7 +158,7 @@ class PageSection extends Component {
 			widget.index = index;
 			return widget;
 		});
-		//widgets.splice(dragIndex, 0).splice(hoverIndex, 0, dragWidget);
+
 		updateWidgetOrder.call({
 			widgets : widgets
 		},(err) => {
@@ -162,24 +168,12 @@ class PageSection extends Component {
 			}
 		});
 
-		// set new index's on items
-		// widgets.splice(hoverIndex, 0, "drum");
-		// console.log('move widget called');
-		// console.log(dragIndex);
-		// console.log(hoverIndex);
-		//get updated Order
-		//call reorder function on backend
 	}
 
 	render () {
 		if(this.props.loading) {
 			return (<div>loading</div>);
 		}
-
-		console.log(this.props);
-
-		//console.log(this.props.section);
-		//console.log(this.props.widgets);
 
 		return (
 			<div className={this.sectionClass()} style={this.sectionStyle()} >

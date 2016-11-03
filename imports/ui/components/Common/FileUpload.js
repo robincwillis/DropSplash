@@ -10,18 +10,21 @@ import { insertFile } from '../../../api/files/methods.js';
 //import '../sass/components/logo.scss';
 import '../../sass/components/common/inputs.scss';
 import '../../sass/components/common/buttons.scss';
+import '../../sass/components/common/file-upload.scss';
 
 export default class FileUpload extends Component {
 
 	constructor (props) {
 		super(props);
-		// TODO Props
-		// dragAndDrop : true
-		// button : true
-		// multiple : false
+
+
 		this.state = {
 			dragLabel : 'Drag a file to upload',
+			dragOver : false,
 			buttonLabel : 'Click to Upload a file',
+			dragAndDrop : this.props.dragAndDrop || true,
+			button : this.props.button || true,
+			multiple : this.props.multiple || false,
 			progress : 0
 		};
 
@@ -91,15 +94,56 @@ export default class FileUpload extends Component {
 		this.uploadFile(input.files[0]);
 	}
 
+	handleOnDragOver (event) {
+		this.setState({
+			dragOver:true
+		});
+		event.stopPropagation();
+		return false;
+	}
+
+	handleOnDragLeave (event) {
+		this.setState({
+			dragOver: false
+		});
+		return false;
+	}
+
+	handleOnDrop (event) {
+		console.log('dropped it');
+		let files = event.originalEvent.dataTransfer.files;
+		console.log(files);
+	}
+
+	killEvent (event) {
+		event.preventDefault();
+		event.stopPropagation();
+		// onDrag={this.killEvent}
+		// onDragEnd={this.killEvent}
+		// onDragEnter={this.killEvent}
+		//drag dragstart dragend dragover dragenter dragleave drop
+	}
+
+
 	renderProgress () {
 
 	}
 
 	render () {
+
+		let dragClass = this.state.dragOver ? 'is-dragover' : '';
+
 		return (
-			<div>
+			<div className="file-upload">
 				<div>
-					<div className="ds-empty-content light">{this.state.dragLabel}</div>
+					<div
+						className={"file-upload-drop-area ds-empty-content light " + dragClass}
+						onDragOver={this.handleOnDragOver.bind(this)}
+						onDragLeave={this.handleOnDragLeave.bind(this)}
+						onDrop={this.handleOnDrop.bind(this)}
+					>
+						{this.state.dragLabel}
+					</div>
 				</div>
 				<div>
 					<span>or</span>
