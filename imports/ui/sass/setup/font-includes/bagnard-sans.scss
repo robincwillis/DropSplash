@@ -1,0 +1,15 @@
+//--Bagnard----------------------
+
+@font-face {
+  font-family: 'Bagnard Sans';
+  src:  url('/fonts/bagnard-sans/bagnard-sans.woff') format('woff'),
+  			url('/fonts/bagnard-sans/bagnard-sans.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bagnard {
+	font-family: 'Bagnard Sans', serif !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+}

@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import Pane from '../Common/Pane.js';
 
 //Pane Views
-import SectionTypographyView from './SectionTypographyView.js';
+// import SectionTypographyView from './SectionTypographyView.js';
+import SectionTypographyView from '../CommonPane/Typography.js';
 import SectionEffectsView from './SectionEffectsView.js';
 import SectionLayoutView from './SectionLayoutView.js';
 
@@ -89,7 +90,6 @@ export default class SectionSettingsPane extends Component {
 		return (
 			<Pane
 				paneClass="wide"
-				paneHeight={317}
 				paneTabs={true}
 				closeable={true}
 				visible={this.props.visible}

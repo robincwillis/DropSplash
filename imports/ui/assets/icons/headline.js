@@ -1,6 +1,11 @@
 const svg = `
-<svg viewBox="2 0 18 16">
-  <polygon id="Page-1-Copy-20" stroke="none" fill="#000000" points="3.189 0 2 4.757 3.94 5.243 4.751 2 10 2 10 14 7 14 7 16 15 16 15 14 12 14 12 2 17.25 2 18.061 5.243 19.999 4.757 18.812 0"></polygon>
+
+<svg viewBox="274 848 19 17">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(275.000000, 849.000000)">
+        <polyline id="Stroke-1" stroke="#211D1E" stroke-width="2" points="0.9697 4 1.9697 0 15.9697 0 16.9697 4"></polyline>
+        <path d="M4.9697,14 L12.9697,14" id="Stroke-3" stroke="#211D1E" stroke-width="2"></path>
+        <path d="M8.9697,0 L8.9697,14" id="Stroke-5" stroke="#211D1E" stroke-width="2"></path>
+    </g>
 </svg>
 `;
 

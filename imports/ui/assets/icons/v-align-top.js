@@ -1,6 +1,6 @@
 const svg = `
-<svg viewBox="0 0 18 16">
-	<path class="st0" d="M18,0v2H0V0H18z M15,4h-4v12h4V4z M3,4v6h4V4H3z"/>
+<svg width="12px" height="12px" viewBox="0 0 12 12">
+	<path class="st0" d="M12,2H0l0-2l12,0V2z M10,4H7v8h3V4z M5,4H2v4h3V4z"/>
 </svg>
 `;
 

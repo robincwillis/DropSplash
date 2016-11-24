@@ -4,47 +4,43 @@
 .toggle-tabs {
 	display: inline-block;
 	vertical-align: middle;
-	padding: 3px;
 	background-color: $light-grey;
 	border-radius: 4px;
 	width: 100%;
+	display: flex;
 	.tab {
-		display: inline-block;
-		vertical-align: top;
+		flex-grow: 1;
 		min-width: 34px;
 		// margin-right: -4px;
-		&.third {
-			width: 33.333%;
-		}
-		&.half {
-			width: 50%;
-		}
+		// &.third {
+		// 	width: 33.333%;
+		// }
+		// &.half {
+		// 	width: 50%;
+		// }
 		input {
 			display: none;
 			&:checked {
 				+ label {
 					background: #fff;
+					border-color: $primary-color;
 					span {
 						opacity: 1;
-						svg {
-							* {
-								fill: $primary-color;
-							}
-						}
 					}
 				}
 			}
 			+ label {
 				position: relative;
 				margin: 0;
-				padding: 0 10px;
+				padding: 0 5px;
 				text-align: center;
 				display: block;
 				background: transparent;
-				transition: background $med-speed $ease;
-				line-height: 24px;
+				transition: background $med-speed $ease, border $med-speed $ease;
+				line-height: 22px;
 				cursor: pointer;
-				border-radius: 2px;
+				border-radius: 4px;
+				border: 2px solid transparent;
 				cursor: pointer;
 				font-size: 10px;
 				letter-spacing: .2em;
@@ -53,15 +49,12 @@
 					cursor: pointer;
 					display: inline-block;
 					vertical-align: middle;
-					margin: 0;
+					margin: -2px 0 0 0;
 					transition: opacity $med-speed $ease;
 					opacity: .3;
 					color: $text-color;
 					svg {
 						display: block;
-						width: 18px;
-						height: 18px;
-						margin-top: -2px;
 						cursor: pointer;
 						* {
 							fill: $text-color;

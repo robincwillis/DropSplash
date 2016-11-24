@@ -1,0 +1,96 @@
+@import '../../setup/variables';
+@import '../../setup/mixins';
+
+.options-list {
+	li {
+		border-bottom: 1px solid #eee;
+		// margin-top: 15px;
+		input[type=radio],
+		input[type=checkbox] {
+			display: none;
+			&:checked {
+				+ label {
+					background: #fff;
+					cursor: auto;
+					.icon {
+						img {
+							opacity: 1;
+						}
+						&:after {
+							border-color: $primary-color;
+						}
+					}
+				}
+			}
+		}
+		label {
+			display: block;
+			padding: 10px 15px;
+			position: relative;
+			cursor: pointer;
+			transition: background .2s $ease;
+			display: flex;
+			&:hover {
+				background: #f9f9f9;
+				.icon {
+					&:after {
+						border-color: $text-color;
+					}
+				}
+				img {
+					opacity: 1;
+				}
+			}
+		}
+		&:last-child {
+			// margin-bottom: 15px;
+			border-bottom: none;
+		}
+		.description {
+			flex-grow: 1;
+			display: flex;
+			align-items: center;
+			padding-left: 10px;
+			h6 {
+				font-size: 12px;
+				font-weight: 600;
+				line-height: 1.45em;
+			}
+			p {
+				font-size: 12px;
+				line-height: 1.45em;
+				opacity: .5;
+			}
+		}
+	}
+}
+.icon {
+	img {
+		max-width: 100%;
+		height: auto;
+		opacity: .5;
+		transition: opacity .2s $ease;
+	}
+	&.fx {
+		background: #f1f1f1;
+		overflow: hidden;
+		border-radius: 4px;
+		position: relative;
+		img {
+			height: 40px;
+			width: 60px;
+		}
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			border: 2px solid transparent;
+			border-radius: 4px;
+			transition: border .2s $ease;
+		}	
+	}
+}

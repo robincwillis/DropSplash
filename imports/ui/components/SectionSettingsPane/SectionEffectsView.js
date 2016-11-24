@@ -9,6 +9,7 @@ import Button from '../Common/Button.js';
 
 
 import '../../sass/components/common/inputs';
+import '../../sass/components/common/options-list';
 
 export default class SectionEffectsView extends Component {
 
@@ -20,16 +21,65 @@ export default class SectionEffectsView extends Component {
 
 		return (
 			<div className="has-button has-tabs" key="view1">
-				<div className="content pane-padded">
-					<div className="row">
-						<p>Paste a YouTube or Vimeo URL.</p>
-					</div>
-					<div className="row">
-						<input className="lg" type="text" placeholder="http://youtube.com/splashvideo" />
-					</div>
-					<div className="row">
-						<p className="xsm grey">By pasting this video I am stating that I have the right to use the video’s content</p>
-					</div>
+				<div className="content">
+					<ul className="options-list">
+						<li>
+							<input type="radio" id="none" name="entrance-transition" />
+							<label htmlFor="none">
+								<div className="icon fx">
+									<img src="http://stage.mattgordils.com/temp/none.gif" />
+								</div>
+								<div className="description">
+									<div>
+										<h6>None</h6>
+										<p>No transitions, just content</p>
+									</div>
+								</div>
+							</label>
+						</li>
+						<li>
+							<input type="radio" id="fade-in" name="entrance-transition" />
+							<label htmlFor="fade-in">
+								<div className="icon fx">
+									<img src="http://stage.mattgordils.com/temp/fade-in.gif" />
+								</div>
+								<div className="description">
+									<div>
+										<h6>Fade In</h6>
+										<p>Content fades in</p>
+									</div>
+								</div>
+							</label>
+						</li>
+						<li>
+							<input type="radio" id="stagger-in" name="entrance-transition" />
+							<label htmlFor="stagger-in">
+								<div className="icon fx">
+									<img src="http://stage.mattgordils.com/temp/stagger-in.gif" />
+								</div>
+								<div className="description">
+									<div>
+										<h6>Stagger In</h6>
+										<p>Content fades in and slides up</p>
+									</div>
+								</div>
+							</label>
+						</li>
+						<li>
+							<input type="radio" id="scale" name="entrance-transition" />
+							<label htmlFor="scale">
+								<div className="icon fx">
+									<img src="http://stage.mattgordils.com/temp/scale.gif" />
+								</div>
+								<div className="description">
+									<div>
+										<h6>Scale</h6>
+										<p>Content fades in and scales up</p>
+									</div>
+								</div>
+							</label>
+						</li>
+					</ul>
 				</div>
 				<div className="pane-view-actions">
 					<Button

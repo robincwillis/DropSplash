@@ -86,7 +86,7 @@ export default class SectionLayoutView extends Component {
 						</div>
 						<div className="inline-col middle align-right two-thirds">
 						<ul className="toggle-tabs">
-							<li className="tab third">
+							<li className="tab">
 								<input
 									onChange={this.updateHorizonalAlignment.bind(this)}
 									type="radio"
@@ -99,7 +99,7 @@ export default class SectionLayoutView extends Component {
 									<InlineSVG src={hAlignLeft} element="span" className="icon h-align left" />
 								</label>
 							</li>
-							<li className="tab third">
+							<li className="tab">
 								<input
 									onChange={this.updateHorizonalAlignment.bind(this)}
 									type="radio"
@@ -112,7 +112,7 @@ export default class SectionLayoutView extends Component {
 									<InlineSVG src={hAlignCenter} element="span" className="icon h-align center" />
 								</label>
 							</li>
-							<li className="tab third">
+							<li className="tab">
 								<input
 									onChange={this.updateHorizonalAlignment.bind(this)}
 									type="radio"
@@ -135,7 +135,7 @@ export default class SectionLayoutView extends Component {
 						</div>
 						<div className="inline-col middle align-right two-thirds">
 							<ul className="toggle-tabs">
-								<li className="tab third">
+								<li className="tab">
 									<input
 										type="radio"
 										name="vertical-alignment"
@@ -148,7 +148,7 @@ export default class SectionLayoutView extends Component {
 										<InlineSVG src={vAlignTop} element="span" className="icon v-align top" />
 									</label>
 								</li>
-								<li className="tab third">
+								<li className="tab">
 									<input
 										type="radio"
 										name="vertical-alignment"
@@ -161,7 +161,7 @@ export default class SectionLayoutView extends Component {
 										<InlineSVG src={vAlignMiddle} element="span" className="icon v-align middle" />
 									</label>
 								</li>
-								<li className="tab third">
+								<li className="tab">
 									<input
 										type="radio"
 										name="vertical-alignment"
@@ -195,7 +195,7 @@ export default class SectionLayoutView extends Component {
 						</div>
 						<div className="inline-col middle align-right one-third">
 							<ul className="toggle-tabs">
-								<li className="tab half">
+								<li className="tab">
 									<input
 										onChange={this.updateWidthUnit.bind(this)}
 										checked={this.state.widthUnit === 'px'}
@@ -206,7 +206,7 @@ export default class SectionLayoutView extends Component {
 									/>
 									<label htmlFor="px"><span>px</span></label>
 								</li>
-								<li className="tab half">
+								<li className="tab">
 									<input
 										onChange={this.updateWidthUnit.bind(this)}
 										checked={this.state.widthUnit === '%'}

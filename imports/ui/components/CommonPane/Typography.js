@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import InlineSVG from 'svg-inline-react';
 
 import PlusIcon from '../../assets/icons/plus-icon.js';
 import DownArrow from '../../assets/icons/arrow-2-forwards.js';
+import TextAlignLeft from '../../assets/icons/text-align-left.js';
+import TextAlignCenter from '../../assets/icons/text-align-center.js';
+import TextAlignRight from '../../assets/icons/text-align-right.js';
 
 import Button from '../Common/Button';
 import Color from '../Common/Color';
@@ -50,54 +54,54 @@ export default class TypographyView extends Component {
 	}
 
 	renderColorPicker () {
-		if (this.state.colorPickerVisible) {
-			return (
-				<div>
-					<ReactCSSTransitionGroup
-						transitionName='pane-drawer'
-						transitionAppear={true}
-						transitionAppearTimeout={700}
-						transitionEnterTimeout={700}
-						transitionLeaveTimeout={700}
-					>
-						<div className="ds-pane-bottom-drawer">
-							<div className="slider">
-								<div className="ds-pane-header" onClick={this.hideColorPicker.bind(this)}>
-									<span className="pane-title">Add A Color</span>
-									<InlineSVG
-										src={DownArrow}
-										element="span"
-										className="icon right" 
-									/>
-								</div>
-								<div className="content">
-									<div className="color-picker">
-										<DSColorPicker />
-									</div>
-								</div>
-								<div className="pane-view-actions">
-									<Button
-										buttonClass="medium"
-										label="Save Color"
-										clickEvent={this.hideColorPicker.bind(this)}
-									/>
-								</div>
-							</div>
-						</div>
-					</ReactCSSTransitionGroup>
-				</div>
-			);
-		}
-		else {
-			return false;	
-		}
+		// if (this.state.colorPickerVisible) {
+		// 	return (
+		// 		<div>
+		// 			<ReactCSSTransitionGroup
+		// 				transitionName='pane-drawer'
+		// 				transitionAppear={true}
+		// 				transitionAppearTimeout={700}
+		// 				transitionEnterTimeout={700}
+		// 				transitionLeaveTimeout={700}
+		// 			>
+		// 				<div className="ds-pane-bottom-drawer">
+		// 					<div className="slider">
+		// 						<div className="ds-pane-header" onClick={this.hideColorPicker.bind(this)}>
+		// 							<span className="pane-title">Add A Color</span>
+		// 							<InlineSVG
+		// 								src={DownArrow}
+		// 								element="span"
+		// 								className="icon right" 
+		// 							/>
+		// 						</div>
+		// 						<div className="content">
+		// 							<div className="color-picker">
+		// 								<DSColorPicker />
+		// 							</div>
+		// 						</div>
+		// 						<div className="pane-view-actions">
+		// 							<Button
+		// 								buttonClass="medium"
+		// 								label="Save Color"
+		// 								clickEvent={this.hideColorPicker.bind(this)}
+		// 							/>
+		// 						</div>
+		// 					</div>
+		// 				</div>
+		// 			</ReactCSSTransitionGroup>
+		// 		</div>
+		// 	);
+		// }
+		// else {
+		// 	return false;	
+		// }
 
 	}
 
 	render () {
 
 		return (
-			<div className="has-button" key="view1">
+			<div key="view1">
 				<div className="content pane-padded">
 					<div className="row">
 						<label>Font</label>
@@ -105,6 +109,43 @@ export default class TypographyView extends Component {
 							<input className="two-thirds" type="text" placeholder="Work Sans" />
 							<input className="one-third" type="text" placeholder="Bold" />
 						</div>
+					</div>
+					<div className="row">
+						<ul className="toggle-tabs">
+							<li className="tab third">
+								<input
+									type="radio"
+									name="text-alignment"
+									value="left"
+									id="left-align"
+								/>
+								<label htmlFor="align-top">
+									<InlineSVG src={TextAlignLeft} element="span" className="icon v-align top" />
+								</label>
+							</li>
+							<li className="tab third">
+								<input
+									type="radio"
+									name="text-alignment"
+									value="center"
+									id="center-align"
+								/>
+								<label htmlFor="align-middle">
+									<InlineSVG src={TextAlignCenter} element="span" className="icon v-align middle" />
+								</label>
+							</li>
+							<li className="tab third">
+								<input
+									type="radio"
+									name="text-alignment"
+									value="right"
+									id="right-align"
+								/>
+								<label htmlFor="align-bottom">
+									<InlineSVG src={TextAlignRight} element="span" className="icon v-align bottom" />
+								</label>
+							</li>
+						</ul>
 					</div>
 					<div className="row pane-grid-row">
 						<div className="col one-third">
@@ -138,9 +179,9 @@ export default class TypographyView extends Component {
 
 				</div>
 
-				<div className="content pane-padded fonts-view">
+				{/*<div className="content pane-padded fonts-view">
 					<Fonts {...this.props} />
-				</div>
+				</div>*/}
 
 				<ReactCSSTransitionGroup
 					transitionName='pane-drawer'

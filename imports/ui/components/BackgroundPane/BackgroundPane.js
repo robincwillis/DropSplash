@@ -75,11 +75,12 @@ export default class BackgroundPane extends Component {
 		return (
 			<Pane
                 paneClass="wide"
-                paneHeight={317}
                 paneTabs={true}
                 closeable={true}
                 visible={this.props.visible}
                 title="Background"
+                contentMaxHeight="245px"
+                contentMinHeight="245px"
                 views={this.paneContent()}
                 ref="backgroundPane"
                 {...this.props}

@@ -185,9 +185,10 @@ class PaneComponent extends Component {
 		return paneClass;
 	}
 
-	paneStyle () {
+	paneContentStyle () {
 		var paneStyle = {
-			height: this.props.paneHeight
+			// maxHeight: this.props.contentMaxHeight,
+			// minHeight: this.props.contentMinHeight
 		};
 		return paneStyle;
 	}
@@ -230,7 +231,6 @@ class PaneComponent extends Component {
 				>
 				<div
 					className={this.paneClass()}
-					style={this.paneStyle()}
 				>
 					<div className="ds-pane-header">
 						{this.showBackArrow()}
@@ -241,7 +241,9 @@ class PaneComponent extends Component {
 																			element="span"
 																			className="icon right" />) : false}
 					</div>
-					<div className="ds-pane-content">
+					<div 
+						className="ds-pane-content"
+					>
 						{this.paneTabs()}
 						<ReactCSSTransitionGroup
 							transitionName={this.state.transitionDirection}

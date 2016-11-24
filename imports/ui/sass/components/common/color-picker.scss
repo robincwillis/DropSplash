@@ -101,23 +101,23 @@ $picker-field-widths: 90px;
 
 .colorpickr button {
   background-color: $light-grey;
-  text-align:center;
-  color:#fff;
+  text-align: center;
+  color: #fff;
   font-size: 10px;
   line-height: 14px;
   font-weight:bold;
-  display:inline-block;
-  height:auto;
-  padding:5px 10px;
-  width:50px;
-  margin:0;
-  border:none;
-  cursor:pointer;
-  border-radius:3px;
-  white-space:nowrap;
-  text-overflow:ellipsis;
+  display: inline-block;
+  height: auto;
+  padding: 5px 10px;
+  width: 50px;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   /* The button element needs to be forced this */
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing: antialiased;
   }
   .colorpickr button:not(.cp-active):hover {  }
   .colorpickr button.cp-active { 
@@ -155,10 +155,10 @@ $picker-field-widths: 90px;
 
 .colorpickr .cp-gradient {
   position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   }
   .colorpickr .cp-light-left {
     background:linear-gradient(to right, #FFF 0%, transparent 100%);

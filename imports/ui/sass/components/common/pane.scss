@@ -58,15 +58,11 @@
 	font-family: $main-font;
 	display: inline-block;
 	vertical-align: top;
-	min-width: 40px;
-	max-width: 350px;
-	min-height: 40px;
 	background: $pane-bg;
 	box-shadow: 0 10px 40px rgba(0, 0, 0, .2);
 	border-radius: $base-border-radius;
 	overflow: visible;
 	min-width: 225px;
-	min-height: 250px;
 	text-align: left;
 	z-index: 100;
 	color: $text-color;
@@ -198,11 +194,11 @@
 	}
 
 	.ds-pane-tabs {
+		width: 100%;
 		height: 35px;
 		background: $pane-bg;
 		text-align: left;
 		position: relative;
-		z-index: 3;
 		@include clearfix();
 		// the default tab number is 3
 		hr {
@@ -247,11 +243,10 @@
 
 	.ds-pane-bottom-drawer {
 		position: absolute;
-		top: -$ds-pane-header-height;
+		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		min-height: 100%;
 		overflow: hidden;
 		background: transparent;
     z-index: 12;
@@ -260,38 +255,21 @@
     	border-radius: $base-border-radius;
     	height: 100%;
     	background: $pane-bg;
-    	.content {
-    		top: 50px !important;
-    	}
     	.ds-pane-header {
-    		position: relative;
     		border-radius: $base-border-radius $base-border-radius 0 0;
     	}
-    	.pane-view-actions {
-	    	position: relative;
-	    }
-	    .content {
-	    	position: absolute;
-	    	width:100%;
-	    	top: 0 !important;
-	    	bottom: 0;
-	    }
     }
 	}
 
 	.ds-pane-content {
 		display: block;
 		overflow: visible;
-    height: calc(100% - 50px);
-    position: absolute;
+    position: relative;
     width: 100%;
-    top: 50px;
-    > * {
-    	position: absolute;
-    	top: 0;
-    	right: 0;
-    	bottom: 0;
-    	left: 0;
+    .content {
+    	width: 100%;
+    	overflow-x: hidden;
+    	overflow-y: auto;
     }
     .row {
     	margin-bottom: 15px;
@@ -385,81 +363,59 @@
     .pane-padded {
     	padding: 15px;
     }
-		.has-button {
-			padding-bottom: $btn-medium-height;
-			> .content {
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: $btn-medium-height;
-				left: 0;
-				overflow-x: hidden;
-				overflow-y: auto;
-			}
-			.pane-view-actions {
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				border-radius: 0 0 $base-border-radius $base-border-radius;
-				overflow: hidden;
-				.button {
-					border-radius: 0;
-					max-width: none;
-					&.hollow {
-						border-top: 1px solid $light-grey;
-						background-color: transparent;
-						color: $light-text-color;
-						&:hover {
-							color: $text-color;
-							background-color: $light-grey;
-						}
+
+		.pane-view-actions {
+			position: static;
+			width: 100%;
+			border-radius: 0 0 $base-border-radius $base-border-radius;
+			overflow: hidden;
+			.button {
+				border-radius: 0;
+				max-width: none;
+				&.hollow {
+					border-top: 1px solid $light-grey;
+					background-color: transparent;
+					color: $light-text-color;
+					&:hover {
+						color: $text-color;
+						background-color: $light-grey;
 					}
 				}
-				&.two-actions {
-					@include clearfix();
-					.button {
-						float: left;
-						width: 50%;
-					}
+			}
+			&.two-actions {
+				@include clearfix();
+				.button {
+					float: left;
+					width: 50%;
 				}
 			}
 		}
 
 	} // end .ds-pane-content
 
-	&.has-tabs {
-		.ds-pane-content {
-			.content {
-				position: absolute;
-				top: 35px;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				overflow-x: hidden;
-				overflow-y: auto;
-			}
-			.has-button {
-				.content {
-					bottom: $btn-medium-height;
-				}
-			}
-		}
-	}
-
 	.color-options {
+		margin: 0 -5px;
 		.color {
-			width: 13.333%;
-			padding-bottom: 13.333%;
+			width: calc(16.6667% - 10px);
+			max-width: 30px;
 			cursor: pointer;
 			border-radius: 50%;
 			display: inline-block;
 			vertical-align: top;
-			margin-right: 4%;
+			margin: 10px 5px 0;
 			background: attr(data-color);
 			position: relative;
-			margin-top: 4%;
 			transition: border $med-speed $ease;
+			span {
+				display: block;
+				border-radius: 50%;
+				svg {
+					display: block;
+					* {
+						fill: transparent;
+					}
+				}
+			}
 			&.add-color {
 				&:after {
 					border-color: lighten(#000, 80%);
@@ -480,9 +436,9 @@
 					}
 				}
 			}
-			&:nth-child(6n+6) {
-				margin-right: 0;
-			}
+			// &:nth-child(6n+6) {
+			// 	margin-right: 0;
+			// }
 			&:after {
 				content: '';
 				position: absolute;
