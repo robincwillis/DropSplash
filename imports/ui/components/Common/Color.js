@@ -10,7 +10,6 @@ import DSColorPicker from './DSColorPicker';
 
 //Icons
 import PlusIcon from '../../assets/icons/plus-icon.js';
-import ColorCircle from '../../assets/icons/color-circle.js';
 
 //API
 import { Pages } from '../../../api/pages/pages.js';
@@ -102,15 +101,10 @@ class ColorView extends Component {
 			<div className="color-view">
 				<div className="color-options">
 					{this.props.page.colors.map( (color, index) => {
-						return(
-							<div className="color">
-								<InlineSVG src={ColorCircle} onClick={this.selectColor.bind(this, color)} key={"col-"+index} element="span" style={{ background: color.hex }} />
-							</div>
-						);
+						return(<div onClick={this.selectColor.bind(this, color)} key={"col-"+index} className="color active" style={{ background: color.hex }}></div>);
 					})}
 					<div className="color add-color" onClick={this.showColorPicker.bind(this)}>
-						<InlineSVG src={ColorCircle} element="span" />
-						<InlineSVG src={PlusIcon} element="span" className="icon plus" />
+						<InlineSVG src={PlusIcon} element="span" className="icon" />
 					</div>
 				</div>
 				{this.renderColorPicker()}
