@@ -411,6 +411,8 @@
 				border-radius: 50%;
 				svg {
 					display: block;
+					width: 100%;
+					height: auto;
 					* {
 						fill: transparent;
 					}
@@ -422,17 +424,18 @@
 				}
 			}
 			.icon {
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				margin: -7px;
+				// position: absolute;
+				// left: 50%;
+				// top: 50%;
+				// margin: -7px;
+				border-radius: 50%;
 				svg {
 					margin: 0 auto;
 					display: block;
-					width: 14px;
-					height: 14px;
+					width: 100%;
+					height: auto;
 					* {
-						fill: lighten(#000, 80%);
+						fill: transparent;
 					}
 				}
 			}
