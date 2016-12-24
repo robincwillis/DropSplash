@@ -67,13 +67,16 @@ class PaneComponent extends Component {
 
 		this.setState({
 			currentView: nextViewIndex,
-			transitionDirection: nextViewIndex > currentViewIndex ? 'pane-next-transition' : 'pane-prev-transition',
+			transitionDirection: nextViewIndex > currentView ? 'pane-next-transition' : 'pane-prev-transition',
 			currentProps:props
 		});
 
 		if(this.props.onChangeView) {
 			this.props.onChangeView(nextViewIndex);
 		}
+		console.log('current:' + currentView);
+		console.log('next:' + nextViewIndex);
+		// console.log(this.state.transitionDirection);
 	}
 
 	goToNextView (props={}) {
