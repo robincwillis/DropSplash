@@ -9,9 +9,9 @@
 
 	.ds-pane-content {
 		overflow: hidden;
+		border-radius: 0 0 $base-border-radius $base-border-radius;
 		.new-content-grid {
 			overflow: hidden;
-			border-radius: 0 0 $base-border-radius $base-border-radius;
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
@@ -19,10 +19,8 @@
 			.content-item {
 				width: 24%;
 				flex-grow: 1;
-				height: 75px;
 				border-right: 1px solid $pane-line-color;
 				border-bottom: 1px solid $pane-line-color;
-				float: left;
 				transition: background $med-speed ease-in-out;
 				cursor: pointer;
 				box-sizing: content-box;

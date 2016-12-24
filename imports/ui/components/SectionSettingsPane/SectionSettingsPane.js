@@ -95,6 +95,7 @@ export default class SectionSettingsPane extends Component {
 				paneClass="wide"
 				paneTabs={true}
 				closeable={true}
+				paneHeight="360px"
 				visible={this.props.visible}
 				title="Section Settings"
 				views={this.paneContent()}

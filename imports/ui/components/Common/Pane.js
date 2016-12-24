@@ -177,8 +177,7 @@ class PaneComponent extends Component {
 
 	paneContentStyle () {
 		var paneStyle = {
-			// maxHeight: this.props.contentMaxHeight,
-			// minHeight: this.props.contentMinHeight
+			height: this.props.paneHeight
 		};
 		return paneStyle;
 	}
@@ -221,6 +220,7 @@ class PaneComponent extends Component {
 				>
 				<div
 					className={this.paneClass()}
+					style={this.paneContentStyle()}
 				>
 					<div className="ds-pane-header">
 						{this.showBackArrow()}
