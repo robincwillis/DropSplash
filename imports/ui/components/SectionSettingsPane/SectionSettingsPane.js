@@ -60,6 +60,7 @@ export default class SectionSettingsPane extends Component {
 				title : 'Type',
 				Component : SectionTypographyView,
 				props : {
+					key : '1',
 					section : this.props.section
 				}
 			},
@@ -68,6 +69,7 @@ export default class SectionSettingsPane extends Component {
 				title : 'Layout',
 				Component : SectionLayoutView,
 				props : {
+					key : '2',
 					section : this.props.section,
 					updateSectionStyles : this.updateSectionStyles.bind(this),
 					updateSectionContainerStyles : this.updateSectionContainerStyles.bind(this),
@@ -79,6 +81,7 @@ export default class SectionSettingsPane extends Component {
 				title : 'Effects',
 				Component : SectionEffectsView,
 				props : {
+					key : '3',
 					section : this.props.section
 				}
 

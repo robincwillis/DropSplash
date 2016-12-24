@@ -35,19 +35,21 @@ export default class ImageBackgroundView extends Component {
 		console.log(this.props);
 
 		return (
-			<div className="has-button" key="view1">
-				<div className="content pane-padded">
-					<FileUpload
-						onFileUpload={this.onFileUpload.bind(this)}
-						{...this.props}
-					/>
-				</div>
-				<div className="pane-view-actions">
-					<Button
-						buttonClass="medium hollow"
-						label="Add Color Overlay"
-						clickEvent={this.props.clickHandler}
-					/>
+			<div key="view1">
+				<div className="pane-content-wrap">
+					<div className="content pane-padded">
+						<FileUpload
+							onFileUpload={this.onFileUpload.bind(this)}
+							{...this.props}
+						/>
+					</div>
+					<div className="pane-view-actions">
+						<Button
+							buttonClass="medium hollow"
+							label="Add Color Overlay"
+							clickEvent={this.props.clickHandler}
+						/>
+					</div>
 				</div>
 			</div>
 		);

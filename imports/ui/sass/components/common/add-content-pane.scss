@@ -12,9 +12,13 @@
 		.new-content-grid {
 			overflow: hidden;
 			border-radius: 0 0 $base-border-radius $base-border-radius;
-			margin-right: -1px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			margin: 0 -1px -1px 0;
 			.content-item {
-				width: 79px;
+				width: 24%;
+				flex-grow: 1;
 				height: 75px;
 				border-right: 1px solid $pane-line-color;
 				border-bottom: 1px solid $pane-line-color;

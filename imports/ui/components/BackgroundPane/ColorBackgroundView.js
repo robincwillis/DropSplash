@@ -33,12 +33,14 @@ export default class App extends Component {
 	render () {
 
 		return (
-			<div className="has-button has-tabs" key="view1">
-				<div className="content pane-padded">
-					<Color
-						onSelectColor={this.selectColor.bind(this)}
-						{...this.props}
-					/>
+			<div key="view1">
+				<div className="pane-content-wrap">
+					<div className="content pane-padded">
+						<Color
+							onSelectColor={this.selectColor.bind(this)}
+							{...this.props}
+						/>
+					</div>
 				</div>
 			</div>
 		);

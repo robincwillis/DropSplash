@@ -25,7 +25,7 @@ render () {
   if(!this.props.page) {
     return (
       <div className="loader-wrapper">
-        <div className="loader">loading ******</div>
+        <div className="loader"></div>
       </div>
     );
   }

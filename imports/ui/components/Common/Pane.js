@@ -82,7 +82,7 @@ class PaneComponent extends Component {
 			currentView++;
 			this.setState({
 				currentView: currentView,
-				currentProps:props,
+				currentProps: props,
 				transitionDirection: 'pane-next-transition'
 			});
 			if(this.props.onChangeView) {
@@ -97,7 +97,7 @@ class PaneComponent extends Component {
 			currentView--;
 			this.setState({
 				currentView: currentView,
-				currentProps:props,
+				currentProps: props,
 				transitionDirection: 'pane-prev-transition'
 			});
 			if(this.props.onChangeView) {
@@ -165,19 +165,6 @@ class PaneComponent extends Component {
 			paneClass += ' '+this.props.paneClass;
 		}
 
-		if (this.props.paneTabs) {
-			paneClass += ' '+'has-tabs';
-			if (this.props.views.length === 2) {
-				paneClass += ' '+'two-tabs';
-			}
-			if (this.props.views.length === 4) {
-				paneClass += ' '+'four-tabs';
-			}
-			if (this.props.views.length === 5) {
-				paneClass += ' '+'five-tabs';
-			}
-		}
-
 		if (this.props.paneClass) {
 			paneClass += ' '+this.props.paneClass;
 		}
@@ -202,13 +189,13 @@ class PaneComponent extends Component {
 					<div
 						key={'tab-'+index}
 						onClick={this.goToViewById.bind(this, view.id, {})}
-						className={'tab ' + active}
+						className={'tab small-caps ' + active}
 					>
 						{view.title}
 					</div>
 				);
 			});
-			return (<div className="ds-pane-tabs small-caps">{tabs}<hr/></div>);
+			return (<div className="ds-pane-tabs">{tabs}<hr/></div>);
 		} else {
 			return false;
 		}
@@ -250,8 +237,7 @@ class PaneComponent extends Component {
 							transitionEnterTimeout={550}
 							transitionLeaveTimeout={550}
 						>
-						<ViewComponent {...viewProps} />
-
+							<ViewComponent {...viewProps} />
 						</ReactCSSTransitionGroup>
 					</div>
 				</div>

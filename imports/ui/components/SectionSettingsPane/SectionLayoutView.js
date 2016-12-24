@@ -78,160 +78,162 @@ export default class SectionLayoutView extends Component {
 
 	render () {
 		return (
-			<div className="has-button" key="view1">
-				<div className="content pane-padded">
-					<div className="row pane-grid-row">
-						<div className="inline-col middle one-third">
-							<label>Horizontal</label>
-						</div>
-						<div className="inline-col middle align-right two-thirds">
-						<ul className="toggle-tabs">
-							<li className="tab">
-								<input
-									onChange={this.updateHorizonalAlignment.bind(this)}
-									type="radio"
-									name="horizontal-alignment"
-									value="left"
-									id="align-left"
-									checked={this.props.section.settings.alignment === 'left'}
-								/>
-								<label htmlFor="align-left">
-									<InlineSVG src={hAlignLeft} element="span" className="icon h-align left" />
-								</label>
-							</li>
-							<li className="tab">
-								<input
-									onChange={this.updateHorizonalAlignment.bind(this)}
-									type="radio"
-									name="horizontal-alignment"
-									value="center"
-									id="align-center"
-									checked={this.props.section.settings.alignment === 'center'}
-								/>
-								<label htmlFor="align-center">
-									<InlineSVG src={hAlignCenter} element="span" className="icon h-align center" />
-								</label>
-							</li>
-							<li className="tab">
-								<input
-									onChange={this.updateHorizonalAlignment.bind(this)}
-									type="radio"
-									name="horizontal-alignment"
-									value="right"
-									id="align-right"
-									checked={this.props.section.settings.alignment === 'right'}
-								/>
-								<label htmlFor="align-right">
-									<InlineSVG src={hAlignRight} element="span" className="icon h-align right" />
-								</label>
-							</li>
-						</ul>
-						</div>
-					</div>
-
-					<div className="row pane-grid-row">
-						<div className="inline-col middle one-third">
-							<label>Vertical</label>
-						</div>
-						<div className="inline-col middle align-right two-thirds">
+			<div key="view1">
+				<div className="pane-content-wrap">
+					<div className="content pane-padded">
+						<div className="row pane-grid-row">
+							<div className="inline-col middle one-third">
+								<label>Horizontal</label>
+							</div>
+							<div className="inline-col middle align-right two-thirds">
 							<ul className="toggle-tabs">
 								<li className="tab">
 									<input
+										onChange={this.updateHorizonalAlignment.bind(this)}
 										type="radio"
-										name="vertical-alignment"
-										onChange={this.updateVerticalAlignment.bind(this)}
-										value="top"
-										checked={this.props.section.settings.verticalAlignment === 'top'}
-										id="align-top"
+										name="horizontal-alignment"
+										value="left"
+										id="align-left"
+										checked={this.props.section.settings.alignment === 'left'}
 									/>
-									<label htmlFor="align-top">
-										<InlineSVG src={vAlignTop} element="span" className="icon v-align top" />
+									<label htmlFor="align-left">
+										<InlineSVG src={hAlignLeft} element="span" className="icon h-align left" />
 									</label>
 								</li>
 								<li className="tab">
 									<input
+										onChange={this.updateHorizonalAlignment.bind(this)}
 										type="radio"
-										name="vertical-alignment"
-										onChange={this.updateVerticalAlignment.bind(this)}
-										value="middle"
-										checked={this.props.section.settings.verticalAlignment === 'middle'}
-										id="align-middle"
+										name="horizontal-alignment"
+										value="center"
+										id="align-center"
+										checked={this.props.section.settings.alignment === 'center'}
 									/>
-									<label htmlFor="align-middle">
-										<InlineSVG src={vAlignMiddle} element="span" className="icon v-align middle" />
+									<label htmlFor="align-center">
+										<InlineSVG src={hAlignCenter} element="span" className="icon h-align center" />
 									</label>
 								</li>
 								<li className="tab">
 									<input
+										onChange={this.updateHorizonalAlignment.bind(this)}
 										type="radio"
-										name="vertical-alignment"
-										onChange={this.updateVerticalAlignment.bind(this)}
-										value="bottom"
-										checked={this.props.section.settings.verticalAlignment === 'bottom'}
-										id="align-bottom"
+										name="horizontal-alignment"
+										value="right"
+										id="align-right"
+										checked={this.props.section.settings.alignment === 'right'}
 									/>
-									<label htmlFor="align-bottom">
-										<InlineSVG src={vAlignBottom} element="span" className="icon v-align bottom" />
+									<label htmlFor="align-right">
+										<InlineSVG src={hAlignRight} element="span" className="icon h-align right" />
 									</label>
 								</li>
 							</ul>
+							</div>
+						</div>
+
+						<div className="row pane-grid-row">
+							<div className="inline-col middle one-third">
+								<label>Vertical</label>
+							</div>
+							<div className="inline-col middle align-right two-thirds">
+								<ul className="toggle-tabs">
+									<li className="tab">
+										<input
+											type="radio"
+											name="vertical-alignment"
+											onChange={this.updateVerticalAlignment.bind(this)}
+											value="top"
+											checked={this.props.section.settings.verticalAlignment === 'top'}
+											id="align-top"
+										/>
+										<label htmlFor="align-top">
+											<InlineSVG src={vAlignTop} element="span" className="icon v-align top" />
+										</label>
+									</li>
+									<li className="tab">
+										<input
+											type="radio"
+											name="vertical-alignment"
+											onChange={this.updateVerticalAlignment.bind(this)}
+											value="middle"
+											checked={this.props.section.settings.verticalAlignment === 'middle'}
+											id="align-middle"
+										/>
+										<label htmlFor="align-middle">
+											<InlineSVG src={vAlignMiddle} element="span" className="icon v-align middle" />
+										</label>
+									</li>
+									<li className="tab">
+										<input
+											type="radio"
+											name="vertical-alignment"
+											onChange={this.updateVerticalAlignment.bind(this)}
+											value="bottom"
+											checked={this.props.section.settings.verticalAlignment === 'bottom'}
+											id="align-bottom"
+										/>
+										<label htmlFor="align-bottom">
+											<InlineSVG src={vAlignBottom} element="span" className="icon v-align bottom" />
+										</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div className="row pane-grid-row">
+							<div className="inline-col middle one-third">
+								<label>Width</label>
+							</div>
+							<div className="inline-col middle align-right one-third">
+
+								<input
+									onChange={this.updateWidth.bind(this)}
+									value={this.getWidthValue()}
+									className=""
+									type="text"
+									placeholder="600"
+								/>
+
+							</div>
+							<div className="inline-col middle align-right one-third">
+								<ul className="toggle-tabs">
+									<li className="tab">
+										<input
+											onChange={this.updateWidthUnit.bind(this)}
+											checked={this.state.widthUnit === 'px'}
+											type="radio"
+											name="width-unit"
+											value="px"
+											id="px"
+										/>
+										<label htmlFor="px"><span>px</span></label>
+									</li>
+									<li className="tab">
+										<input
+											onChange={this.updateWidthUnit.bind(this)}
+											checked={this.state.widthUnit === '%'}
+											type="radio"
+											name="width-unit"
+											value="%"
+											id="%"
+										/>
+										<label htmlFor="%"><span>%</span></label>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-
-					<div className="row pane-grid-row">
-						<div className="inline-col middle one-third">
-							<label>Width</label>
-						</div>
-						<div className="inline-col middle align-right one-third">
-
-							<input
-								onChange={this.updateWidth.bind(this)}
-								value={this.getWidthValue()}
-								className=""
-								type="text"
-								placeholder="600"
-							/>
-
-						</div>
-						<div className="inline-col middle align-right one-third">
-							<ul className="toggle-tabs">
-								<li className="tab">
-									<input
-										onChange={this.updateWidthUnit.bind(this)}
-										checked={this.state.widthUnit === 'px'}
-										type="radio"
-										name="width-unit"
-										value="px"
-										id="px"
-									/>
-									<label htmlFor="px"><span>px</span></label>
-								</li>
-								<li className="tab">
-									<input
-										onChange={this.updateWidthUnit.bind(this)}
-										checked={this.state.widthUnit === '%'}
-										type="radio"
-										name="width-unit"
-										value="%"
-										id="%"
-									/>
-									<label htmlFor="%"><span>%</span></label>
-								</li>
-							</ul>
-						</div>
+					<div className="pane-view-actions two-actions">
+						<Button
+							buttonClass="medium tertiary"
+							label="Cancel"
+							clickEvent={this.props.clickHandler}
+						/>
+						<Button
+							buttonClass="medium"
+							label="Done"
+							clickEvent={this.props.clickHandler}
+						/>
 					</div>
-				</div>
-				<div className="pane-view-actions two-actions">
-					<Button
-						buttonClass="medium tertiary"
-						label="Cancel"
-						clickEvent={this.props.clickHandler}
-					/>
-					<Button
-						buttonClass="medium"
-						label="Done"
-						clickEvent={this.props.clickHandler}
-					/>
 				</div>
 			</div>
 		);

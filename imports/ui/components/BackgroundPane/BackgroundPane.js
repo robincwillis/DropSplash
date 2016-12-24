@@ -28,10 +28,10 @@ export default class BackgroundPane extends Component {
                 title : 'Image',
                 Component : ImageBackground,
                 props : {
-                    key:"1",
-                    title:"view 1",
-                    clickHandler: this.clickHandler.bind(this),
-                    page: this.props.page,
+                    key : '1',
+                    title : 'view 1',
+                    clickHandler : this.clickHandler.bind(this),
+                    page : this.props.page,
                     section : this.props.section
                 }
             },
@@ -40,9 +40,9 @@ export default class BackgroundPane extends Component {
                 title : 'Video',
                 Component : VideoBackground,
                 props : {
-                    key:"2",
-                    title:"view 2",
-                    clickHandler: this.clickHandler.bind(this)
+                    key : '2',
+                    title : 'view 2',
+                    clickHandler : this.clickHandler.bind(this)
                 }
             },
             {
@@ -50,10 +50,10 @@ export default class BackgroundPane extends Component {
                 title : 'Color',
                 Component : ColorBackground,
                 props : {
-                    key:"3",
-                    title:"view 3",
-                    clickHandler: this.clickHandler.bind(this),
-                    page: this.props.page,
+                    key : '3',
+                    title : 'view 3',
+                    clickHandler : this.clickHandler.bind(this),
+                    page : this.props.page,
                     section : this.props.section
                 }
             },
@@ -62,9 +62,9 @@ export default class BackgroundPane extends Component {
                 title : 'Overlay',
                 Component : OverlayBackground,
                 props : {
-                    key:"4",
-                    title:"view 4",
-                    clickHandler: this.clickHandler.bind(this)
+                    key : '4',
+                    title : 'view 4',
+                    clickHandler : this.clickHandler.bind(this)
                 }
             }
 
