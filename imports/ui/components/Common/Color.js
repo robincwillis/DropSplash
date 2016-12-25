@@ -66,6 +66,19 @@ class ColorView extends Component {
 		}
 	}
 
+	colorClass () {
+		var colorClass = 'color';
+		// if (this.props.paneClass) {
+		// 	paneClass += ' '+this.props.paneClass;
+		// }
+
+		// if (this.props.paneClass) {
+		// 	paneClass += ' '+this.props.paneClass;
+		// }
+
+		return colorClass;
+	}
+
 	activeColor () {
 		//TODO deep compare or object string compare
 	}
@@ -103,13 +116,14 @@ class ColorView extends Component {
 				<div className="color-options">
 					{this.props.page.colors.map( (color, index) => {
 						return(
-							<div onClick={this.selectColor.bind(this, color)} key={"col-"+index} className="color active" style={{ background: color.hex }}>
+							<div onClick={this.selectColor.bind(this, color)} key={"col-"+index} className={this.colorClass()} style={{ background: color.hex }}>
 								<InlineSVG src={ColorCirlce} element="span" className="icon" />
 							</div>
 						);
 					})}
 					<div className="color add-color" onClick={this.showColorPicker.bind(this)}>
-						<InlineSVG src={PlusIcon} element="span" className="icon" />
+						<InlineSVG src={ColorCirlce} element="span" className="icon" />
+						<InlineSVG src={PlusIcon} element="span" className="plus-icon" />
 					</div>
 				</div>
 				{this.renderColorPicker()}

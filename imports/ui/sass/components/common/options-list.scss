@@ -31,7 +31,7 @@
 			transition: background .2s $ease;
 			display: flex;
 			&:hover {
-				background: #f9f9f9;
+				background: $light-grey;
 				.icon {
 					&:after {
 						border-color: $text-color;

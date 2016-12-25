@@ -74,9 +74,6 @@ class PaneComponent extends Component {
 		if(this.props.onChangeView) {
 			this.props.onChangeView(nextViewIndex);
 		}
-		console.log('current:' + currentView);
-		console.log('next:' + nextViewIndex);
-		// console.log(this.state.transitionDirection);
 	}
 
 	goToNextView (props={}) {
@@ -177,7 +174,8 @@ class PaneComponent extends Component {
 
 	paneContentStyle () {
 		var paneStyle = {
-			height: this.props.paneHeight
+			height: this.props.paneHeight,
+			width: this.props.paneWidth
 		};
 		return paneStyle;
 	}

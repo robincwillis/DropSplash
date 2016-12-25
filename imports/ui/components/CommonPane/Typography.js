@@ -6,7 +6,7 @@ import DownArrow from '../../assets/icons/arrow-2-forwards.js';
 
 import Button from '../Common/Button';
 import Color from '../Common/Color';
-import Fonts from '../Common/Fonts';
+import Fonts from '../FontsPane/FontsPane';
 
 import '../../sass/components/common/inputs';
 
@@ -19,8 +19,21 @@ export default class TypographyView extends Component {
 		super(props);
 		//TODO load init styles into here to set controls
 		this.state = {
-			styles : {}
+			styles : {},
+			fontPickerVisible : false
 		};
+	}
+
+	showFontPicker () {
+		this.setState({
+			fontPickerVisible: true
+		});
+	}
+
+	hideFontPicker () {
+		this.setState({
+			fontPickerVisible: false
+		});
 	}
 
 	updateStyles (styles) {
@@ -52,46 +65,49 @@ export default class TypographyView extends Component {
 	renderColorPicker () {
 		if (this.state.colorPickerVisible) {
 			return (
-				<div>
-					<ReactCSSTransitionGroup
-						transitionName='pane-drawer'
-						transitionAppear={true}
-						transitionAppearTimeout={700}
-						transitionEnterTimeout={700}
-						transitionLeaveTimeout={700}
-					>
-						<div className="ds-pane-bottom-drawer">
-							<div className="slider">
-								<div className="ds-pane-header" onClick={this.hideColorPicker.bind(this)}>
-									<span className="pane-title">Add A Color</span>
-									<InlineSVG
-										src={DownArrow}
-										element="span"
-										className="icon right" 
-									/>
-								</div>
-								<div className="content">
-									<div className="color-picker">
-										<DSColorPicker />
-									</div>
-								</div>
-								<div className="pane-view-actions">
-									<Button
-										buttonClass="medium"
-										label="Save Color"
-										clickEvent={this.hideColorPicker.bind(this)}
-									/>
-								</div>
+				<div className="ds-pane-bottom-drawer">
+					<div className="slider">
+						<div className="ds-pane-header" onClick={this.hideColorPicker.bind(this)}>
+							<span className="pane-title">Add A Color</span>
+							<InlineSVG
+								src={DownArrow}
+								element="span"
+								className="icon right" 
+							/>
+						</div>
+						<div className="content">
+							<div className="color-picker">
+								<DSColorPicker />
 							</div>
 						</div>
-					</ReactCSSTransitionGroup>
+						<div className="pane-view-actions">
+							<Button
+								buttonClass="medium"
+								label="Save Color"
+								clickEvent={this.hideColorPicker.bind(this)}
+							/>
+						</div>
+					</div>
 				</div>
 			);
 		}
 		else {
 			return false;	
 		}
+	}
 
+	renderFontPicker () {
+		if (this.state.fontPickerVisible) {
+			return (
+				<Fonts
+					visible={true}
+					{ ...this.props }
+				/>
+			);
+		}
+		else {
+			return false;	
+		}
 	}
 
 	render () {
@@ -103,7 +119,7 @@ export default class TypographyView extends Component {
 						<div className="row">
 							<label>Font</label>
 							<div className="input-group">
-								<input className="two-thirds" type="text" placeholder="Work Sans" />
+								<input onClick={this.showFontPicker.bind(this)} className="two-thirds" type="text" placeholder="Work Sans" />
 								<input className="one-third" type="text" placeholder="Bold" />
 							</div>
 						</div>
@@ -139,10 +155,6 @@ export default class TypographyView extends Component {
 
 					</div>
 
-					<div className="content pane-padded fonts-view">
-						<Fonts {...this.props} />
-					</div>
-
 					<ReactCSSTransitionGroup
 						transitionName='pane-drawer'
 						transitionAppear={true}
@@ -166,6 +178,7 @@ export default class TypographyView extends Component {
 						/>
 					</div>
 				</div>
+				{this.renderFontPicker()}
 			</div>
 		);
 

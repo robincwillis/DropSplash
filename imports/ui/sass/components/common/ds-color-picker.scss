@@ -1,5 +1,16 @@
 @import '../../setup/variables';
 
+$ds-color-container-1 : transparent;
+$ds-color-container-2 : transparent;
+$ds-color-container-3 : transparent;
+$ds-color-container-4 : transparent;
+
+// uncomment to show containers
+// $ds-color-container-1 : #ccc;
+// $ds-color-container-2 : green;
+// $ds-color-container-3 : red;
+// $ds-color-container-4 : blue;
+
 .ds-color-picker {
 	background: transparent;
 	position: relative;
@@ -17,6 +28,54 @@
 		> div:first-of-type {
 			border-radius: 0 !important;
 			padding-bottom: 91px !important;
+			+ div {
+				background: $ds-color-container-1;
+				padding: $pane-padding;
+				> div:first-of-type {
+					align-items: center;
+					background: $ds-color-container-2;
+					> div:nth-child(1) {
+						> div {
+							margin-top: 0 !important;
+					    width: 22px !important;
+					    height: 22px !important;
+					    border-radius: 11px !important;
+					    > div {
+					    	border-radius: 11px !important;
+						    box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 0px 2px inset !important;
+					    }
+				  	}
+					}
+					> div:nth-child(2) {
+						background: $ds-color-container-4;
+						height: 16px;
+						> div {
+							margin: 0 !important;
+							height: 100% !important;
+					    > div {
+					    	border-radius: 20px;
+						    overflow: hidden;
+						    > div {
+						    	margin: 2px 8px !important;
+						    	// color slider handle
+						    	> div {
+						    		> div {
+						    			transform: translate(-6px, 0px) !important;
+						    		}
+						    	}
+						    }
+					    }
+							&:nth-child(2) {
+								display: none;
+							}
+						}
+					}
+				}
+				> div:nth-child(2) {
+					background: $ds-color-container-3;
+					padding-top: 12px !important;
+				}
+			}
 		}
 		input[type=text] {
 	    -webkit-appearance: none;

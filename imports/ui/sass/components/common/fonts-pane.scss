@@ -1,0 +1,61 @@
+@import '../../setup/variables';
+@import '../../setup/mixins';
+
+.ds-pane.fonts-pane {
+	top: -36px !important;
+	right: 33.333% !important;
+	bottom: $footer-height + 20px;
+	z-index: 9;
+	height: 60vh;
+	transform: none !important;
+	.font-list {
+		li {
+			color: rgba($text-color, .7);
+			input.checked {
+				+ label {
+					color: $text-color;
+					// background: $light-grey;
+					&:before {
+						content: '';
+						display: block;
+						position: absolute;
+						left: $pane-padding;
+						top: 50%;
+						margin-top: -7px;
+						width: 4px;
+						height: 10px;
+						border-bottom: 2px solid $primary-color;
+						border-right: 2px solid $primary-color;
+						transform: rotate(45deg);
+						transition: opacity $med-speed $ease;
+					}
+				}
+			}
+			label {
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+				flex-wrap: nowrap;
+				line-height: 1em;
+				padding-left: 30px;
+				.font-title {
+					flex-grow: 1;
+					overflow: hidden;
+					font-size: 14px;
+					span {
+						display: block;
+						overflow: hidden;
+					  text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+				}
+				.font-style-count {
+					flex-grow: 0;
+					font-size: 12px;
+					white-space: nowrap;
+					color: rgba($text-color, .4);
+				}
+			}
+		}
+	}
+}

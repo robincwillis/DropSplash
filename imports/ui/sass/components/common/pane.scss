@@ -62,7 +62,7 @@
 	box-shadow: 0 10px 40px rgba(0, 0, 0, .2);
 	border-radius: $base-border-radius;
 	overflow: visible;
-	min-width: 225px;
+	width: 225px;
 	min-height: 300px;
 	text-align: left;
 	z-index: 100;
@@ -149,9 +149,9 @@
 		flex-shrink: 0;
 		width: 100%;
 		height: 35px;
+		overflow: hidden;
 		background: $pane-bg;
 		position: relative;
-		border-bottom: 1px solid $pane-line-color;
 		hr {
 			display: block;
 			height: 2px;
@@ -159,7 +159,7 @@
 			position: absolute;
 			border: none;
 			left: 0;
-			bottom: -1px;
+			bottom: 0;
 			transition: background $med-speed $ease;
 			background-color: $primary-color;
 			width: 33.333%;
@@ -175,7 +175,10 @@
 			line-height: 34px;
 			color: $light-text-color;
 			transition: color $med-speed $ease;
-			&:hover {
+			border-bottom: 1px solid $pane-line-color;
+			&:hover,
+			&:active,
+			&.active {
 				color: $text-color;
 			}
 			+ .tab { // 2 tabs
@@ -242,11 +245,40 @@
     z-index: 12;
     border-radius: 0 0 $base-border-radius $base-border-radius;
     .slider {
+    	display: flex;
+	    flex-direction: column;
     	border-radius: $base-border-radius;
     	height: 100%;
     	background: $pane-bg;
     	.ds-pane-header {
     		border-radius: $base-border-radius $base-border-radius 0 0;
+    	}
+    	.content {
+    		display: flex;
+		    flex-direction: column;
+		    .color-picker {
+		    	display: flex;
+			    flex-direction: column;
+			    flex-grow: 1;
+			    .ds-color-picker {
+			    	display: flex;
+				    flex-direction: column;
+				    flex-grow: 1;
+				    > * {
+				    	display: flex;
+					    flex-direction: column;
+					    flex-grow: 1;
+					    > * {
+					    	display: flex;
+						    flex-direction: column;
+						    flex-grow: 1;
+						    + div {
+						    	flex-grow: 0;
+						    }
+					    }
+				    }
+			    }
+		    } // color-picker in drawer
     	}
     }
 	}
@@ -402,40 +434,18 @@
 	} // end .ds-pane-content
 
 	.color-options {
-		margin: 0 -5px;
+		margin: 0 -4px;
 		.color {
-			width: calc(16.6667% - 10px);
-			max-width: 30px;
+			width: calc(16.6667% - 8px);
 			cursor: pointer;
 			border-radius: 50%;
 			display: inline-block;
 			vertical-align: top;
-			margin: 10px 5px 0;
-			background: attr(data-color);
+			margin: 8px 4px 0;
 			position: relative;
 			transition: border $med-speed $ease;
-			span {
-				display: block;
-				border-radius: 50%;
-				svg {
-					display: block;
-					width: 100%;
-					height: auto;
-					* {
-						fill: transparent;
-					}
-				}
-			}
-			&.add-color {
-				&:after {
-					border-color: lighten(#000, 80%);
-				}
-			}
 			.icon {
-				// position: absolute;
-				// left: 50%;
-				// top: 50%;
-				// margin: -7px;
+				display: block;
 				border-radius: 50%;
 				svg {
 					margin: 0 auto;
@@ -447,9 +457,29 @@
 					}
 				}
 			}
-			// &:nth-child(6n+6) {
-			// 	margin-right: 0;
-			// }
+			&.add-color {
+				.plus-icon {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					margin: -7px;font-weight: 600;
+					width: 14px;
+					height: 14px;
+					svg {
+						display: block;
+						* {
+							fill: lighten($text-color, 65%);
+						}
+					}
+				}
+				&:hover {
+					.plus-icon {
+						svg * {
+							fill: $text-color;
+						}
+					}
+				}
+			}
 			&:after {
 				content: '';
 				position: absolute;
@@ -458,8 +488,8 @@
 				bottom: -1px;
 				left: -1px;
 				border-radius: 50%;
-				border: 2px solid rgba(0, 0, 0, .07);
-				transition: border $med-speed $ease, opacity $med-speed $ease, top $med-speed $ease, right $med-speed $ease, bottom $med-speed $ease, left $med-speed $ease;
+				border: 2px solid lighten($text-color, 65%);
+				transition: border $med-speed $ease;
 			}
 			&:before {
 				content: '';
@@ -469,19 +499,12 @@
 				bottom: 0px;
 				left: 0px;
 				border-radius: 50%;
-				border: 3px solid transparent;
+				border: 3px solid $pane-bg;
 				transition: border $med-speed $ease;
 			}
 			&:hover {
-				.icon {
-					svg {
-						* {
-							fill: #000;
-						}
-					}
-				}
 				&:after {
-					border-color: #333;
+					border-color: $text-color;
 				}
 				&:before {
 					border-color: $pane-bg;
@@ -489,11 +512,6 @@
 			}
 			&.active,
 			&:active {
-				&.add-color {
-					&:after {
-						border-color: #000;
-					}
-				}
 				&:after {
 					border-color: $primary-color;
 				}
@@ -510,7 +528,7 @@
 .pane-transition-appear {
 	transform: scale(.95);
 	opacity: 0;
-	transition: transform $med-speed $ease, opacity $med-speed $ease;
+	transition: transform .5s $ease, opacity .5s $ease;
 }
 
 .pane-transition-appear.pane-transition-appear-active {
@@ -520,8 +538,8 @@
 
 .pane-transition-leave {
 	transform: scale(1);
-	opacity: .01;
-	transition: transform $med-speed $ease, opacity $med-speed $ease;
+	opacity: 1;
+	transition: transform .5s $ease, opacity .5s $ease;
 }
 
 .pane-transition-leave.pane-transition-leave-active {
@@ -652,24 +670,24 @@
 }
 
 .pane-drawer-appear.pane-drawer-appear-active {
-	background: rgba(0, 0, 0, .3);
+	background: rgab($text-color, .5);
   .slider {
   	transform: translateY(0);
   }
 }
 
 .pane-drawer-leave {
-  background: rgba(0, 0, 0, .3);
-  transition: background .5s $ease;
-  .slider {
+	background: rgab($text-color, .5);
+	transition: background .5s $ease;
+	.slider {
   	transition: transform .5s $ease;
-  	transform: translateY(0);
+  	transform: translateY(0%);
   }
 }
 
 .pane-drawer-leave.pane-drawer-leave-active {
-	background: transparent;
-  .slider {
-  	transform: translatey(100%);
+	background: rgab($text-color, .01);
+	.slider {
+  	transform: translateY(100%);
   }
 }
