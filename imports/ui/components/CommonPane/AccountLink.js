@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import Button from '../Common/Button';
 
+import InlineSVG from 'svg-inline-react';
+import InstagramIcon from '../../assets/icons/instagram.js';
+
 import { WidgetTypes } from '../../../api/widgets/schema.js';
 
 
@@ -69,8 +72,13 @@ export default class AccountLinkView extends Component {
 
 		return (
 			<div className="has-button" key="view1">
-					<div className="content pane-padded">
-						<p> were gonna take you to instagram to authorize access from Dropsplash to your posts</p>
+					<div className="content pane-padded centered-pane-content">
+						<div>
+							<InlineSVG src={InstagramIcon} element="span" className="icon" />
+							<div className="lg-text">
+								<p>were gonna take you to instagram to authorize access from Dropsplash to your posts</p>
+							</div>
+						</div>
 					</div>
 					<div className="pane-view-actions">
 						<Button

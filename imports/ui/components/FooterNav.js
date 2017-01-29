@@ -33,10 +33,47 @@ class FooterNav extends Component {
 			} else {
 				//TODO scroll to section
 				//var objDiv = document.querySelector(".app-content");
-				let lastSection = document.querySelector('.ds-page-section-container:last-child');
+				var lastSection = document.querySelector('.ds-page-section-container:last-child');
+				let scrollContainer = document.querySelector('.content-wrap');
+
+				// Begin Scroll Animation
+				function scrollTo(element, to, duration) {
+				  var start = element.scrollTop,
+				      change = to - start,
+				      currentTime = 0,
+				      increment = 20;
+				      
+				  var animateScroll = function(){        
+				      currentTime += increment;
+				      var val = Math.easeInOutQuad(currentTime, start, change, duration);
+				      element.scrollTop = val;
+				      if(currentTime < duration) {
+				          setTimeout(animateScroll, increment);
+				      }
+				  };
+				  animateScroll();
+				}
+
+				//t = current time
+				//b = start value
+				//c = change in value
+				//d = duration
+				Math.easeInOutQuad = function (t, b, c, d) {
+				t /= d/2;
+				if (t < 1) return c/2*t*t + b;
+				t--;
+				return -c/2 * (t*(t-2) - 1) + b;
+				};
+				// End Scroll Animation
+
+				// scrollTo(scrollContainer, lastSection.getBoundingClientRect().top, 750);
+
 				setTimeout(function() {
-					lastSection.scrollIntoView();
+					// lastSection.scrollIntoView();
+					scrollTo(scrollContainer, lastSection.getBoundingClientRect().top, 750);
+					lastSection = document.querySelector('.ds-page-section-container:last-child');
 				}, 10);
+
 			}
 		});
 	}

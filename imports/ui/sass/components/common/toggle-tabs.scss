@@ -23,9 +23,12 @@
 			&:checked {
 				+ label {
 					background: #fff;
-					border-color: $primary-color;
 					span {
 						opacity: 1;
+						color: $text-color;
+						svg * {
+							fill: $text-color;
+						}
 					}
 				}
 			}
@@ -39,8 +42,8 @@
 				transition: background $med-speed $ease, border $med-speed $ease;
 				line-height: 22px;
 				cursor: pointer;
-				border-radius: 4px;
-				border: 2px solid transparent;
+				border-radius: 6px;
+				border: 3px solid $light-grey;
 				cursor: pointer;
 				font-size: 10px;
 				letter-spacing: .2em;

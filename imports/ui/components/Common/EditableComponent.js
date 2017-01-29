@@ -42,7 +42,7 @@ const style = {
 const cardSource = {
 	beginDrag(props) {
 
-		console.log('begin dragging note', props);
+		// console.log('begin dragging note', props);
 
 		return {
 			id: props.widget._id,
@@ -55,6 +55,8 @@ const cardTarget = {
 	hover(props, monitor, component) {
     const dragIndex = monitor.getItem().index;
     const hoverIndex = props.widget.index;
+
+    var dragDirection = 'none';
 
     // Don't replace items with themselves
     if (dragIndex === hoverIndex) {
@@ -79,11 +81,13 @@ const cardTarget = {
 
     // Dragging downwards
     if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+      var dragDirection = 'drag-down';
       return;
     }
 
     // Dragging upwards
     if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+      var dragDirection = 'drag-up';
       return;
     }
 
@@ -95,7 +99,9 @@ const cardTarget = {
     // but it's good here for the sake of performance
     // to avoid expensive index searches.
     monitor.getItem().index = hoverIndex;
+
 	}
+
 };
 
 class EditableComponent extends Component {
@@ -103,7 +109,8 @@ class EditableComponent extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			editing: false
+			editing: false,
+			dragging: false
 		};
 	}
 
@@ -176,6 +183,19 @@ class EditableComponent extends Component {
 		return editableClass;
 	}
 
+	dragClass () {
+		var dragClass = 'draggable-container';
+		if (this.state.dragging === true) {
+			dragClass += ' dragging';
+		}
+
+		if (this.props.hovered === true) {
+			dragClass += ' hovered';
+		}
+		
+		return dragClass;
+	}
+
 	clickHandler () {
 		if (this.state.editing === true) {
 			this.setState({editing: false});
@@ -191,18 +211,18 @@ class EditableComponent extends Component {
 
 		const isActive = canDrop && isOver;
 
-
 		let dragStyle = isDragging ? {
-			opacity : 0.5 ,
+			opacity : .25,
 			backgroundColor : '#ffffff'
 		} : {};
-		let dropStyle = isOver ? {backgroundColor: 'rgba(22, 225, 185, 0.3)'} : {};
-		let isActiveStyle = isActive ? {backgroundColor: 'red'} : {};
+
+		let dropStyle = isOver ? {} : {};
+		let isActiveStyle = isActive ? {} : {};
 		let dragDropStyle = Object.assign({}, dragStyle, dropStyle, isActiveStyle);
 
 		return connectDragSource(connectDropTarget(
 		//return (
-			<div style={dragDropStyle}>
+			<div className={this.dragClass()} style={dragDropStyle}>
 				<div
 					className={this.editableClass()}
 					onClick={this.enterEditMode.bind(this)}

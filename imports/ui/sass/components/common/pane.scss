@@ -302,6 +302,26 @@
 				flex-direction: column;
 				.content {
 					flex-grow: 1;
+					&.centered-pane-content {
+						align-items: center;
+						text-align: center;
+						display: flex;
+						flex-direction: row;
+						padding-bottom: $pane-padding * 2;
+						.lg-text {
+							padding: 0 $pane-padding;
+							p {
+								font-size: 16px;
+							}
+						}
+						.icon {
+							margin: 0 0 $pane-padding;
+							svg {
+								width: 20px;
+								height: 20px;
+							}
+						}
+					}
 				}
 			}
     }
@@ -409,6 +429,7 @@
 			border-radius: 0 0 $base-border-radius $base-border-radius;
 			overflow: hidden;
 			flex-shrink: 0;
+			flex-grow: 0;
 			.button {
 				border-radius: 0;
 				max-width: none;

@@ -169,3 +169,10 @@
 		}
 	}
 }
+
+.draggable-container {
+	transition: all .3s $ease;
+	&.hovered {
+		background: red;
+	}
+}
