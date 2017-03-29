@@ -1,0 +1,78 @@
+@import '../../setup/variables';
+@import '../../setup/mixins';
+.app-content {
+	.content-wrap.reordering {
+		transform: scale(.5);
+		transform-origin: center top;
+		margin-bottom: -3000px;
+		.ds-page-section {
+			margin-bottom: 30px;
+			transition: box-shadow $med-speed $ease;
+			position: relative;
+			z-index: 1;
+			cursor: move;
+	    cursor: grab;
+	    cursor: -moz-grab;
+	    cursor: -webkit-grab;
+			* {
+				pointer-events: none;
+			}
+			* [class^="reorder-"] {
+				display: block;
+			}
+			&:hover {
+				box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+				z-index: 4;
+				* [class^="reorder-"] {
+					opacity: 1;
+				}
+			}
+			&:active {
+				box-shadow: 0 30px 50px rgba(0,0,0,0.30);
+				cursor: grabbing;
+		    cursor: -moz-grabbing;
+		    cursor: -webkit-grabbing;
+			}
+			.ds-section-controls {
+				opacity: 0;
+			}
+			.reorder-handle {
+				pointer-events: all;
+				position: absolute;
+				top: 50%;
+				right: -70px;
+				padding-left: 40px;
+				margin-top: -45px;
+				.icon {
+					opacity: .4;
+					transition: opacity $med-speed $ease;
+					width: 30px;
+				}
+				&:hover {
+					.icon {
+						opacity: .8;
+					}
+				}
+			}
+			.reorder-delete {
+				pointer-events: all;
+				position: absolute;
+				top: 50%;
+				left: -80px;
+				padding-right: 40px;
+				margin-top: -40px;
+				.button {
+					transform: scale(2);
+					pointer-events: all;
+					background: rgba(0,0,0,.2);
+					&:hover {
+						background: $red;
+						svg * {
+							fill: $white;
+						}
+					}
+				}
+			}
+		}
+	}
+}

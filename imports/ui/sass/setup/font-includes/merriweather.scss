@@ -1,0 +1,95 @@
+//--Bagnard----------------------
+
+@font-face {
+  font-family: 'Merriweather';
+  src:  url('/fonts/merriweather/merriweather-regular-webfont.woff') format('woff'),
+  			url('/fonts/merriweather/merriweather-regular-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src:  url('/fonts/merriweather/merriweather-italic-webfont.woff') format('woff'),
+  			url('/fonts/merriweather/merriweather-italic-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src:  url('/fonts/merriweather/merriweather-bold-webfont.woff') format('woff'),
+  			url('/fonts/merriweather/merriweather-bold-webfont.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src:  url('/fonts/merriweather/merriweather-bolditalic-webfont.woff') format('woff'),
+  			url('/fonts/merriweather/merriweather-bolditalic-webfont.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src:  url('/fonts/merriweather/merriweather-black-webfont.woff') format('woff'),
+  			url('/fonts/merriweather/merriweather-black-webfont.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src:  url('/fonts/merriweather/merriweather-blackitalic-webfont.woff') format('woff'),
+  			url('/fonts/merriweather/merriweather-blackitalic-webfont.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src:  url('/fonts/merriweather/merriweather-light-webfont.woff') format('woff'),
+  			url('/fonts/merriweather/merriweather-light-webfont.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src:  url('/fonts/merriweather/merriweather-lightitalic-webfont.woff') format('woff'),
+  			url('/fonts/merriweather/merriweather-lightitalic-webfont.woff2') format('woff2');
+  font-weight: 100;
+  font-style: italic;
+}
+
+.merriweather {
+	font-family: 'Merriweather', serif !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+	&.italic {
+		font-style: italic !important;	
+	}
+	&.bold {
+		font-weight: 700 !important;
+	}
+	&.bold-italic {
+		font-weight: 700 !important;
+		font-style: italic !important;
+	}
+	&.black {
+		font-weight: 900 !important;
+	}
+	&.black-italic {
+		font-weight: 900 !important;
+		font-style: italic !important;
+	}
+	&.light {
+		font-weight: 100 !important;
+	}
+	&.light-italic {
+		font-weight: 100 !important;
+		font-style: italic !important;
+	}
+}

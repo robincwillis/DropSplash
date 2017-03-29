@@ -3,6 +3,7 @@ import InlineSVG from 'svg-inline-react';
 
 //Icons
 import PlusIcon from '../../assets/icons/plus-icon.js';
+import TrashIcon from '../../assets/icons/trash.js';
 
 //Components
 import Button from './Button.js';
@@ -25,6 +26,46 @@ export default class App extends Component {
 			showBackgroundPane: false,
 			showFontsPane: false
 		};
+	}
+
+	scroll () {
+		// var appContainer = document.querySelector('.app-content');
+		// var sectionControls = document.querySelectorAll('.ds-section-controls');
+		// var fixedSectionControls = document.querySelectorAll('.ds-section-controls.fixed');
+
+    var appWrapper = document.querySelector('.app-content');
+
+		appWrapper.addEventListener('scroll', function(event) {
+			var scrollTop = appWrapper.scrollTop;
+			var sections = document.querySelectorAll('.ds-page-section');
+
+			for(var i = 0; i < sections.length; i++) {
+				var sectionHeight = sections[i].clientHeight;
+				var sectionPosition = sections[i].getBoundingClientRect().top;
+				var sectionHeader = sections[i].querySelector('.ds-section-controls');
+				var rightControls = sections[i].querySelector('.right-controls');
+				var rightControlsWidth = rightControls.clientWidth;
+				var headerHeight = sectionHeader.clientHeight;
+
+				if(sectionPosition < 1) {
+					sectionHeader.classList.add('fixed');
+					rightControls.style.width= rightControlsWidth + "px";
+				} else {
+					sectionHeader.classList.remove('fixed');
+				}
+				if(sectionPosition < -sectionHeight + headerHeight) {
+					sectionHeader.classList.remove('fixed');
+					sectionHeader.classList.add('bottom');
+				} else {
+					sectionHeader.classList.remove('bottom');
+				}
+			}
+		});
+	}
+
+	componentDidMount () {
+		var appContainer = document.querySelector('.app-content');
+		appContainer.addEventListener('scroll', this.scroll);
 	}
 
 	showContentPane () {
@@ -76,6 +117,7 @@ export default class App extends Component {
 			section={this.props.section}
 			closeable={true}
 			visible={this.state.showSectionSettingsPane}
+			{...this.props}
 			/>);
 	}
 
@@ -84,6 +126,7 @@ export default class App extends Component {
 			section={this.props.section}
 			closeable={true}
 			visible={this.state.showBackgroundPane}
+			{...this.props}
 		/>);
 	}
 
@@ -97,35 +140,58 @@ export default class App extends Component {
 				{...this.props}
 			/>);
 		} else {
-			return false;
+			return(<Button
+				buttonClass="circle medium add-content-button"
+				icon={PlusIcon}
+				tooltipText="Add Content"
+				{...this.props}
+			/>);
 		}
 	}
+
+
 
 	render () {
 		return (
 			<div className="ds-section-controls">
 				<div className="left-controls">
-					{this.contentPaneButton()}
-					{this.addContentPane()}
+					<div className="controls-wrap">
+						{this.contentPaneButton()}
+						<div className="pane-position">
+							{this.addContentPane()}
+						</div>
+					</div>
 				</div>
 				<div className="right-controls">
-					<div className="button-group two-buttons">
+					<div className="controls-wrap">
 						<Button
-							clickEvent={this.showSectionSettingsPane.bind(this)}
-							buttonClass="medium"
-							label="Section Options"
+							clickEvent={this.props.removeSection.bind(this)}
+							buttonClass="delete-section circle secondary medium"
+							icon={TrashIcon}
+							tooltipText="Delete Section"
+							tooltipPosition="left"
 							{...this.props}
 						/>
+						<div className="button-group two-buttons">
+							<Button
+								clickEvent={this.showSectionSettingsPane.bind(this)}
+								buttonClass="medium"
+								label="Section Options"
+								{...this.props}
+							/>
 
-						<Button
-							clickEvent={this.showBackgroundPane.bind(this)}
-							buttonClass="medium"
-							label="Background"
-							{...this.props}
-						/>
+							<Button
+								clickEvent={this.showBackgroundPane.bind(this)}
+								buttonClass="medium"
+								label="Background"
+								{...this.props}
+							/>
+						</div>
+						<div className="pane-position">
+							{this.sectionSettingsPane()}
+							{this.backgroundPane()}
+						</div>
 					</div>
-					{this.sectionSettingsPane()}
-					{this.backgroundPane()}
 				</div>
 			</div>
 		);

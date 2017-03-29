@@ -22,9 +22,6 @@ export const updatePage = new ValidatedMethod({
 	name: 'page.update',
 	validate : null,
 	run({pageId, pageAttributes}) {
-		console.log(pageId);
-		console.log(pageAttributes);
-
 		return Pages.update(pageId, {
       $set: pageAttributes
     });
@@ -39,11 +36,33 @@ export const removePage = new ValidatedMethod({
 	}
 });
 
-	//create
-	//update
-	//upsert
-	//delete
-	//reset
+//upsert
+//reset
+
+// addColor
+export const addColor = new ValidatedMethod({
+	name : 'page.add.color',
+	validate : null,
+	run ({pageId, color}){
+		let colors = Pages.findOne(pageId).colors;
+		colors.push(color);
+		Pages.update(pageId,  {$set: {colors : colors}});
+		return color;
+	}
+});
+
+// RemoveColor
+export const removeColor = new ValidatedMethod({
+	name : 'page.remove.color',
+	validate : null,
+	run ({pageId, color}){
+
+		//get page colors
+		//find color by index
+		//remove it from array
+		//save page
+	}
+});
 
 // Meteor.methods({
 

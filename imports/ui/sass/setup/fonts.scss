@@ -1,7 +1,9 @@
-@font-face {
-  font-family: 'Roboto';
-  src:  url('../../assets/fonts/roboto/roboto-regular.woff') format('woff'),
-  			url('../../assets/fonts/roboto/roboto-regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
+@import './font-includes/bagnard';
+@import './font-includes/cormorant-garamond';
+@import './font-includes/cotham-sans';
+@import './font-includes/libre-franklin';
+@import './font-includes/merriweather';
+@import './font-includes/questa';
+@import './font-includes/roboto';
+@import './font-includes/work-sans';
+@import './font-includes/young-serif';

@@ -21,7 +21,7 @@ Meteor.publish('widgets.inSection', function widgetsInSectionPublication(section
 	return Widgets.find({
 		ownerId : this.userId,
 		sectionId : sectionId
-	});
+	}, { sort: { index: 1 } });
 
 
 });

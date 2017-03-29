@@ -14,6 +14,7 @@ import PlusIcon from '../assets/icons/plus-icon.js';
 import ForwardsArrow from '../assets/icons/arrow-2-forwards.js';
 import SettingsIcon from '../assets/icons/settings-icon.js';
 import InlineSVG from 'svg-inline-react';
+import ReorderSectionsIcon from '../assets/icons/reorder-sections.js';
 
 //Components
 import Button from './Common/Button';
@@ -31,6 +32,11 @@ class FooterNav extends Component {
 				console.log(err);
 			} else {
 				//TODO scroll to section
+				//var objDiv = document.querySelector(".app-content");
+				let lastSection = document.querySelector('.ds-page-section-container:last-child');
+				setTimeout(function() {
+					lastSection.scrollIntoView();
+				}, 10);
 			}
 		});
 	}
@@ -62,7 +68,7 @@ class FooterNav extends Component {
 		};
 
 		return (
-			<div className="footer-nav">
+			<div id="Bottom" className="footer-nav">
 				<div className="left-items">
 					<div onClick={this.togglePageSettings.bind(this)} className="link"><InlineSVG src={SettingsIcon} element="span" className="icon" />Settings</div>
 				</div>
@@ -72,6 +78,13 @@ class FooterNav extends Component {
 						buttonClass="tiny"
 						label="Add Page Section"
 						icon={PlusIcon}
+					/>
+
+					<Button
+						buttonClass="tiny reorder-sections"
+						tooltip-text="Reorder Sections"
+						label="Reorder Sections"
+						icon={ReorderSectionsIcon}
 					/>
 
 					<a style={logoutStyles} className="button tiny" href="/logout">∆</a>

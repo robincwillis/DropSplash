@@ -25,8 +25,10 @@ export const insertWidget = new ValidatedMethod({
 
 		widget.ownerId = this.userId;
 		widget.sectionId = sectionId;
+
 		//TODO check if widget was inserted a specific index
-		widget.index = Widgets.find(sectionId).count();
+		widget.index = Widgets.find({sectionId:sectionId}).count();
+
 		widget.type = WidgetTypes[type];
 
 		widget.settings = options && options.settings ? options.settings : {};
@@ -35,8 +37,6 @@ export const insertWidget = new ValidatedMethod({
 
 		Object.assign(widget, widgetDefaults);
 		Object.assign(widget, options);
-
-		console.log(widget);
 
 		return Widgets.insert(widget);
 
@@ -64,20 +64,75 @@ export const updateWidgetContent = new ValidatedMethod({
 	}
 });
 
+export const updateWidgetSettings = new ValidatedMethod({
+	name : 'widget.update.settings',
+	validate : null,
+	run({widgetId, settings}){
+		return Widgets.update(widgetId, {
+			$set: {settings : settings}
+		});
+	}
+});
+
+export const updateWidgetStyles = new ValidatedMethod({
+	name : 'widget.update.styles',
+	validate : null,
+	run({widgetId, styles}){
+		return Widgets.update(widgetId, {
+			$set: {styles : styles}
+		});
+
+		//TODO update default styles
+	}
+});
+
+export const updateWidgetOrder = new ValidatedMethod({
+	name: 'widget.update.order',
+	validate : null,
+	run({widgets}) {
+		widgets.forEach( (widget)=> {
+      Widgets.update( { _id: widget._id }, { $set: { index: widget.index } } );
+		});
+	}
+});
+
 export const removeWidget = new ValidatedMethod({
 
 	name: 'widget.remove',
 	validate : null,
 	run({ widgetId }){
 		const widget = Widgets.findOne(widgetId);
+		const sectionId = widget.sectionId;
 		Widgets.remove(widgetId);
+		let widgets = Widgets.find({sectionId : sectionId}, {sort : {index : 1}}).fetch();
+		let sortedWidgets = widgets.map( (widget, index)=> {
+			widget.index = index;
+			return widget;
+		});
+		updateWidgetOrder.call({widgets: sortedWidgets});
 	}
 });
 
-//update widget styles
-//update widget settings
-//move widget
-//resort section widgets
+export const insertWidgetAfter = new ValidatedMethod({
+	name : 'widget.insert.after',
+	validate : null,
+	run({sectionId, type, options, index}){
+		let widgetId = insertWidget.call({
+			sectionId : sectionId,
+			type: type,
+			options: options
+		}, (err, res) => {
 
-
-
+			let widgets = Widgets.find({sectionId :sectionId}, {sort : {index : 1}}).fetch();
+			let insertedWidget = widgets.find( (widget) => { return widget._id === res;});
+			widgets.splice(insertedWidget.index, 1);
+			widgets.splice(index, 0, insertedWidget);
+			let sortedWidgets = widgets.map( (widget, i)=> {
+				widget.index = i;
+				return widget;
+			});
+			updateWidgetOrder.call({widgets: sortedWidgets});
+		});
+		return widgetId;
+	}
+});

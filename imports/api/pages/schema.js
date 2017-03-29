@@ -63,8 +63,21 @@ export const PageSchema = new SimpleSchema({
 	sections : {
 		type : [String],
 		optional : true
-	}
+	},
 
+	colors : {
+		type : [Object],
+		blackbox: true,
+		defaultValue : [{
+			hex : '#000000',
+			rgb : {r:0,b:0,g:0,a:1},
+			alpha : 1
+		},{
+			hex : '#ffffff',
+			rgb : {r:255,b:255,g:255,a:1},
+			alpha : 1
+		}]
+	}
 });
 
 Pages.attachSchema( PageSchema );

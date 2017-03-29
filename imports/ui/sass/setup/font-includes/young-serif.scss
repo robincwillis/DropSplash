@@ -1,0 +1,15 @@
+//--Bagnard----------------------
+
+@font-face {
+  font-family: 'Young Serif';
+  src:  url('/fonts/young-serif/young-serif-regular.woff') format('woff'),
+  			url('/fonts/young-serif/young-serif-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.young-serif {
+	font-family: 'Young Serif', serif !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+}

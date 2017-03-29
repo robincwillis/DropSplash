@@ -10,7 +10,7 @@ import '../../sass/components/common/inputs.scss';
 
 
 
-export default class InstagramSettingsView extends Component {
+export default class InstagramSettings extends Component {
 
 	//Button on click, either create or update instagram widget
 	constructor (props) {

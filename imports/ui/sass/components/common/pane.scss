@@ -1,7 +1,60 @@
 @import '../../setup/variables';
 @import '../../setup/mixins';
 
+.pane-position {
+	position: relative;
+	&.on-right {
+		.ds-pane {
+			left: calc(100% + 20px);
+		}
+	}
+	&.cover-right {
+		.ds-pane {
+			left: 0;
+		}
+	}
+	&.on-left {
+		.ds-pane {
+			right: calc(100% + 20px);
+		}
+	}
+	&.cover-left {
+		.ds-pane {
+			right: 0;
+		}
+	}
+	&.above {
+		.ds-pane {
+			bottom: calc(100% + 20px);
+		}
+	}
+	&.below {
+		.ds-pane {
+			top: calc(100% + 20px);
+		}
+	}
+	&.v-center {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		.ds-pane {
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+}
+
+.pane-static {
+	.ds-pane {
+		position: relative;
+	}
+}
+
 .ds-pane {
+	position: absolute;
+	top: 0;
+	left: 0;
 	font-family: $main-font;
 	display: inline-block;
 	vertical-align: top;
@@ -11,12 +64,11 @@
 	background: $pane-bg;
 	box-shadow: 0 10px 40px rgba(0, 0, 0, .2);
 	border-radius: $base-border-radius;
-	position: relative;
-	overflow: hidden;
+	overflow: visible;
 	min-width: 225px;
 	min-height: 250px;
 	text-align: left;
-	z-index: 6;
+	z-index: 100;
 	color: $text-color;
 	&.wide {
 		width: 300px;
@@ -54,7 +106,7 @@
 			text-align: center;
 			font-size: 14px;
 			font-weight: 500;
-			line-height: $ds-pane-header-height + 1px;
+			line-height: $ds-pane-header-height;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
@@ -90,14 +142,21 @@
 		}
 	} // end .ds-pane-header
 
-	.ds-pane-tabs {
-		height: 35px;
-		background: $pane-bg;
-		text-align: left;
-		position: relative;
-		z-index: 3;
-		@include clearfix();
-		&.four-tabs {
+	&.two-tabs {
+		.ds-pane-tabs {
+			hr,
+			.tab {
+				width: 50%;
+			}
+			.tab.active {
+				&:nth-child(2) ~ hr {
+					left: 50%;
+				}
+			}
+		}
+	}
+	&.four-tabs {
+		.ds-pane-tabs {
 			hr,
 			.tab {
 				width: 25%;
@@ -114,6 +173,38 @@
 				}
 			}
 		}
+	}
+	&.five-tabs {
+		.ds-pane-tabs {
+			hr,
+			.tab {
+				width: 20%;
+			}
+			.tab.active {
+				&:nth-child(2) ~ hr {
+					left: 20%;
+				}
+				&:nth-child(3) ~ hr {
+					left: 40%;
+				}
+				&:nth-child(4) ~ hr {
+					left: 60%;
+				}
+				&:nth-child(5) ~ hr {
+					left: 80%;
+				}
+			}
+		}
+	}
+
+	.ds-pane-tabs {
+		height: 35px;
+		background: $pane-bg;
+		text-align: left;
+		position: relative;
+		z-index: 3;
+		@include clearfix();
+		// the default tab number is 3
 		hr {
 			display: block;
 			height: 2px;
@@ -154,10 +245,43 @@
 		}
 	} // end .ds-pane-tabs
 
+	.ds-pane-bottom-drawer {
+		position: absolute;
+		top: -$ds-pane-header-height;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		min-height: 100%;
+		overflow: hidden;
+		background: transparent;
+    z-index: 12;
+    border-radius: 0 0 $base-border-radius $base-border-radius;
+    .slider {
+    	border-radius: $base-border-radius;
+    	height: 100%;
+    	background: $pane-bg;
+    	.content {
+    		top: 50px !important;
+    	}
+    	.ds-pane-header {
+    		position: relative;
+    		border-radius: $base-border-radius $base-border-radius 0 0;
+    	}
+    	.pane-view-actions {
+	    	position: relative;
+	    }
+	    .content {
+	    	position: absolute;
+	    	width:100%;
+	    	top: 0 !important;
+	    	bottom: 0;
+	    }
+    }
+	}
+
 	.ds-pane-content {
 		display: block;
-		overflow-x: hidden;
-		overflow-y: auto;
+		overflow: visible;
     height: calc(100% - 50px);
     position: absolute;
     width: 100%;
@@ -172,10 +296,31 @@
     .row {
     	margin-bottom: 15px;
     	&.range {
-    		padding-top: 5px;
+    		padding-top: 3px;
+		    margin-bottom: 10px;
     	}
     	&:last-of-type {
     		margin-bottom: 0;
+    	}
+    	label.divider {
+    		position: relative;
+    		.text {
+    			background: $pane-bg;
+			    z-index: 2;
+			    position: relative;
+			    padding-right: 5px;
+    		}
+    		&:after {
+    			content: '';
+    			position: absolute;
+    			display: block;
+    			left: 2px;
+    			right: 0;
+    			height: 1px;
+    			background: $pane-line-color;
+    			top: 4px;
+    			z-index: 1;
+    		}
     	}
     }
     .pane-grid-row {
@@ -204,13 +349,45 @@
     			width: 75%;
     		}
     	}
+    	.inline-col {
+    		display: inline-block;
+    		padding: 0 5px;
+    		margin-right: 0;
+    		&.align-right {
+    			text-align: right;
+    		}
+    		&.middle {
+    			vertical-align: middle;
+    			label {
+    				margin-bottom: 0;
+    			}
+    		}
+    		input[type=range] {
+    			margin-left: -2px;
+				}
+    		&.one-third {
+    			width: 33.333%;
+    		}
+    		&.two-thirds {
+    			width: 66.666%;
+    		}
+    		&.half {
+    			width: 50%;
+    		}
+    		&.one-quarter {
+    			width: 25%;
+    		}
+    		&.three-quarter {
+    			width: 75%;
+    		}
+    	}
     }
     .pane-padded {
     	padding: 15px;
     }
 		.has-button {
 			padding-bottom: $btn-medium-height;
-			.content {
+			> .content {
 				position: absolute;
 				top: 0;
 				right: 0;
@@ -224,8 +401,11 @@
 				bottom: 0;
 				left: 0;
 				right: 0;
+				border-radius: 0 0 $base-border-radius $base-border-radius;
+				overflow: hidden;
 				.button {
 					border-radius: 0;
+					max-width: none;
 					&.hollow {
 						border-top: 1px solid $light-grey;
 						background-color: transparent;
@@ -262,6 +442,96 @@
 			.has-button {
 				.content {
 					bottom: $btn-medium-height;
+				}
+			}
+		}
+	}
+
+	.color-options {
+		.color {
+			width: 13.333%;
+			padding-bottom: 13.333%;
+			cursor: pointer;
+			border-radius: 50%;
+			display: inline-block;
+			vertical-align: top;
+			margin-right: 4%;
+			background: attr(data-color);
+			position: relative;
+			margin-top: 4%;
+			transition: border $med-speed $ease;
+			&.add-color {
+				&:after {
+					border-color: lighten(#000, 80%);
+				}
+			}
+			.icon {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin: -7px;
+				svg {
+					margin: 0 auto;
+					display: block;
+					width: 14px;
+					height: 14px;
+					* {
+						fill: lighten(#000, 80%);
+					}
+				}
+			}
+			&:nth-child(6n+6) {
+				margin-right: 0;
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				top: -1px;
+				right: -1px;
+				bottom: -1px;
+				left: -1px;
+				border-radius: 50%;
+				border: 2px solid rgba(0, 0, 0, .07);
+				transition: border $med-speed $ease, opacity $med-speed $ease, top $med-speed $ease, right $med-speed $ease, bottom $med-speed $ease, left $med-speed $ease;
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				bottom: 0px;
+				left: 0px;
+				border-radius: 50%;
+				border: 3px solid transparent;
+				transition: border $med-speed $ease;
+			}
+			&:hover {
+				.icon {
+					svg {
+						* {
+							fill: #000;
+						}
+					}
+				}
+				&:after {
+					border-color: #333;
+				}
+				&:before {
+					border-color: $pane-bg;
+				}
+			}
+			&.active,
+			&:active {
+				&.add-color {
+					&:after {
+						border-color: #000;
+					}
+				}
+				&:after {
+					border-color: $primary-color;
+				}
+				&:before {
+					border-color: $pane-bg;
 				}
 			}
 		}
@@ -405,4 +675,37 @@
 	  background: #000;
 	  opacity: .1;
 	}
+}
+
+// Drawer Transition
+.pane-drawer-appear {
+  background: transparent;
+  transition: background .5s $ease;
+  .slider {
+  	transition: transform .5s $ease;
+  	transform: translateY(100%);
+  }
+}
+
+.pane-drawer-appear.pane-drawer-appear-active {
+	background: rgba(0, 0, 0, .3);
+  .slider {
+  	transform: translateY(0);
+  }
+}
+
+.pane-drawer-leave {
+  background: rgba(0, 0, 0, .3);
+  transition: background .5s $ease;
+  .slider {
+  	transition: transform .5s $ease;
+  	transform: translateY(0);
+  }
+}
+
+.pane-drawer-leave.pane-drawer-leave-active {
+	background: transparent;
+  .slider {
+  	transform: translatey(100%);
+  }
 }

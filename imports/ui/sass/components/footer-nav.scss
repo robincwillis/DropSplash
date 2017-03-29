@@ -19,7 +19,7 @@
 	.center-items {
 		float: left;
 		height: 50px;
-		width: 33.333%;
+		width: 25%;
 		.link {
 			display: inline-block;
 			vertical-align: top;
@@ -50,7 +50,29 @@
 			}
 		}
 		.button {
-			margin: 10px 5px;
+			margin: 10px 4px;
+			&.reorder-sections {
+				background: $text-color;
+				&:hover {
+					background: lighten($text-color, 5%);
+					.label,
+					.icon {
+						opacity: 1;
+					}	
+				}
+				.label,
+				.icon {
+					transition: opacity $med-speed $ease;
+					opacity: .6;
+				}
+				.icon {
+					svg {
+						margin-top: 9px;
+						width: 22px;
+						height: 13px;
+					}
+				}
+			}
 		}
 	}
 	.left-items {
@@ -67,6 +89,7 @@
 	}
 	.center-items {
 		text-align: center;
+		width: 50%;
 		.button {
 			max-width: 185px;
 		}

@@ -7,6 +7,7 @@
 		outline: none;
 	}
 	display: inline-block;
+	vertical-align: top;
 	position: relative;
 	cursor: pointer;
 	margin: 10px 0;
@@ -16,13 +17,13 @@
 		display: inline-block;
 		margin: 0 auto;
 		line-height: 1.333em;
-		font-family: 'Work Sans', sans-serif;
-		font-weight: 600;
+		font-family: 'Young Serif', sans-serif;
+		font-weight: normal;
 	}
 
 	p {
-		font-family: 'Cotham Sans', sans-serif;
-		letter-spacing: .02em;
+		font-family: 'Questa Sans', sans-serif;
+		font-weight: normal;
 	}
 	&:after {
 		content: '';
@@ -47,6 +48,15 @@
 		top: 0;
 		bottom: 0;
 		padding-left: 46px;
+		&.left {
+			position: absolute;
+			left: auto;
+			right: 100%;
+			top: 0;
+			bottom: 0;
+			padding-left: 0;
+			padding-right: 46px;
+		}
 	}
 	.ds-edit-button {
 		position: absolute;
@@ -58,19 +68,29 @@
 		transform: translateX(-6px);
 		transition: visibility $med-speed $ease, opacity $med-speed $ease, transform $med-speed $ease;
 	}
+	.ds-reorder-button {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		margin-top: -15px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(6px);
+		transition: visibility $med-speed $ease, opacity $med-speed $ease, transform $med-speed $ease;
+	}
 	&:hover {
-		z-index: 9;
 		&:after {
 			border-color: $primary-color;
 		}
-		.ds-edit-button {
+		.ds-edit-button,
+		.ds-reorder-button {
 			opacity: 1;
 			visibility: visible;
 			transform: translateX(0);
 		}
 	}
 	&.editing {
-		z-index: 9;
+		z-index: 12;
 		&:after {
 			border-color: $primary-color;
 		}
@@ -118,7 +138,7 @@
 		.icon {
 			width: 100%;
 		}
-		&:last-child {
+		&:nth-child(3) {
 			height: 34px;
 			padding-bottom: 3px;
 			border-radius: 0 0 50px 50px;

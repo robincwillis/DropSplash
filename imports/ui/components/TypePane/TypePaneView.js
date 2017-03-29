@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 
 import Button from 'Components/Common/Button';
-import PlusIcon from 'assets/icons/plus-icon';
-import InlineSVG from 'svg-inline-react/lib';
 
 import 'sass/components/common/inputs';
 
-export default class App extends Component {
+export default class TypePaneView extends Component {
 
 	render () {
-
 		return (
 			<div className="has-button" key="view1">
 				<div className="content pane-padded">
 					<div className="row">
 						<label>font</label>
 						<div className="input-group">
-							<input className="two-thirds" type="text" />
-							<input className="one-third" type="text" />
+							<input className="two-thirds" type="text" placeholder="Work Sans" />
+							<input className="one-third" type="text" placeholder="Bold" />
 						</div>
 					</div>
 					<div className="row pane-grid-row">
@@ -57,7 +54,6 @@ export default class App extends Component {
 				</div>
 			</div>
 		);
-
 	}
 
 }

@@ -1,31 +1,93 @@
+@import '../../setup/variables';
+
 .ds-section-controls {
 	position: absolute;
 	width: 100%;
 	background: transparent;
 	top: 0;
 	z-index: 3;
-	padding: 20px;
+	padding: 0;
 	pointer-events: none;
+	height: 80px;
+	transition: opacity $med-speed $ease;
+	&.fixed {
+		z-index: 6;
+		.controls-wrap {
+			position: fixed;
+			top: 0px;
+		}
+	}
+	&.bottom {
+		position: absolute;
+		top: auto;
+		bottom: 0;
+		opacity: .5;
+		* {
+			pointer-events: none;
+		}
+		.button {
+			background: rgba(0, 0, 0, 0.3);
+			&:before {
+				display: none;
+			}
+		}
+		.controls-wrap {
+			position: static;
+		}
+	}
 	.left-controls {
 		pointer-events: all;
 		float: left;
 		.add-content-button {
-			margin-right: 10px;
+			margin-right: 0px;
+		}
+		.pane-position {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			.ds-pane {
+				top: 0;
+				left: 60px;
+			}
 		}
 	}
 	.right-controls {
 		pointer-events: all;
 		float: right;
 		position: relative;
+		.button.secondary.delete-section {
+			margin-right: 10px;
+			background: rgba(0, 0, 0, 0.3);
+			&:hover {
+				background: $red;
+				svg {
+					* {
+						fill: $white;
+					}
+				}
+			}
+		}
 		.button-group {
+			vertical-align: top;
 			.button {
 				min-width: 150px;
 			}
 		}
-		.ds-pane {
+		.pane-position {
 			position: absolute;
-			top:50px;
-			left:0;
+	    top: 0;
+	    right: 0;
+	    left: auto;
+			.ds-pane {
+				position: absolute;
+				top: 80px;
+				right: 20px;
+				left: auto;
+			}
 		}
+	}
+	.controls-wrap {
+		position: relative;
+		padding: 20px;
 	}
 }

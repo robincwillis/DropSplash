@@ -1,0 +1,15 @@
+//--Cotham----------------------
+
+@font-face {
+  font-family: 'Cotham Sans';
+  src:  url('/fonts/cotham/cothamsans-webfont.woff') format('woff'),
+  			url('/fonts/cotham/cothamsans-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.cotham-sans {
+	font-family: 'Cotham Sans', serif !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
+import InlineSVG from 'svg-inline-react';
 import Button from './Common/Button.js';
+import Logo from '../assets/icons/ds-logo-sm.js';
 
 import '../sass/components/login';
 
@@ -74,7 +76,32 @@ export default class Signup extends Component {
 		return (
 			<div className="ds-page-section ds-login full-height">
 				<div className="v-center">
+					<InlineSVG
+						src={Logo}
+						element="div"
+						className="login-logo" 
+					/>
 					<div className="ds-login-form">
+						<span className="alt-login-divider small-caps">Sign Up Using</span>
+						<Button
+							clickEvent={this.handleSocialLoginClick}
+							buttonClass="medium google-login"
+							label="Google"
+							extraProps={{'data-social-login' : 'loginWithGoogle'}}
+						/>
+						<Button
+							clickEvent={this.handleSocialLoginClick}
+							buttonClass="medium twitter-login"
+							label="Twitter"
+							extraProps={{'data-social-login' : 'loginWithTwitter'}}
+						/>
+						<Button
+							clickEvent={this.handleSocialLoginClick}
+							buttonClass="medium facebook-login"
+							label="Facebook"
+							extraProps={{'data-social-login' : 'loginWithFacebook'}}
+						/>
+						<span className="alt-login-divider small-caps">Or sign up with</span>
 						<div className="fancy-input-wrap">
 							<input
 								className="login-input"
@@ -112,25 +139,6 @@ export default class Signup extends Component {
 							clickEvent={this.signup.bind(this)}
 							buttonClass="medium login"
 							label="Sign Up"
-						/>
-						<span className="alt-login-divider small-caps">Or log in with</span>
-						<Button
-							clickEvent={this.handleSocialLoginClick}
-							buttonClass="medium google-login"
-							label="Google"
-							extraProps={{'data-social-login' : 'loginWithGoogle'}}
-						/>
-						<Button
-							clickEvent={this.handleSocialLoginClick}
-							buttonClass="medium twitter-login"
-							label="Twitter"
-							extraProps={{'data-social-login' : 'loginWithTwitter'}}
-						/>
-						<Button
-							clickEvent={this.handleSocialLoginClick}
-							buttonClass="medium facebook-login"
-							label="Facebook"
-							extraProps={{'data-social-login' : 'loginWithFacebook'}}
 						/>
 					</div>
 				</div>

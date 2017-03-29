@@ -11,11 +11,11 @@ export default class App extends Component {
 		}
 
 		var overlayStyle = {
-  		backgroundColor: this.props.overlayColor,
-  		opacity: this.props.overlayOpacity
-  	}
+			backgroundColor: this.props.overlayColor,
+			opacity: this.props.overlayOpacity
+		}
 
-    var overlay = (<span className="bg-overlay" style={overlayStyle}></span>);
+		var overlay = (<span className="bg-overlay" style={overlayStyle}></span>);
 
 		return (
 			<div className="background-content" style={backgroundStyle}>

@@ -3,12 +3,11 @@
 .add-content-between {
 	opacity: 0;
 	transition: opacity $med-speed $ease, padding $med-speed $ease;
-	margin: -14px -0px;
+	margin: -14px -10px;
 	padding: 14px 0;
 	position: relative;
-	z-index: 3;
 	cursor: pointer;
-	&:hover {
+	&:hover, &.active {
 		opacity: 1;
 	}
 	.line {
@@ -19,6 +18,104 @@
 			position: absolute;
 			right: -($btn-tiny-height) - 3px;
 			top: -($btn-tiny-height/2) + 1px;
+		}
+	}
+	.pane-position {
+		.ds-pane {
+
+		}
+	}
+}
+
+.add-content-below {
+	position: absolute;
+	height: 80px;
+	padding: 15px 0 15px;
+	width: 100%;
+	.container {
+		width: 100% !important;
+    max-width: none !important;
+	}
+	&:hover {
+		.ds-pane.add-content-pane {
+			opacity: 1;
+			transform: translate3d(0,0,0);
+		}
+	}
+	.ds-pane.add-content-pane {
+		max-width: none;
+		min-height: 0;
+		height: 50px !important;
+    width: 649px;
+    padding: 0 15px;
+    overflow: visible;
+    position: relative;
+    opacity: 0;
+    background: #222;
+    border-radius: 40px;
+    box-shadow: 0 10px 40px rgba(255, 255, 255, .1);
+    transition: opacity $med-speed $ease, transform $med-speed $ease;
+    transform: translate3d(0,15px,0);
+    // padding: 0 10px;
+		.ds-pane-header {
+			display: none;
+		}
+		.ds-pane-content {
+			top: 0;
+			height: 100%;
+			overflow: visible;
+			.new-content-grid {
+				overflow: visible;
+			}
+			.content-item {
+				height: auto;
+				width: auto;
+				position: relative;
+				border: 0;
+				padding: 0 10px;
+				&:first-child {
+					border-radius: 4px 0 0 4px;
+				}
+				&:last-child {
+					border-radius: 0 4px 4px 0;
+					border-right: none;
+				}
+				&:hover {
+					background: transparent;
+					.label {
+						opacity: 1;
+						visibility: visible;
+					}
+				}
+				.icon {
+					margin: 17px auto;
+					opacity: .6;
+					svg {
+						* {
+							fill: #fff;
+						}
+					}
+				}
+				.label {
+					pointer-events: none;
+					position: absolute;
+					left: 50%;
+					transform: translateX(-50%);
+					bottom: calc(100% + 7px);
+					background-color: $text-color;
+					color: #fff;
+					font-size: 12px;
+					text-transform: none;
+					font-weight: 400;
+					letter-spacing: .02em;
+					padding: 6px 10px 7px;
+					border-radius: 3px;
+			    opacity: 1;
+			    opacity: 0;
+			    visibility: 0;
+			    transition: opacity $med-speed $ease, visibility $med-speed $ease;
+				}
+			}
 		}
 	}
 }

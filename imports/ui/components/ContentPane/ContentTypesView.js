@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import HeadlineIcon from '../../assets/icons/headline.js';
 import ParagraphIcon from '../../assets/icons/paragraph.js';
 import ImageIcon from '../../assets/icons/image.js';
-import VideoIcon from '../../assets/icons/play.js';
+import VideoIcon from '../../assets/icons/video.js';
+import AudioIcon from '../../assets/icons/audio.js';
 import MailIcon from '../../assets/icons/mail.js';
 import TwitterIcon from '../../assets/icons/twitter.js';
 import InstagramIcon from '../../assets/icons/instagram.js';
@@ -12,6 +13,11 @@ import ButtonIcon from '../../assets/icons/button.js';
 import DividerIcon from '../../assets/icons/divider.js';
 import MapIcon from '../../assets/icons/map.js';
 import MediumIcon from '../../assets/icons/medium.js';
+
+import HtmlIcon from '../../assets/icons/html.js';
+import SocialIcon from '../../assets/icons/social.js';
+import GalleryIcon from '../../assets/icons/gallery.js';
+import SlideshowIcon from '../../assets/icons/slideshow.js';
 
 //Components
 import Button from '../Common/Button';
@@ -47,7 +53,7 @@ export default class ContentTypesView extends Component {
 					{...this.props}
 				/>
 				<ContentType
-					icon={VideoIcon}
+					icon={AudioIcon}
 					title="Audio"
 					type="AUDIO"
 					{...this.props}
@@ -92,6 +98,30 @@ export default class ContentTypesView extends Component {
 					icon={MailIcon}
 					title="Mailchimp"
 					type="MAILCHIMP"
+					{...this.props}
+				/>
+				<ContentType
+					icon={SlideshowIcon}
+					title="Slideshow"
+					type="SLIDESHOW"
+					{...this.props}
+				/>
+				<ContentType
+					icon={GalleryIcon}
+					title="Gallery"
+					type="GALLERY"
+					{...this.props}
+				/>
+				<ContentType
+					icon={HtmlIcon}
+					title="HTML"
+					type="HTML"
+					{...this.props}
+				/>
+				<ContentType
+					icon={SocialIcon}
+					title="Social"
+					type="SOCIAL"
 					{...this.props}
 				/>
 			</div>

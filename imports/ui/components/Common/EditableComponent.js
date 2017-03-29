@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import onClickOutside  from 'react-onclickoutside';
+import { DragSource, DropTarget } from 'react-dnd';
+import { _ } from 'meteor/underscore';
+
 
 //Components
 import HeadlineWidget from '../Widgets/Headline.js';
@@ -14,6 +18,10 @@ import DividerWidget from '../Widgets/Divider.js';
 import TwitterWidget from '../Widgets/Twitter.js';
 import InstagramWidget from '../Widgets/Instagram.js';
 import MailchimpWidget from '../Widgets/Mailchimp.js';
+import SlideshowWidget from '../Widgets/Slideshow.js';
+import GalleryWidget from '../Widgets/Gallery.js';
+import HtmlWidget from '../Widgets/Html.js';
+import SocialWidget from '../Widgets/Social.js';
 
 import EditOptions from './EditOptions.js';
 
@@ -21,22 +29,87 @@ import { WidgetTypes } from '../../../api/widgets/schema.js';
 
 import '../../sass/components/common/input-switch.scss';
 
-export default class EditableComponent extends Component {
+import ItemTypes from '../ItemTypes';
+
+const style = {
+  border: '1px dashed gray',
+  padding: '0.5rem 1rem',
+  marginBottom: '.5rem',
+  backgroundColor: 'white',
+  cursor: 'move'
+};
+
+const cardSource = {
+	beginDrag(props) {
+
+		console.log('begin dragging note', props);
+
+		return {
+			id: props.widget._id,
+      index: props.widget.index
+		};
+	}
+};
+
+const cardTarget = {
+	hover(props, monitor, component) {
+    const dragIndex = monitor.getItem().index;
+    const hoverIndex = props.widget.index;
+
+    // Don't replace items with themselves
+    if (dragIndex === hoverIndex) {
+      return;
+    }
+
+    // Determine rectangle on screen
+    const hoverBoundingRect = ReactDOM.findDOMNode(component).getBoundingClientRect();
+
+    // Get vertical middle
+    const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+
+    // Determine mouse position
+    const clientOffset = monitor.getClientOffset();
+
+    // Get pixels to the top
+    const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+
+    // Only perform the move when the mouse has crossed half of the items height
+    // When dragging downwards, only move when the cursor is below 50%
+    // When dragging upwards, only move when the cursor is above 50%
+
+    // Dragging downwards
+    if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+      return;
+    }
+
+    // Dragging upwards
+    if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+      return;
+    }
+
+    // Time to actually perform the action
+    props.moveWidget(dragIndex, hoverIndex);
+
+    // Note: we're mutating the monitor item here!
+    // Generally it's better to avoid mutations,
+    // but it's good here for the sake of performance
+    // to avoid expensive index searches.
+    monitor.getItem().index = hoverIndex;
+	}
+};
+
+class EditableComponent extends Component {
 
 	constructor (props) {
-    super(props);
-    this.state = {
-      editing: false
-    };
-  }
+		super(props);
+		this.state = {
+			editing: false
+		};
+	}
 
-	componentDidMount () {
-    document.body.addEventListener('click', this.exitEditMode.bind(this));
-  }
-
-  componentWillUnmount () {
-    document.body.removeEventListener('click', this.exitEditMode);
-  }
+	handleClickOutside (event) {
+		this.exitEditMode(event);
+	}
 
 	renderWidget () {
 		switch (WidgetTypes[this.props.widget.type]) {
@@ -66,6 +139,15 @@ export default class EditableComponent extends Component {
 				return(<InstagramWidget {...this.props} />);
 			case 'MAILCHIMP_WIDGET':
 				return(<MailchimpWidget {...this.props} />);
+			case 'SLIDESHOW_WIDGET':
+				return(<Slideshow {...this.props} />);
+			case 'GALLERY_WIDGET':
+				return(<Gallery {...this.props} />);
+			case 'HTML_WIDGET':
+				return(<Html {...this.props} />);
+			case 'SOCIAL_WIDGET':
+				return(<Social {...this.props} />);
+
 			default :
 				return false;
 		}
@@ -87,39 +169,70 @@ export default class EditableComponent extends Component {
 	}
 
 	editableClass () {
-    var editableClass = 'ds-editable';
-    if (this.state.editing === true) {
-      editableClass += ' editing';
-    }
-    return editableClass;
-  }
+		var editableClass = 'ds-editable';
+		if (this.state.editing === true) {
+			editableClass += ' editing';
+		}
+		return editableClass;
+	}
 
-  clickHandler () {
-    if (this.state.editing === true) {
+	clickHandler () {
+		if (this.state.editing === true) {
 			this.setState({editing: false});
 		} else {
 			if (this.state.editing === false) {
 				this.setState({editing: true});
 			}
 		}
-  }
+	}
 
 	render () {
-		return (
-			<div>
+		const {canDrop, isOver, isDragging, connectDragSource, connectDropTarget } = this.props;
+
+		const isActive = canDrop && isOver;
+
+
+		let dragStyle = isDragging ? {
+			opacity : 0.5 ,
+			backgroundColor : '#ffffff'
+		} : {};
+		let dropStyle = isOver ? {backgroundColor: 'rgba(22, 225, 185, 0.3)'} : {};
+		let isActiveStyle = isActive ? {backgroundColor: 'red'} : {};
+		let dragDropStyle = Object.assign({}, dragStyle, dropStyle, isActiveStyle);
+
+		return connectDragSource(connectDropTarget(
+		//return (
+			<div style={dragDropStyle}>
 				<div
 					className={this.editableClass()}
 					onClick={this.enterEditMode.bind(this)}
 				>
 					{this.renderWidget()}
 					<EditOptions
+						page={this.props.page}
+						section={this.props.page}
 						widget={this.props.widget}
 						editing={this.state.editing}
 						clickHandler={this.clickHandler.bind(this)}
 					/>
 				</div>
 			</div>
-		);
+
+
+		));
 
 	}
 }
+
+export default _.compose(
+  DragSource(ItemTypes.CARD, cardSource, connect => ({
+    connectDragSource: connect.dragSource()
+  })),
+  DropTarget(ItemTypes.CARD, cardTarget, (connect, monitor) => ({
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver(),
+		canDrop: monitor.canDrop()
+  }))
+)(onClickOutside(EditableComponent));
+
+
